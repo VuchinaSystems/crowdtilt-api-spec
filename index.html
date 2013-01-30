@@ -188,6 +188,14 @@
                 </li>
               
                 <li>
+                  <a href="#user-banks/make-user-bank-default">Make User Bank Default</a>
+                </li>
+              
+                <li>
+                  <a href="#user-banks/get-user-s-default-bank">Get User's Default Bank</a>
+                </li>
+              
+                <li>
                   <a href="#user-banks/list-user-banks">List User Banks</a>
                 </li>
               
@@ -378,6 +386,11 @@
         </li>
       
         <li>
+          <a href="#bank-definition">Bank Definition</a>
+          
+        </li>
+      
+        <li>
           <a href="#campaign-definition">Campaign Definition</a>
           
         </li>
@@ -456,6 +469,7 @@
 <li><a href="#examples">Examples</a></li>
 <li><a href="#resource-definitions">Resource Definitions</a><ul>
 <li><a href="#user-definition">User Definition</a></li>
+<li><a href="#bank-definition">Bank Definition</a></li>
 <li><a href="#campaign-definition">Campaign Definition</a></li>
 <li><a href="#payment-definition">Payment Definition</a></li>
 <li><a href="#settlement-definition">Settlement Definition</a></li>
@@ -1183,7 +1197,8 @@ request.  Other fields submitted will be ignored.
     <span class="string">"bank"</span>: {
         <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
         <span class="string">"metadata"</span> : {},
-        <span class="string">"id"</span> : <span class="string">"BAP688E65FA0C6D11E28914FE5E5CD73F12"</span>,
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+        <span class="string">"default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
         <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
@@ -1199,8 +1214,55 @@ request.  Other fields submitted will be ignored.
     <span class="string">"bank"</span> : {
         <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
         <span class="string">"metadata"</span> : {},
-        <span class="string">"id"</span> : <span class="string">"BAP688E65FA0C6D11E28914FE5E5CD73F12"</span>,
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+        <span class="string">"default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+    }
+}</code></pre>
+<h4>Response Codes</h4>
+<pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
+<h3 id='user-banks/make-user-bank-default'>Make User Bank Default</h3 id='user-banks/make-user-bank-default'>
+<p>Before a bank account will be sent money, it must be marked as the default
+bank account for that user.  To make a bank account the default, make the
+following request:
+
+</p>
+<pre><code>POST /users/:<span class="keyword">id</span>/banks/<span class="keyword">default</span>
+
+{
+    <span class="string">"bank"</span>: { <span class="string">"id"</span> : <span class="string">"BAP688"</span> }
+}</code></pre>
+<h4>Response Body</h4>
+<pre><code>{
+    <span class="string">"bank"</span>: {
+        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"metadata"</span> : {},
+        <span class="string">"default"</span> : <span class="number">1</span>,
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+        <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+    }
+}</code></pre>
+<h4>Response Codes</h4>
+<pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
+<h3 id='user-banks/get-user-s-default-bank'>Get User&#39;s Default Bank</h3 id='user-banks/get-user-s-default-bank'>
+<p>To get the current default bank for a user, you can simply request:
+
+</p>
+<pre><code>GET /users/:<span class="keyword">id</span>/banks/<span class="keyword">default</span></code></pre>
+<h4>Response Body</h4>
+<pre><code>{
+    <span class="string">"bank"</span>: {
+        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"metadata"</span> : {},
+        <span class="string">"default"</span> : <span class="number">1</span>,
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+        <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
         <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
@@ -1225,7 +1287,8 @@ request.  Other fields submitted will be ignored.
         {
             <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
             <span class="string">"metadata"</span> : {},
-            <span class="string">"id"</span> : <span class="string">"BAP688E65FA0C6D11E28914FE5E5CD73F12"</span>,
+            <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+            <span class="string">"default"</span> : <span class="number">0</span>,
             <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
             <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
             <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
@@ -1257,7 +1320,8 @@ request.  Other fields submitted will be ignored.
         <span class="string">"metadata"</span> : {
             <span class="string">"key1"</span> : <span class="string">"value1"</span>
         },
-        <span class="string">"id"</span> : <span class="string">"BAP688E65FA0C6D11E28914FE5E5CD73F12"</span>,
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+        <span class="string">"default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
         <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
@@ -2308,6 +2372,81 @@ campaign by another user!
             <td>string</td>
             <td>Auto generated and read-only</td>
             <td>The uri for the user&#39;s payments</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id='bank-definition'>Bank Definition</h2 id='bank-definition'>
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>String</td>
+            <td>Auto generated and read-only</td>
+            <td>A unique identifier for the bank</td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>Integer (1 or 0)</td>
+            <td>Read-only</td>
+            <td> Tells you if this bank is currently the default for the user </td>
+        </tr>
+        <tr>
+            <td>account_number</td>
+            <td>string</td>
+            <td>Yes, not returned</td>
+            <td> Bank Account Number </td>
+        </tr>
+        <tr>
+            <td>account_number_last_four</td>
+            <td>string</td>
+            <td>Read-Only</td>
+            <td>Last four digits of account nummber</td>
+        </tr>
+        <tr>
+            <td>bank_code</td>
+            <td>string</td>
+            <td>Yes, not returned</td>
+            <td> Bank Routing Code </td>
+        </tr>
+        <tr>
+            <td>bank_code_last_four</td>
+            <td>string</td>
+            <td>Read-Only</td>
+            <td>Last four digits of bank routing nummber</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>String</td>
+            <td>No</td>
+            <td> The name of this bank account </td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>JSON object</td>
+            <td>Read-Only</td>
+            <td> The user object that owns this bank</td>
+        </tr>
+        <tr>
+            <td>metadata</td>
+            <td>JSON object</td>
+            <td>No</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store.</td>
+        </tr>
+        <tr>
+            <td>uri</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>The uri for this user resource</td>
         </tr>
     </tbody>
 </table>
