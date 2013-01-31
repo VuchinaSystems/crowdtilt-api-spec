@@ -351,24 +351,65 @@
         </li>
       
         <li>
-          <a href="#examples">Examples</a>
+          <a href="#api-examples">API Examples</a>
           
             <ul>
               
                 <li>
-                  <a href="#examples/create-a-user">Create a User</a>
+                  <a href="#api-examples/create-a-user">Create a User</a>
                 </li>
               
                 <li>
-                  <a href="#examples/create-a-campaign">Create a campaign</a>
+                  <a href="#api-examples/create-a-campaign">Create a campaign</a>
                 </li>
               
                 <li>
-                  <a href="#examples/create-a-card">Create a card</a>
+                  <a href="#api-examples/create-a-card">Create a card</a>
                 </li>
               
                 <li>
-                  <a href="#examples/create-a-payment">Create a payment</a>
+                  <a href="#api-examples/create-a-payment">Create a payment</a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a href="#tokenizing-sensitive-user-information">Tokenizing Sensitive User Information</a>
+          
+            <ul>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/include-the-library">Include the Library</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/initialize-the-crowdtilt-object">Initialize the crowdtilt object</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/make-sure-to-create-users-first">Make sure to create users first</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/create-a-credit-card">Create a Credit Card</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/handling-the-response">Handling the Response</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/create-a-bank-account">Create a Bank Account</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/client-side-validation-helpers">Client-side Validation Helpers</a>
+                </li>
+              
+                <li>
+                  <a href="#tokenizing-sensitive-user-information/tokenization-examples">Tokenization Examples</a>
                 </li>
               
             </ul>
@@ -416,33 +457,39 @@
 </p>
 <h1>Crowdtilt API Specs (BETA)</h1>
 <p>The Crowdtilt API opens up the opportunity for developers to:
-<em> Offer a group payments option in their applications.
-</em> Offer a pre-sales commerce option in their applications.
-<em> Develop a crowdfunding application (i.e., single project model like Lockitron
-    or multi-project model like Kickstarter).
-</em> Develop a social fundraising application.
-* Enable the collaboration around these styles of commerce.
 
 </p>
+<ul>
+<li>Offer a group payments option in their applications.</li>
+<li>Offer a pre-sales commerce option in their applications.</li>
+<li>Develop a crowdfunding application (i.e., single project model like Lockitron
+  or multi-project model like Kickstarter).</li>
+<li>Develop a social fundraising application.</li>
+<li>Enable the collaboration around these styles of commerce.</li>
+</ul>
 <p>What we think is cool about the Crowdtilt API:
-<em> Developers can use the Crowdtilt API with their own payment processor
-    as it works with <a href="https://stripe.com/">Stripe</a>,
-    <a href="https://www.balancedpayments.com/">Balanced</a>,
-    <a href="https://www.braintreepayments.com">BrainTree</a>.
-</em> Though we have the above preferred partners for the Crowdtilt API already
+
+</p>
+<ul>
+<li>Developers can use the Crowdtilt API with their own payment processor
+  as it works with <a href="https://stripe.com/">Stripe</a>,
+  <a href="https://www.balancedpayments.com/">Balanced</a>,
+  <a href="https://www.braintreepayments.com">BrainTree</a>.</li>
+<li>Though we have the above preferred partners for the Crowdtilt API already
   built out and ready to use, our API is actually built around our universal
   payments interface, which allows developers to integrate any payment
   processor from around the world right into our system.  For more information
   about how to get access to this interface to build support for your favorite
-  processor, drop us a note at <a href="mailto:devs@crowdtilt.com">devs@crowdtilt.com</a>.
-<em> The API also works with credit cards and ACH debit payments or a combination
-    of these.
-</em> The API provides collaboration tools such as commenting/updates, nested
-    comments, messaging, notifications, and tracking of those that have paid and
-    those that haven&#39;t.
-* The API supports both multiple currencies and international languages.
-
-</p>
+  processor, drop us a note at <a href="mailto:devs@crowdtilt.com">devs@crowdtilt.com</a>.</li>
+<li>The API also works with credit cards and ACH debit payments or a combination
+  of these.</li>
+<li>The API provides collaboration tools such as commenting/updates, nested
+  comments, messaging, notifications, and tracking of those that have paid and
+  those that haven&#39;t.</li>
+<li>The API supports both multiple currencies and international languages.</li>
+<li>We also provide a tool to tokenize the sensitive information you collect (credit card 
+and bank account numbers), so you don&#39;t have to worry about PCI compliance</li>
+</ul>
 <h1>Menu</h1>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
@@ -463,13 +510,13 @@
 <li><a href="#rejected-payments">Rejected Payments</a></li>
 <li><a href="#refunds">Refunds</a></li>
 <li><a href="#campaign-settlements">Campaign Settlements</a></li>
-<li><a href="#campaign-comments">Campaign Comments</a></li>
+<li><a href="#campaign-comments">Campaign Comments</a>   </li>
 </ul>
 </li>
-<li><a href="#examples">Examples</a></li>
+<li><a href="#api-examples">API Examples</a></li>
+<li><a href="#tokenizing-sensitive-user-information">Tokenizing Sensitive User Information</a></li>
 <li><a href="#resource-definitions">Resource Definitions</a><ul>
 <li><a href="#user-definition">User Definition</a></li>
-<li><a href="#bank-definition">Bank Definition</a></li>
 <li><a href="#campaign-definition">Campaign Definition</a></li>
 <li><a href="#payment-definition">Payment Definition</a></li>
 <li><a href="#settlement-definition">Settlement Definition</a></li>
@@ -522,10 +569,12 @@ data is stored in a Payment Industry Data Security Standard (PCI DSS)
 Compliant environment.
 
 </p>
-<p>Implementors of the beta API, for now, must be PCI compliant as well. However,
-we will be able to offer javascript tokenization for non-PCI compliant consumers
-soon as well as our group-payments javascript button for the lightest
-integration possible for both PCI and non-PCI compliant consumers alike.
+<p>Crowdtilt provides a PCI-compliant javascript library, <code>crowdtilt.js</code>,
+which is easy to implement on your website. Sensitive payment information can
+then be securely collected without ever touching your servers, keeping you
+completely outside of PCI and regulatory scope. See 
+<a href="#tokenizing-sensitive-user-information">Tokenizing Sensitive User Information</a> 
+for more information.
 
 </p>
 <p>We investigate all reported security issues with extreme immediacy. If you
@@ -1182,6 +1231,9 @@ request.  Other fields submitted will be ignored.
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='user-banks'>User Banks</h2 id='user-banks'>
+<p>Note that the <code>bank_code</code> field is also referred to as a &quot;routing number&quot; in the USA.
+
+</p>
 <h3 id='user-banks/create-user-bank'>Create User Bank</h3 id='user-banks/create-user-bank'>
 <pre><code><span class="title">POST</span> /users/:id/banks
 
@@ -1189,19 +1241,19 @@ request.  Other fields submitted will be ignored.
     "bank": {
         "account_number" : "1234567890",
         "name" : "<span class="title">Bank</span> Name<span class="string">",
-        "</span>bank_code<span class="string">" : "</span><span class="number">123451234</span><span class="string">",
+        "</span>bank_code<span class="string">" : "</span><span class="number">321174851</span><span class="string">",
     }
 }</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
     }
 }</code></pre>
@@ -1212,13 +1264,13 @@ request.  Other fields submitted will be ignored.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span> : {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
     }
 }</code></pre>
@@ -1238,13 +1290,13 @@ following request:
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
         <span class="string">"default"</span> : <span class="number">1</span>,
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
     }
 }</code></pre>
@@ -1258,13 +1310,13 @@ following request:
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
         <span class="string">"default"</span> : <span class="number">1</span>,
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
     }
 }</code></pre>
@@ -1285,13 +1337,13 @@ following request:
     },
     <span class="string">"banks"</span>: [
         {
-            <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+            <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
             <span class="string">"metadata"</span> : {},
             <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
             <span class="string">"default"</span> : <span class="number">0</span>,
             <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
             <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-            <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+            <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
             <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
         }
     ]
@@ -1316,7 +1368,7 @@ request.  Other fields submitted will be ignored.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span> : {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {
             <span class="string">"key1"</span> : <span class="string">"value1"</span>
         },
@@ -1324,7 +1376,7 @@ request.  Other fields submitted will be ignored.
         <span class="string">"default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"1234"</span>,
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
     }
 }</code></pre>
@@ -2000,8 +2052,8 @@ The purpose of the <code>score</code> field is to provide support for voting on 
 <pre><code>DELETE /campaigns/:<span class="keyword">id</span>/comments/:<span class="keyword">id</span></code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
-<h2 id='examples'>Examples</h2 id='examples'>
-<h3 id='examples/create-a-user'>Create a User</h3 id='examples/create-a-user'>
+<h2 id='api-examples'>API Examples</h2 id='api-examples'>
+<h3 id='api-examples/create-a-user'>Create a User</h3 id='api-examples/create-a-user'>
 <p>Generally the first thing you want to do is create some users.  Let&#39;s
 create two users, an admin, and a contributor.
 
@@ -2059,7 +2111,7 @@ $ curl -X POST -u key:secret  -H Content-Type:application/json \
         <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRE32/payments"</span>
      }
   }</code></pre>
-<h3 id='examples/create-a-campaign'>Create a campaign</h3 id='examples/create-a-campaign'>
+<h3 id='api-examples/create-a-campaign'>Create a campaign</h3 id='api-examples/create-a-campaign'>
 <p>Once you&#39;ve got some users, you can create a campaign for any of them.  For this
 example, we&#39;ll make the first user created above the <code>admin</code> user, and use the
 second user to make a payment on the campaign.
@@ -2126,7 +2178,7 @@ second user to make a payment on the campaign.
             <span class="string">"tax_name"</span> : <span class="keyword">null</span>
     }
 }</code></pre>
-<h3 id='examples/create-a-card'>Create a card</h3 id='examples/create-a-card'>
+<h3 id='api-examples/create-a-card'>Create a card</h3 id='api-examples/create-a-card'>
 <p>Now, we&#39;ll create a credit card for the paying user.
 
 </p>
@@ -2154,7 +2206,7 @@ second user to make a payment on the campaign.
        <span class="string">"id"</span> <span class="symbol">:</span> <span class="string">"CCPA69"</span>
     }
  }</code></pre>
-<h3 id='examples/create-a-payment'>Create a payment</h3 id='examples/create-a-payment'>
+<h3 id='api-examples/create-a-payment'>Create a payment</h3 id='api-examples/create-a-payment'>
 <p>Now we&#39;ll create a payment by the paying user to the campaign we created.
 
 </p>
@@ -2276,6 +2328,373 @@ minus the <code>$2.00</code> set in the <code>admin_fee_amount</code> field).
 campaign by another user!
 
 </p>
+<h2 id='tokenizing-sensitive-user-information'>Tokenizing Sensitive User Information</h2 id='tokenizing-sensitive-user-information'>
+<p>If you want to store sensitive financial information from your users (like
+credit card and bank account numbers), you are required to be compliant
+with the <a href="https://www.pcisecuritystandards.org/" target="_blank">Payment 
+Card Industry Data Security Standard (PCI DSS)</a>.
+Crowdtilt handles this for you by providing a PCI-compliant javascript library, <code>crowdtilt.js</code>,
+which is easy to implement on your website. Sensitive payment information can
+then be securely collected without ever touching your servers, keeping you
+completely outside of PCI and regulatory scope.
+
+</p>
+<p>To implement <code>crowdtilt.js</code>, follow the steps below. You can also check out this 
+<a href="#tokenization-examples">example implementation</a>.
+
+</p>
+<h3 id='tokenizing-sensitive-user-information/include-the-library'>Include the Library</h3 id='tokenizing-sensitive-user-information/include-the-library'>
+<p>To use <code>crowdtilt.js</code>, simply include the following script tag on any page
+where you will be collecting credit card or bank account information:
+
+</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"https://api.crowdtilt.com/v1/js/crowdtilt.js"</span>></span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
+<h3 id='tokenizing-sensitive-user-information/initialize-the-crowdtilt-object'>Initialize the crowdtilt object</h3 id='tokenizing-sensitive-user-information/initialize-the-crowdtilt-object'>
+<p>In a separate script tag, initialize the crowdtilt object:
+
+</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>></span><span class="javascript">
+    crowdtilt.init();
+</span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
+<h3 id='tokenizing-sensitive-user-information/make-sure-to-create-users-first'>Make sure to create users first</h3 id='tokenizing-sensitive-user-information/make-sure-to-create-users-first'>
+<p>Credit cards and bank accounts must be associated with existing <code>user</code> objects created through
+our API. This means that you need to collect user account information in a step <em>before</em> collecting credit 
+card or bank account information. See <a href="#create-user">creating users</a> for more information. You&#39;ll need the 
+resulting <code>user id</code> to create credit cards and bank accounts for that user.
+
+</p>
+<h3 id='tokenizing-sensitive-user-information/create-a-credit-card'>Create a Credit Card</h3 id='tokenizing-sensitive-user-information/create-a-credit-card'>
+<p>Once you have a <code>user</code>, the next step is to collect her credit card information and pass it to the
+<code>crowdtilt.card.create</code> function along with her <code>user id</code>, as well as a function to handle the response
+(more on that in a second).
+
+</p>
+<p>Example:
+
+</p>
+<pre><code><span class="string">"cardData"</span>: {
+    <span class="string">"number"</span>:<span class="string">"4111111111111111"</span>,
+    <span class="string">"expiration_month"</span>:<span class="string">"03"</span>,
+    <span class="string">"expiration_year"</span>:<span class="number">2023</span>,
+    <span class="string">"security_code"</span>:<span class="number">123</span> 
+}
+
+crowdtilt<span class="preprocessor">.card</span><span class="preprocessor">.create</span>(user_id, cardData, responseHandler)<span class="comment">;   </span></code></pre>
+<p>The <code>user id</code> should be the hash returned by the user creation API call, e.g. &quot;USR1E0A9BCE5F6111E28F485D097AC0CAB6&quot;
+
+</p>
+<p>The required credit card data fields are:
+
+</p>
+<ul>
+<li><code>number</code>: card number, as a string, without any separators, should be 16 digits in length, e.g. &quot;4111111111111111&quot;</li>
+<li><code>expiration_month</code>: two digit number, as a string, representing the card&#39;s expiration month, e.g. &quot;03&quot;</li>
+<li><code>expiration_year</code>: four digit number, as a string, representing the card&#39;s expiration year, e.g. &quot;2013&quot;</li>
+<li><code>security_code</code>: three or four digit number, as a string, e.g. &quot;123&quot;</li>
+</ul>
+<p>If successful, the response object passed to the responseHandler function takes the form:
+
+</p>
+<pre><code>{
+    "<span class="attribute">card</span>": <span class="value">{
+        "<span class="attribute">last_four</span>":<span class="value"><span class="string">"1111"</span></span>,
+        "<span class="attribute">expiration_year</span>":<span class="value"><span class="number">2013</span></span>,
+        "<span class="attribute">expiration_month</span>":<span class="value"><span class="string">"03"</span></span>,
+        "<span class="attribute">uri</span>":<span class="value"><span class="string">"/v1/users/USR1E0A9BCE5F6111E28F485D097AC0CAB6/cards/CCP59BCB06C601F11E28057FB337AC0CAB6"</span></span>,
+        "<span class="attribute">card_type</span>":<span class="value"><span class="string">"VISA card"</span></span>,
+        "<span class="attribute">creation_date</span>":<span class="value"><span class="string">"2013-01-16T20:57:34Z"</span></span>,
+        "<span class="attribute">metadata</span>":<span class="value">{}</span>,
+        "<span class="attribute">id</span>":<span class="value"><span class="string">"CCP59BCB06C601F11E28057FB337AC0CAB6"</span>
+    </span>}</span>,
+    "<span class="attribute">request_id</span>":<span class="value"><span class="string">"REQ5735A0D8601F11E2998D00347AC0CAB6"</span></span>,
+    "<span class="attribute">status</span>":<span class="value"><span class="number">201</span>
+</span>}</code></pre>
+<p>If not successful, the response object passed to the responseHandler function takes the form:
+
+</p>
+<pre><code>{
+    <span class="string">"error"</span>: <span class="keyword">...</span> // A string or an object describing the error(s)
+    <span class="string">"request_id"</span>: <span class="keyword">...</span> //May or may not be present depending on whether the error was found before or after submitting to the API
+    <span class="string">"status"</span>: <span class="keyword">...</span> // HTTP status code
+}</code></pre>
+<h3 id='tokenizing-sensitive-user-information/handling-the-response'>Handling the Response</h3 id='tokenizing-sensitive-user-information/handling-the-response'>
+<p>When creating a card or a bank account, you must pass in your own callback function to handle the response
+from our API.  The <code>status</code> property included with the response provides a handy hook to help you decide
+what to do.
+
+</p>
+<p>Here is a basic outline of what your response handler could look like:
+
+</p>
+<pre><code><span class="reserved">function</span> responseHandler(response) {
+    <span class="keyword">switch</span> (response.status) {
+       <span class="reserved">case</span> <span class="number">201</span>:
+           // The card <span class="keyword">or</span> bank was created successfully!
+           // Submit the data contained <span class="keyword">in</span> response.card <span class="keyword">or</span> response.bank to your server <span class="keyword">for</span> saving
+           // For bank accounts, remember to set the <span class="keyword">new</span> account as the <span class="reserved">default</span> <span class="keyword">in</span> addition to saving it to your database
+           <span class="keyword">break</span>;
+       <span class="reserved">case</span> <span class="number">400</span>:
+           // missing field - check response.error <span class="keyword">for</span> details
+           <span class="keyword">break</span>;
+       <span class="reserved">case</span> <span class="number">404</span>:
+           // your user_id <span class="keyword">is</span> incorrect (<span class="literal">no</span> user was found)
+           <span class="keyword">break</span>;
+       <span class="reserved">default</span>:
+           // Some other error ocurred, check response.error <span class="keyword">for</span> details
+   }
+}</code></pre>
+<h3 id='tokenizing-sensitive-user-information/create-a-bank-account'>Create a Bank Account</h3 id='tokenizing-sensitive-user-information/create-a-bank-account'>
+<p>Creating bank accounts is just like creating credit cards. First gather up the bank account information, then pass it to
+<code>crowdtilt.bank.create</code> along with a <code>user id</code> and a response handler...but keep in mind one <strong>important</strong> extra step: 
+When you go to save the tokenized bank account to your server (most likely through a request made in your callback function), 
+you need to make an additional API call to set this new bank account as the &#39;default&#39; bank account. See 
+<a href="#make-user-bank-default">setting the default bank account</a> for more information.
+
+</p>
+<p>Example:
+
+</p>
+<pre><code><span class="string">"bankData"</span>: {
+    <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
+    <span class="string">"account_number"</span> : <span class="string">"1234567890"</span>,
+    <span class="string">"bank_code"</span> : <span class="string">"321174851"</span>
+}
+
+crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.create</span>(user_id, bankData, responseHandler)<span class="comment">;</span></code></pre>
+<p>The <code>user id</code> should be the hash returned by the user creation API call, e.g. &quot;USR1E0A9BCE5F6111E28F485D097AC0CAB6&quot;
+
+</p>
+<p>The required credit card data fields are:
+
+</p>
+<ul>
+<li><code>name</code>: card number, as a string, without any separators, should be 16 digits in length, e.g. &quot;4111111111111111&quot;</li>
+<li><code>account_number</code>: arbitrary length number</li>
+<li><code>bank_code</code>: nine digit number, as a string, representing the bank code (also known as routing number), e.g. &quot;321174851&quot;</li>
+</ul>
+<p>If successful, the response object passed to the responseHandler function takes the form:
+
+</p>
+<pre><code>{
+    "<span class="attribute">bank</span>": <span class="value">{
+        "<span class="attribute">account_number_last_four</span>":<span class="value"><span class="string">"0000"</span></span>,
+        "<span class="attribute">metadata</span>":<span class="value">{}</span>,"<span class="attribute">id</span>":<span class="value"><span class="string">"BAP5973D36A601F11E29CF3FB337AC0CAB6"</span></span>,
+        "<span class="attribute">is_valid</span>":<span class="value"><span class="number">1</span></span>,
+        "<span class="attribute">name</span>":<span class="value"><span class="string">"Wells Fargo"</span></span>,
+        "<span class="attribute">user_uri</span>":<span class="value"><span class="string">"/v1/users/USR1E0A9BCE5F6111E28F485D097AC0CAB6"</span></span>,
+        "<span class="attribute">bank_code_last_four</span>":<span class="value"><span class="string">"4851"</span></span>,
+        "<span class="attribute">uri</span>":<span class="value"><span class="string">"/v1/users/USR1E0A9BCE5F6111E28F485D097AC0CAB6/banks/BAP5973D36A601F11E29CF3FB337AC0CAB6"</span>
+    </span>}</span>,
+    "<span class="attribute">request_id</span>":<span class="value"><span class="string">"REQ5743854A601F11E2B79201347AC0CAB6"</span></span>,
+    "<span class="attribute">status</span>":<span class="value"><span class="number">201</span>
+</span>}</code></pre>
+<p>If not successful, the response object passed to the responseHandler function takes the form:
+
+</p>
+<pre><code>{
+    <span class="string">"error"</span>: <span class="keyword">...</span> // A string or an object describing the error(s)
+    <span class="string">"request_id"</span>: <span class="keyword">...</span> //May or may not be present depending on whether the error was found before or after submitting to the API
+    <span class="string">"status"</span>: <span class="keyword">...</span> // HTTP status code
+}</code></pre>
+<h3 id='tokenizing-sensitive-user-information/client-side-validation-helpers'>Client-side Validation Helpers</h3 id='tokenizing-sensitive-user-information/client-side-validation-helpers'>
+<p>These handy functions let you validate user input on the client side, leading to a better overall experience.
+
+</p>
+<p><strong>Validating Card Number</strong>
+
+</p>
+<p>Checks that the number is formatted correctly and passes the <a href="http://en.wikipedia.org/wiki/Luhn_algorithm" target="_blank">Luhn check</a>. Note that spaces and other punctuation are ignored.
+
+</p>
+<pre><code><span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111111111111111'</span>);      <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111-1111-1111-1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111 1111 1111 1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'123456'</span>);                <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span>, <span class="identifier">too</span> <span class="identifier">short</span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4242-1111-1111-1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span>, <span class="identifier">doesn</span><span class="string">'t pass Luhn check</code></pre>
+<p><strong>Determining Card Brand</strong>
+
+</p>
+<p>Returns the card brand based on the card number
+
+</p>
+<pre><code><span class="title">crowdtilt</span>.card.cardType('<span class="number">5105105105105100</span>');   // <span class="type">Mastercard</span>
+<span class="title">crowdtilt</span>.card.cardType('<span class="number">4111111111111111</span>');   // <span class="type">VISA</span>
+<span class="title">crowdtilt</span>.card.cardType('<span class="number">341111111111111</span>');    // <span class="type">American</span> <span class="type">Express</span>
+<span class="title">crowdtilt</span>.card.cardType(<span class="number">0</span>)                     // null</code></pre>
+<p><strong>Validating Security Code (CSC)</strong>
+
+</p>
+<p>Checks that the security code (also known as CSC or CVC)is properly formatted based on card brand
+
+</p>
+<pre><code><span class="title">crowdtilt</span>.card.isSecurityCodeValid('<span class="number">4111111111111111</span>', <span class="number">999</span>)   // true, <span class="type">VISA</span> has a <span class="number">3</span> digit security code
+<span class="title">crowdtilt</span>.card.isSecurityCodeValid('<span class="number">4111111111111111</span>', <span class="number">9999</span>)  // false
+<span class="title">crowdtilt</span>.card.isSecurityCodeValid('<span class="number">341111111111111</span>', <span class="number">999</span>)    // false, <span class="type">American</span> <span class="type">Express</span> has a <span class="number">4</span> digist security code</code></pre>
+<p><strong>Validating Card Expiration</strong>
+
+</p>
+<p>Checks if the expiration date is properly formatted and in the future
+
+</p>
+<pre><code><span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isExpirationValid</span>(<span class="string">'01'</span>, <span class="string">'2020'</span>);    <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isExpirationValid</span>(<span class="number">1</span>, <span class="number">2010</span>);         <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span></code></pre>
+<p><strong>General Card Validation</strong>
+
+</p>
+<p>Runs the full set of validation functions, returns an error object that can contain multiple errors
+
+</p>
+<pre><code>crowdtilt.card.validate({
+    card_number:<span class="comment">'4111111111111112',</span>
+    expiration_month: <span class="comment">'01',</span>
+    expiration_year: <span class="comment">'2010',</span>
+    security_code: <span class="comment">'123'</span>
+});</code></pre>
+<p>Returns:
+
+</p>
+<pre><code><span class="rules">{
+    <span class="rule"><span class="attribute">card_number</span>:<span class="value"><span class="string">'"4111111111111112" is not a valid credit card number'</span>,
+    expiration:<span class="string">'"01-2010" is not a valid credit card expiration date'</span>
+</span>}</span></span></code></pre>
+<p><strong>Validating a USA Bank Code (Routing Number)</strong>
+
+</p>
+<p>Use ONLY for USA-based bank accounts. Checks against the <a href="http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format" target="_blank">MICR Routing Number Format</a>
+
+</p>
+<pre><code><span class="title">crowdtilt</span>.bankAccount.validateUSARoutingNumber('<span class="number">321174851</span>') // passes
+<span class="title">crowdtilt</span>.bankAccount.validateUSARoutingNumber('<span class="number">021000021</span>') // passes
+<span class="title">crowdtilt</span>.bankAccount.validateUSARoutingNumber('<span class="number">123457890</span>') // fails</code></pre>
+<h3 id='tokenizing-sensitive-user-information/tokenization-examples'>Tokenization Examples</h3 id='tokenizing-sensitive-user-information/tokenization-examples'>
+<p>Here we include two sample forms, one to collect credit card information and one to collect bank account information.
+
+</p>
+<p>Included also is sample javascript to handle the data captured in the forms using <code>crowdtilt.js</code>. We use <a href="http://jquery.com/">jQuery</a> for convenience, but keep in mind that jQuery is not required when using <code>crowdtilt.js</code>.
+
+</p>
+<p><strong>Sample Credit Card Form</strong>
+
+</p>
+<pre><code><span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"#"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> "<span class="attribute">id</span>=<span class="value">"cardForm"</span>></span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> <span class="attribute">name</span>=<span class="value">"user_id"</span>></span>           
+    <span class="tag">&lt;<span class="title">fieldset</span>></span>
+        <span class="tag">&lt;<span class="title">label</span>></span>Card Number<span class="tag">&lt;/<span class="title">label</span>></span>
+        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"card_number"</span> <span class="attribute">autocomplete</span>=<span class="value">"off"</span>></span>
+    <span class="tag">&lt;/<span class="title">fieldset</span>></span>
+    <span class="tag">&lt;<span class="title">fieldset</span>></span>
+        <span class="tag">&lt;<span class="title">label</span>></span>Expiration<span class="tag">&lt;/<span class="title">label</span>></span>             
+        <span class="tag">&lt;<span class="title">select</span> <span class="attribute">name</span>=<span class="value">"expiration_month"</span> <span class="attribute">style</span>=<span class="value">"width:50px"</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"01"</span> <span class="attribute">selected</span>></span>01<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"02"</span>></span>02<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"03"</span>></span>03<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"04"</span>></span>04<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"05"</span>></span>05<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"06"</span>></span>06<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"07"</span>></span>07<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"08"</span>></span>08<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"09"</span>></span>09<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"10"</span>></span>10<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"11"</span>></span>11<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"12"</span>></span>12<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;/<span class="title">select</span>></span>
+            / 
+        <span class="tag">&lt;<span class="title">select</span> <span class="attribute">name</span>=<span class="value">"expiration_year"</span> <span class="attribute">style</span>=<span class="value">"width:75px"</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2013"</span> <span class="attribute">selected</span>></span>2013<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2014"</span>></span>2014<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2015"</span>></span>2015<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2016"</span>></span>2016<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2017"</span>></span>2017<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2018"</span>></span>2018<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2019"</span>></span>2019<span class="tag">&lt;/<span class="title">option</span>></span>
+            <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"2020"</span>></span>2020<span class="tag">&lt;/<span class="title">option</span>></span>
+        <span class="tag">&lt;/<span class="title">select</span>></span>
+    <span class="tag">&lt;/<span class="title">fieldset</span>></span>
+    <span class="tag">&lt;<span class="title">fieldset</span>></span>
+        <span class="tag">&lt;<span class="title">label</span>></span>Security Code<span class="tag">&lt;/<span class="title">label</span>></span>
+        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"security_code"</span> <span class="attribute">autocomplete</span>=<span class="value">"off"</span>></span>
+    <span class="tag">&lt;/<span class="title">fieldset</span>></span>
+    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span>></span>submit<span class="tag">&lt;/<span class="title">button</span>></span>
+<span class="tag">&lt;/<span class="title">form</span>></span></code></pre>
+<p><strong>Sample Bank Account Form</strong>
+
+</p>
+<pre><code><span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"#"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">id</span>=<span class="value">"bankForm"</span>></span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> <span class="attribute">name</span>=<span class="value">"user_id"</span>></span>      
+    <span class="tag">&lt;<span class="title">fieldset</span>></span>
+        <span class="tag">&lt;<span class="title">label</span>></span>Bank Name<span class="tag">&lt;/<span class="title">label</span>></span>
+        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"name"</span>></span>
+    <span class="tag">&lt;/<span class="title">fieldset</span>></span>
+    <span class="tag">&lt;<span class="title">fieldset</span>></span>
+        <span class="tag">&lt;<span class="title">label</span>></span>Account Number<span class="tag">&lt;/<span class="title">label</span>></span>
+        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"account_number"</span> <span class="attribute">autocomplete</span>=<span class="value">"off"</span>></span>
+    <span class="tag">&lt;/<span class="title">fieldset</span>></span>
+    <span class="tag">&lt;<span class="title">fieldset</span>></span>
+        <span class="tag">&lt;<span class="title">label</span>></span>Bank Code (Routing Number in USA)<span class="tag">&lt;/<span class="title">label</span>></span>
+        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"bank_code"</span>></span>
+    <span class="tag">&lt;/<span class="title">fieldset</span>></span>
+
+    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span>></span>submit<span class="tag">&lt;/<span class="title">button</span>></span>
+<span class="tag">&lt;/<span class="title">form</span>></span></code></pre>
+<p><strong>Sample Javascript</strong>
+
+</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>></span><span class="javascript">
+    (<span class="keyword">function</span>() {    
+
+        <span class="comment">//Initialize the crowdtilt object</span>
+        crowdtilt.init();
+
+        <span class="keyword">var</span> responseHandler = <span class="keyword">function</span>(response) {
+            <span class="keyword">switch</span> (response.status) {
+               <span class="keyword">case</span> <span class="number">201</span>:
+                   <span class="comment">// The card or bank was created successfully!</span>
+                   <span class="comment">// Submit the data contained in response.card or repsonse.bank to your server for saving</span>
+                   <span class="comment">// For bank accounts, remember to set the new account as the default in addition to saving it to your database</span>
+                   <span class="keyword">break</span>;
+               <span class="keyword">case</span> <span class="number">400</span>:
+                   <span class="comment">// missing field - check response.error for details</span>
+                   <span class="keyword">break</span>;
+               <span class="keyword">case</span> <span class="number">404</span>:
+                   <span class="comment">// your user_id is incorrect (no user was found)</span>
+                   <span class="keyword">break</span>;
+               <span class="keyword">default</span>:
+                   <span class="comment">// Some other error ocurred, check response.error for details</span>
+            }
+        }
+
+        <span class="keyword">var</span> tokenizeCard = <span class="keyword">function</span>(e) {
+            e.preventDefault();
+
+            <span class="keyword">var</span> $form = $(<span class="string">'form#cardForm'</span>);
+            <span class="keyword">var</span> cardData = {
+                number: $form.find(<span class="string">'[name="card_number"]'</span>).val(),
+                expiration_month: $form.find(<span class="string">'[name="expiration_month"]'</span>).val(),
+                expiration_year: $form.find(<span class="string">'[name="expiration_year"]'</span>).val(),
+                security_code: $form.find(<span class="string">'[name="security_code"]'</span>).val()
+            };
+            <span class="keyword">var</span> user_id = $form.find(<span class="string">'[name="user_id"]'</span>).val();
+
+            crowdtilt.card.create(user_id, cardData, callback);
+        };
+        $(<span class="string">'#cardForm'</span>).submit(tokenizeCard);        
+
+        <span class="keyword">var</span> tokenizeBankAccount = <span class="keyword">function</span>(e) {
+            e.preventDefault();
+
+            <span class="keyword">var</span> $form = $(<span class="string">'form#bankForm'</span>);
+            <span class="keyword">var</span> bankAccountData = {
+                name: $form.find(<span class="string">'[name="name"]'</span>).val(),
+                account_number: $form.find(<span class="string">'[name="account_number"]'</span>).val(),
+                bank_code: $form.find(<span class="string">'[name="bank_code"]'</span>).val()
+            };
+            <span class="keyword">var</span> user_id = $form.find(<span class="string">'[name="user_id"]'</span>).val();
+
+            crowdtilt.bank.create(user_id, bankAccountData, callback);
+        };
+        $(<span class="string">'#bankForm'</span>).submit(tokenizeBankAccount);
+    })();
+</span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
 <h2 id='resource-definitions'>Resource Definitions</h2 id='resource-definitions'>
 <p>This section outlines the full definition of our resources.
 
