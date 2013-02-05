@@ -1250,7 +1250,7 @@ request.  Other fields submitted will be ignored.
         <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"default"</span> : <span class="number">0</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
@@ -1267,7 +1267,7 @@ request.  Other fields submitted will be ignored.
         <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"default"</span> : <span class="number">0</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
@@ -1292,7 +1292,7 @@ following request:
     <span class="string">"bank"</span>: {
         <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
-        <span class="string">"default"</span> : <span class="number">1</span>,
+        <span class="string">"is_default"</span> : <span class="number">1</span>,
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
@@ -1312,7 +1312,7 @@ following request:
     <span class="string">"bank"</span>: {
         <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"metadata"</span> : {},
-        <span class="string">"default"</span> : <span class="number">1</span>,
+        <span class="string">"is_default"</span> : <span class="number">1</span>,
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
@@ -1340,7 +1340,7 @@ following request:
             <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
             <span class="string">"metadata"</span> : {},
             <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-            <span class="string">"default"</span> : <span class="number">0</span>,
+            <span class="string">"is_default"</span> : <span class="number">0</span>,
             <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
             <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
             <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
@@ -1373,7 +1373,7 @@ request.  Other fields submitted will be ignored.
             <span class="string">"key1"</span> : <span class="string">"value1"</span>
         },
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"default"</span> : <span class="number">0</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,
         <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
@@ -2814,7 +2814,7 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>A unique identifier for the bank</td>
         </tr>
         <tr>
-            <td>default</td>
+            <td>is_default</td>
             <td>Integer (1 or 0)</td>
             <td>Read-only</td>
             <td> Tells you if this bank is currently the default for the user </td>
