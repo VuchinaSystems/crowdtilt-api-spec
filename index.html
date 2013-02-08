@@ -2356,6 +2356,12 @@ where you will be collecting credit card or bank account information:
 <pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>></span><span class="javascript">
     crowdtilt.init();
 </span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
+<p>IMPORTANT NOTE: If you are working in the sandbox, pass &#39;sandbox&#39; in as a parameter:
+
+</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>></span><span class="javascript">
+    crowdtilt.init(<span class="string">'sandbox'</span>);
+</span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
 <h3 id='tokenizing-sensitive-user-information/make-sure-to-create-users-first'>Make sure to create users first</h3 id='tokenizing-sensitive-user-information/make-sure-to-create-users-first'>
 <p>Credit cards and bank accounts must be associated with existing <code>user</code> objects created through
 our API. This means that you need to collect user account information in a step <em>before</em> collecting credit 
