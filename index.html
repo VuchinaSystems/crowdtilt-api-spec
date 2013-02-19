@@ -71,7 +71,7 @@
                 </li>
               
                 <li>
-                  <a href="#getting-started/hackers-support">Hackers Support</a>
+                  <a href="#getting-started/hacker-support">Hacker Support</a>
                 </li>
               
                 <li>
@@ -80,6 +80,10 @@
               
                 <li>
                   <a href="#getting-started/when-is-feature-x-going-to-be-in-production">When is feature X going to be in production?</a>
+                </li>
+              
+                <li>
+                  <a href="#getting-started/using-metadata">Using Metadata</a>
                 </li>
               
             </ul>
@@ -138,7 +142,7 @@
                 </li>
               
                 <li>
-                  <a href="#user-campaigns/get-user-paid-campaigns">Get User Paid Campaigns</a>
+                  <a href="#user-campaigns/list-user-paid-campaigns">List User Paid Campaigns</a>
                 </li>
               
             </ul>
@@ -184,15 +188,15 @@
                 </li>
               
                 <li>
-                  <a href="#user-banks/get-user-bank">Get User Bank</a>
-                </li>
-              
-                <li>
                   <a href="#user-banks/make-user-bank-default">Make User Bank Default</a>
                 </li>
               
                 <li>
                   <a href="#user-banks/get-user-s-default-bank">Get User's Default Bank</a>
+                </li>
+              
+                <li>
+                  <a href="#user-banks/get-user-bank">Get User Bank</a>
                 </li>
               
                 <li>
@@ -205,10 +209,6 @@
               
                 <li>
                   <a href="#user-banks/delete-user-bank">Delete User Bank</a>
-                </li>
-              
-                <li>
-                  <a href="#user-banks/response-codes">Response Codes</a>
                 </li>
               
             </ul>
@@ -276,7 +276,7 @@
                 </li>
               
                 <li>
-                  <a href="#campaign-payments/get-campaign-payments">Get campaign payments</a>
+                  <a href="#campaign-payments/list-campaign-payments">List campaign payments</a>
                 </li>
               
                 <li>
@@ -306,11 +306,11 @@
             <ul>
               
                 <li>
-                  <a href="#campaign-settlements/list-campaign-settlements">List Campaign Settlements</a>
+                  <a href="#campaign-settlements/get-campaign-settlement">Get Campaign Settlement</a>
                 </li>
               
                 <li>
-                  <a href="#campaign-settlements/get-campaign-settlement">Get Campaign Settlement</a>
+                  <a href="#campaign-settlements/list-campaign-settlements">List Campaign Settlements</a>
                 </li>
               
                 <li>
@@ -331,7 +331,7 @@
                 </li>
               
                 <li>
-                  <a href="#campaign-comments/get-campaign-comments">Get Campaign Comments</a>
+                  <a href="#campaign-comments/list-campaign-comments">List Campaign Comments</a>
                 </li>
               
                 <li>
@@ -427,6 +427,11 @@
         </li>
       
         <li>
+          <a href="#card-definition">Card Definition</a>
+          
+        </li>
+      
+        <li>
           <a href="#bank-definition">Bank Definition</a>
           
         </li>
@@ -480,7 +485,7 @@
   payments interface, which allows developers to integrate any payment
   processor from around the world right into our system.  For more information
   about how to get access to this interface to build support for your favorite
-  processor, drop us a note at <a href="mailto:devs@crowdtilt.com">devs@crowdtilt.com</a>.</li>
+  processor, drop us a note at <a href="mailto:support.api@crowdtilt.com">support.api@crowdtilt.com</a>.</li>
 <li>The API also works with credit cards and ACH debit payments or a combination
   of these.</li>
 <li>The API provides collaboration tools such as commenting/updates, nested
@@ -517,6 +522,8 @@ and bank account numbers), so you don&#39;t have to worry about PCI compliance</
 <li><a href="#tokenizing-sensitive-user-information">Tokenizing Sensitive User Information</a></li>
 <li><a href="#resource-definitions">Resource Definitions</a><ul>
 <li><a href="#user-definition">User Definition</a></li>
+<li><a href="#card-definition">Card Definition</a></li>
+<li><a href="#bank-definition">Bank Definition</a></li>
 <li><a href="#campaign-definition">Campaign Definition</a></li>
 <li><a href="#payment-definition">Payment Definition</a></li>
 <li><a href="#settlement-definition">Settlement Definition</a></li>
@@ -526,7 +533,7 @@ and bank account numbers), so you don&#39;t have to worry about PCI compliance</
 </ul>
 <h2 id='introduction'>Introduction</h2 id='introduction'>
 <p>It is important to understand that the Crowdtilt API is a layer of abstraction
-on top payment processors. Currently, we support Balanced, which is recommended
+on top of payment processors. Currently, we support Balanced, which is recommended
 for multi-project services such as Kickstarter. We also support Stripe, which is
 suitable for single-project services such as Lockitron. Finally, we support
 Braintree, which is highly suitable for international projects.
@@ -648,7 +655,7 @@ know and we&#39;ll link to it.
 
 
 </p>
-<h3 id='getting-started/hackers-support'>Hackers Support</h3 id='getting-started/hackers-support'>
+<h3 id='getting-started/hacker-support'>Hacker Support</h3 id='getting-started/hacker-support'>
 <p>We like hanging out on IRC, a lot. Feel free to come hang out with us #crowdtilt
 at freenode. You can also send an email to
 <a href="mailto:support.api@crowdtilt.com">support.api@crowdtilt.com</a>.
@@ -670,6 +677,22 @@ branch, which means that the <a href="https://www.crowdtilt.com"
 target="_blank">Crowdtilt</a> team will start working on it. Once it is fully
 implemented and ready to go to production, it&#39;ll get merged to the <code>master</code>
 branch.
+
+</p>
+<h3 id='getting-started/using-metadata'>Using Metadata</h3 id='getting-started/using-metadata'>
+<p>All resources contain a metadata field for storing key-value pairs of extra data. Store
+as many of these key-value pairs as you wish.
+
+</p>
+<p>Some common uses of this field include storing extra user data, such as address fields or 
+profile image urls, or storing extra campaign data, such as a campaign description field
+or campaign image url.
+
+</p>
+<p><strong>Important Note:</strong> 
+Updating the metadata field completely overwrites its contents. Be sure to include
+the entirety of the data you wish to store when making an update, including key-value
+pairs that did not change.
 
 
 </p>
@@ -779,18 +802,26 @@ branch.
 
 <h2 id='users'>Users</h2 id='users'>
 <h3 id='users/create-user'>Create User</h3 id='users/create-user'>
-<pre><code><span class="title">POST</span> /users
+<p>The minimum amount of information needed to create a user is a valid email address.
 
-$ curl -X POST -H Content-Type:application/json \
--u key:secret <span class="url">https://api-sandbox.crowdtilt.com/v1/users</span> \
--d<span class="string">'
-{
-   "user" : {
+</p>
+<p>Keep in mind that the metadata field is a great place to store references to other user assets, such as
+a profile image.
+
+</p>
+<pre><code><span class="title">POST</span> /users</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users <span class="command">\
+</span>-d'
+<span class="special">{</span>
+   "user" : <span class="special">{</span>
       "firstname" : "foo",
       "lastname" : "bar",
-      "email" : "user<span class="variable">@example</span>.com"
-   }
-}'</span></code></pre>
+      "email" : "user@example.com"
+      "metadata" : <span class="special">{</span> "img" : "http://www.example.com/path-to-profile-image" <span class="special">}</span>
+   <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     "<span class="attribute">user</span>": <span class="value">{
@@ -799,14 +830,13 @@ $ curl -X POST -H Content-Type:application/json \
         "<span class="attribute">firstname</span>": <span class="value"><span class="string">"Foo"</span></span>,
         "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Bar"</span></span>,
         "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
-        "<span class="attribute">img</span>": <span class="value"><span class="string">"https://example.com/profile.png"</span></span>,
         "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
         "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
         "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
         "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
         "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
         "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
-        "<span class="attribute">metadata</span>": <span class="value">{}
+        "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
     </span>}
 </span>}</code></pre>
 <h4>Response Codes</h4>
@@ -838,20 +868,20 @@ user&#39;s social security number for additional verification.
 will be set to 1 to reflect this change.
 
 </p>
-<pre><code><span class="constant">POST</span> /<span class="identifier">users</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>/<span class="identifier">verification</span>
-
-<span class="variable">$ </span><span class="identifier">curl</span> -<span class="constant">X</span> <span class="constant">POST</span> -<span class="constant">H</span> <span class="constant">Content</span>-<span class="constant">Type</span><span class="symbol">:<span class="identifier">application</span></span>/<span class="identifier">json</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> \
-<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USREC5</span>/<span class="identifier">verification</span> \
--<span class="identifier">d</span><span class="string">'
-{
-   "verification" : {
+<pre><code><span class="title">POST</span> /users/:id/verification</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users/USREC5/verification <span class="command">\
+</span>-d'
+<span class="special">{</span>
+   "verification" : <span class="special">{</span>
       "name" : "Khaled Hussein",
       "dob" : "1984-07",
       "phone_number" : "(000) 000-0000",
       "street_address" : "324 awesome address, awesome city, CA",
       "postal_code" : "12345"
-   }
-}'</span></code></pre>
+   <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code><span class="rules">{<span class="rule">}</span></span></code></pre>
 <h4>Response Codes</h4>
@@ -864,13 +894,15 @@ password, as query parameters.
 
 </p>
 <pre><code><span class="title">GET</span> /users/authentication?email=user<span class="variable">@example</span>.com&amp;password=mypassword</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/users/authentication?email=user@example<span class="preprocessor">.com</span>&amp;password=mypassword</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    "<span class="attribute">user</span>" : <span class="value">{
       "<span class="attribute">id</span>" : <span class="value"><span class="string">"USRB07"</span></span>,
       "<span class="attribute">firstname</span>" : <span class="value"><span class="string">"foo"</span></span>,
       "<span class="attribute">lastname</span>" : <span class="value"><span class="string">"bar"</span></span>,
-      "<span class="attribute">img</span>" : <span class="value"><span class="literal">null</span></span>,
       "<span class="attribute">email</span>" : <span class="value"><span class="string">"user@example.com"</span></span>,
       "<span class="attribute">is_verified</span>" : <span class="value"><span class="number">0</span></span>,
       "<span class="attribute">creation_date</span>" : <span class="value"><span class="string">"2012-09-26T10:22:03.900529000Z"</span></span>,
@@ -881,9 +913,9 @@ password, as query parameters.
 <pre><code><span class="setting">302 =<span class="value">> Found</span></span>
 <span class="setting">401 =<span class="value">> Unauthorized</span></span></code></pre>
 <h3 id='users/get-user'>Get User</h3 id='users/get-user'>
-<pre><code>GET  /users/:id
-
-$ curl -u key:secret \
+<pre><code><span class="title">GET</span>  /users/:id</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USREC5</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
@@ -893,22 +925,22 @@ $ curl -u key:secret \
         "<span class="attribute">firstname</span>": <span class="value"><span class="string">"Foo"</span></span>,
         "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Bar"</span></span>,
         "<span class="attribute">is_verified</span>": <span class="value"><span class="number">1</span></span>,
-        "<span class="attribute">img</span>": <span class="value"><span class="string">"https://example.com/profile.png"</span></span>,
         "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
         "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
         "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
         "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
         "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
         "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
-        "<span class="attribute">metadata</span>": <span class="value">{}
+        "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
     </span>}
 </span>}</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='users/list-users'>List Users</h3 id='users/list-users'>
-<pre><code><span class="title">GET</span> /users
-
-$ curl -u key:secret <span class="url">https://api-sandbox.crowdtilt.com/v1/users</code></pre>
+<pre><code><span class="title">GET</span> /users</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \ 
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     "<span class="attribute">pagination</span>": <span class="value">{
@@ -924,14 +956,13 @@ $ curl -u key:secret <span class="url">https://api-sandbox.crowdtilt.com/v1/user
             "<span class="attribute">firstname</span>": <span class="value"><span class="string">"Foo"</span></span>,
             "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Bar"</span></span>,
             "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
-            "<span class="attribute">img</span>": <span class="value"><span class="string">"https://example.com/profile.png"</span></span>,
             "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
             "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
             "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
             "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
             "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
             "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
-            "<span class="attribute">metadata</span>": <span class="value">{}
+            "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
         </span>},
         .
         .
@@ -946,16 +977,16 @@ to update a single attribute without having to send the full
 <a href="#user-definition">user object</a>.
 
 </p>
-<pre><code><span class="constant">PUT</span> /<span class="identifier">users</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>
-
-<span class="variable">$ </span><span class="identifier">curl</span> -<span class="constant">X</span> <span class="constant">PUT</span> -<span class="constant">HContent</span>-<span class="constant">Type</span><span class="symbol">:<span class="identifier">application</span></span>/<span class="identifier">json</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> \
-<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USREC5</span> \
--<span class="identifier">d</span><span class="string">'
-{
-    "user": {
+<pre><code><span class="title">PUT</span> /users/:id</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X GET -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users/USREC5 <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "user": <span class="special">{</span>
         "lastname": "new last name"
-    }
-}'</span></code></pre>
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     "<span class="attribute">user</span>": <span class="value">{
@@ -964,14 +995,13 @@ to update a single attribute without having to send the full
         "<span class="attribute">firstname</span>": <span class="value"><span class="string">"Foo"</span></span>,
         "<span class="attribute">lastname</span>": <span class="value"><span class="string">"new last name"</span></span>,
         "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
-        "<span class="attribute">img</span>": <span class="value"><span class="string">"https://example.com/profile.png"</span></span>,
         "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
         "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
         "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
         "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
         "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
         "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
-        "<span class="attribute">metadata</span>": <span class="value">{}
+        "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
     </span>}
 </span>}</code></pre>
 <h4>Response Codes</h4>
@@ -982,9 +1012,9 @@ to update a single attribute without having to send the full
 campaigns that he paid for.
 
 </p>
-<pre><code>GET /users/:id/campaigns
-
-$ curl -u key:secret \
+<pre><code><span class="title">GET</span> /users/:id/campaigns</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USREC5/campaigns</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
@@ -1032,14 +1062,13 @@ $ curl -u key:secret \
 <p>This resource returns a specific campaign created by this user.
 
 </p>
-<pre><code><span class="constant">GET</span> /<span class="identifier">users</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>/<span class="identifier">campaigns</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>
-
-<span class="variable">$ </span><span class="identifier">curl</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> \
-<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USREC5</span>/<span class="identifier">campaigns</span>/<span class="constant">CMP96B</span></code></pre>
+<pre><code>GET /users/:<span class="keyword">id</span>/campaigns/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USREC5/campaigns/CMP96B</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"campaign"</span> : {
-      <span class="string">"img"</span> : null,
       <span class="string">"metadata"</span> : { },
       <span class="string">"id"</span> : <span class="string">"CMP96B"</span>,
       <span class="string">"is_paid"</span> : <span class="number">0</span>,
@@ -1072,13 +1101,13 @@ $ curl -u key:secret \
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
-<h3 id='user-campaigns/get-user-paid-campaigns'>Get User Paid Campaigns</h3 id='user-campaigns/get-user-paid-campaigns'>
+<h3 id='user-campaigns/list-user-paid-campaigns'>List User Paid Campaigns</h3 id='user-campaigns/list-user-paid-campaigns'>
 <p>This resource returns all the campaigns that the user paid for.
 
 </p>
-<pre><code>GET /users/:id/paid_campaigns
-
-$ curl -u key:secret \
+<pre><code><span class="title">GET</span> /users/:id/paid_campaigns</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USREC5/campaigns/CMP96B</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
@@ -1124,20 +1153,19 @@ $ curl -u key:secret \
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='user-cards'>User Cards</h2 id='user-cards'>
 <h3 id='user-cards/create-user-card'>Create User Card</h3 id='user-cards/create-user-card'>
-<pre><code><span class="constant">POST</span> /<span class="identifier">users</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>/<span class="identifier">cards</span>
-
-<span class="variable">$ </span><span class="identifier">curl</span> -<span class="constant">X</span> <span class="constant">POST</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> -<span class="constant">H</span> <span class="constant">Content</span>-<span class="constant">Type</span><span class="symbol">:<span class="identifier">application</span></span>/<span class="identifier">json</span>\
-<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USR50A</span>/<span class="identifier">cards</span>\
--<span class="identifier">d</span><span class="string">'
-{
-    "card": {
+<pre><code><span class="title">POST</span> /users/:id/cards</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -u key:secret -H Content-Type:application/json <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "card": <span class="special">{</span>
         "expiration_year":2023,
         "security_code":123,
         "expiration_month":"01",
         "number":"4111111111111111"
-    }
-}
-'</span></code></pre>
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"cards"</span> : [
@@ -1158,10 +1186,10 @@ $ curl -u key:secret \
 <h4>Response Codes</h4>
 <pre><code><span class="setting">201 =<span class="value">> Created</span></span></code></pre>
 <h3 id='user-cards/get-user-card'>Get User Card</h3 id='user-cards/get-user-card'>
-<pre><code><span class="constant">GET</span> /<span class="identifier">users</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>/<span class="identifier">cards</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>
-
-<span class="variable">$ </span><span class="identifier">curl</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> \
-<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USR50A</span>/<span class="identifier">cards</span>/<span class="constant">CCP6D6</span></code></pre>
+<pre><code>GET /users/:<span class="keyword">id</span>/cards/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"card"</span>: {
@@ -1179,8 +1207,10 @@ $ curl -u key:secret \
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='user-cards/list-user-cards'>List User Cards</h3 id='user-cards/list-user-cards'>
-<h4>Request</h4>
 <pre><code><span class="title">GET</span> /users/:id/cards</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR50A/cards</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     "<span class="attribute">pagination</span>": <span class="value">{
@@ -1200,34 +1230,40 @@ request.  Other fields submitted will be ignored.
 
 </p>
 <pre><code>PUT /users/:<span class="keyword">id</span>/cards/:<span class="keyword">id</span></code></pre>
-<h4>Request Body</h4>
-<pre><code>{
-    "<span class="attribute">card</span>": <span class="value">{
-        "<span class="attribute">metadata</span>" : <span class="value">{
-            "<span class="attribute">key1</span>" : <span class="value"><span class="string">"value1"</span>
-        </span>}
-    </span>}
-</span>}</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X PUT -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0 <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "card": <span class="special">{</span>
+        "metadata" : <span class="special">{</span>
+            "key1" : "value1"
+        <span class="special">}</span>
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"card"</span>: {
         <span class="string">"last_four"</span> : <span class="string">"1234"</span>,
-            <span class="string">"expiration_year"</span> : <span class="number">2034</span>,
-            <span class="string">"expiration_month"</span> : <span class="string">"04"</span>,
-            <span class="string">"user"</span>: { <span class="string">"id"</span>: <span class="string">"USR50A"</span>, <span class="keyword">...</span> },
-            <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
-            <span class="string">"card_type"</span> : null,
-            <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
-            <span class="string">"metadata"</span> : {
-                <span class="string">"key1"</span> : <span class="string">"value1"</span>
-            },
-            <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>
+        <span class="string">"expiration_year"</span> : <span class="number">2034</span>,
+        <span class="string">"expiration_month"</span> : <span class="string">"04"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span>: <span class="string">"USR50A"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
+        <span class="string">"card_type"</span> : null,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {
+            <span class="string">"key1"</span> : <span class="string">"value1"</span>
+        },
+        <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>
     }
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='user-cards/delete-user-card'>Delete User Card</h3 id='user-cards/delete-user-card'>
 <pre><code>DELETE /users/:<span class="keyword">id</span>/cards/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> DELETE -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='user-banks'>User Banks</h2 id='user-banks'>
@@ -1235,15 +1271,18 @@ request.  Other fields submitted will be ignored.
 
 </p>
 <h3 id='user-banks/create-user-bank'>Create User Bank</h3 id='user-banks/create-user-bank'>
-<pre><code><span class="title">POST</span> /users/:id/banks
-
-{
-    "bank": {
+<pre><code><span class="title">POST</span> /users/:id/banks</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "bank": <span class="special">{</span>
         "account_number" : "1234567890",
-        "name" : "<span class="title">Bank</span> Name<span class="string">",
-        "</span>bank_code<span class="string">" : "</span><span class="number">321174851</span><span class="string">",
-    }
-}</code></pre>
+        "name" : "Bank Name",
+        "bank_code" : "321174851",
+    <span class="special">}</span>
+<span class="special">}</span></code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
@@ -1259,34 +1298,20 @@ request.  Other fields submitted will be ignored.
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">201 =<span class="value">> Created</span></span></code></pre>
-<h3 id='user-banks/get-user-bank'>Get User Bank</h3 id='user-banks/get-user-bank'>
-<pre><code>GET /users/:<span class="keyword">id</span>/banks/:<span class="keyword">id</span></code></pre>
-<h4>Response Body</h4>
-<pre><code>{
-    <span class="string">"bank"</span> : {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
-        <span class="string">"metadata"</span> : {},
-        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"is_default"</span> : <span class="number">0</span>,
-        <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
-    }
-}</code></pre>
-<h4>Response Codes</h4>
-<pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='user-banks/make-user-bank-default'>Make User Bank Default</h3 id='user-banks/make-user-bank-default'>
 <p>Before a bank account will be sent money, it must be marked as the default
 bank account for that user.  To make a bank account the default, make the
 following request:
 
 </p>
-<pre><code>POST /users/:<span class="keyword">id</span>/banks/<span class="keyword">default</span>
-
+<pre><code>POST /users/:<span class="keyword">id</span>/banks/<span class="keyword">default</span></code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="variable">$ </span><span class="identifier">curl</span> -<span class="constant">X</span> <span class="constant">POST</span> -<span class="constant">H</span> <span class="constant">Content</span>-<span class="constant">Type</span><span class="symbol">:<span class="identifier">application</span></span>/<span class="identifier">json</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> \
+<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USR54B</span>/<span class="identifier">banks</span>/<span class="identifier"><span class="keymethods">default</span></span> \
+-<span class="identifier">d</span><span class="string">'
 {
-    <span class="string">"bank"</span>: { <span class="string">"id"</span> : <span class="string">"BAP688"</span> }
-}</code></pre>
+    "bank": { "id" : "BAP688" }
+}'</span></code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
@@ -1307,6 +1332,9 @@ following request:
 
 </p>
 <pre><code>GET /users/:<span class="keyword">id</span>/banks/<span class="keyword">default</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/banks/default</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
@@ -1322,11 +1350,34 @@ following request:
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
+<h3 id='user-banks/get-user-bank'>Get User Bank</h3 id='user-banks/get-user-bank'>
+<pre><code>GET /users/:<span class="keyword">id</span>/banks/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/banks/BAP688</code></pre>
+<h4>Response Body</h4>
+<pre><code>{
+    <span class="string">"bank"</span> : {
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
+        <span class="string">"metadata"</span> : {},
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,
+        <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+    }
+}</code></pre>
+<h4>Response Codes</h4>
+<pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='user-banks/list-user-banks'>List User Banks</h3 id='user-banks/list-user-banks'>
 <p>This resource lists the bank accounts associated with this user.
 
 </p>
 <pre><code><span class="title">GET</span> /users/:id/banks</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/banks</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"pagination"</span>: {
@@ -1357,14 +1408,17 @@ request.  Other fields submitted will be ignored.
 
 </p>
 <pre><code>PUT /users/:<span class="keyword">id</span>/banks/:<span class="keyword">id</span></code></pre>
-<h4>Request Body</h4>
-<pre><code>{
-    "<span class="attribute">bank</span>" : <span class="value">{
-        "<span class="attribute">metadata</span>" : <span class="value">{
-            "<span class="attribute">key1</span>" : <span class="value"><span class="string">"value1"</span>
-        </span>}
-    </span>}
-</span>}</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X PUT -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks/BAP688 <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "bank" : <span class="special">{</span>
+        "metadata" : <span class="special">{</span>
+            "key1" : "value1"
+        <span class="special">}</span>
+    <span class="special">}</span>
+<span class="special">}</span></code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span> : {
@@ -1384,11 +1438,17 @@ request.  Other fields submitted will be ignored.
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='user-banks/delete-user-bank'>Delete User Bank</h3 id='user-banks/delete-user-bank'>
 <pre><code>DELETE /users/:<span class="keyword">id</span>/banks/:<span class="keyword">id</span></code></pre>
-<h3 id='user-banks/response-codes'>Response Codes</h3 id='user-banks/response-codes'>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> DELETE -HContent-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/banks/BAP688</code></pre>
+<h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='user-payments'>User Payments</h2 id='user-payments'>
 <h3 id='user-payments/list-user-payments'>List User Payments</h3 id='user-payments/list-user-payments'>
 <pre><code><span class="title">GET</span> /users/:id/payments</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/payments</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     "<span class="attribute">pagination</span>": <span class="value">{
@@ -1516,17 +1576,25 @@ verified. However, they need to be
 and then be able to receive the money collected in their campaign.
 
 </p>
+<p>The metadata field is a great place to store references to other campaign assets, such as
+a campaign image.
+
+</p>
 <pre><code><span class="title">POST</span> /campaigns</code></pre>
-<h4>Request Body</h4>
-<pre><code>{
-    "<span class="attribute">campaign</span>": <span class="value">{
-        "<span class="attribute">user_id</span>":<span class="value"><span class="string">"USREC5"</span></span>,
-        "<span class="attribute">title</span>":<span class="value"><span class="string">"Campaign Title"</span></span>,
-        "<span class="attribute">description</span>":<span class="value"><span class="string">"some description"</span></span>,
-        "<span class="attribute">expiration_date</span>":<span class="value"><span class="string">"2000-01-02T01:02:03Z"</span></span>,
-        "<span class="attribute">tilt_amount</span>":<span class="value"><span class="number">100</span>
-    </span>}
-</span>}</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/campaigns <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "campaign": <span class="special">{</span>
+        "user_id":"USREC5",
+        "title":"Campaign Title",
+        "description":"some description",
+        "expiration_date":"2000-01-02T01:02:03Z",
+        "tilt_amount":100,
+        "metadata" : <span class="special">{</span> "img" : "http://www.example.com/path-to-campaign-image" <span class="special">}</span>
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"campaign"</span>: {
@@ -1542,7 +1610,6 @@ and then be able to receive the money collected in their campaign.
         <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"img"</span>: null,
         <span class="string">"is_tilted"</span>: <span class="number">0</span>,
         <span class="string">"is_paid"</span>: <span class="number">0</span>,
         <span class="string">"is_expired"</span>: <span class="number">0</span>,
@@ -1551,7 +1618,7 @@ and then be able to receive the money collected in their campaign.
         <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
         <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
         <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-        <span class="string">"metadata"</span>: { },
+        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
         <span class="string">"stats"</span>: {
             <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
             <span class="string">"raised_amount"</span>: <span class="number">0</span>,
@@ -1564,6 +1631,9 @@ and then be able to receive the money collected in their campaign.
 <pre><code><span class="setting">201 =<span class="value">> Created</span></span></code></pre>
 <h3 id='campaigns/get-campaign'>Get Campaign</h3 id='campaigns/get-campaign'>
 <pre><code><span class="title">GET</span>  /campaigns/:id</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPBDA</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"campaign"</span>: {
@@ -1579,7 +1649,6 @@ and then be able to receive the money collected in their campaign.
         <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"img"</span>: <span class="string">"https://url.to/img.jpg"</span>,
         <span class="string">"is_tilted"</span>: <span class="number">0</span>,
         <span class="string">"is_paid"</span>: <span class="number">0</span>,
         <span class="string">"is_expired"</span>: <span class="number">0</span>,
@@ -1588,7 +1657,7 @@ and then be able to receive the money collected in their campaign.
         <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
         <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
         <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-        <span class="string">"metadata"</span>: { },
+        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
         <span class="string">"stats"</span>: {
             <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
             <span class="string">"raised_amount"</span>: <span class="number">0</span>,
@@ -1601,6 +1670,9 @@ and then be able to receive the money collected in their campaign.
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='campaigns/list-campaigns'>List campaigns</h3 id='campaigns/list-campaigns'>
 <pre><code><span class="title">GET</span> /campaigns</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"pagination"</span>: {
@@ -1623,7 +1695,6 @@ and then be able to receive the money collected in their campaign.
             <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
             <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
             <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-            <span class="string">"img"</span>: <span class="string">"https://url.to/img.jpg"</span>,
             <span class="string">"is_tilted"</span>: <span class="number">0</span>,
             <span class="string">"is_paid"</span>: <span class="number">0</span>,
             <span class="string">"is_expired"</span> : <span class="number">0</span>,
@@ -1632,7 +1703,7 @@ and then be able to receive the money collected in their campaign.
             <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
             <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
             <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-            <span class="string">"metadata"</span>: { },
+            <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
             <span class="string">"stats"</span>: {
                 <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
                 <span class="string">"raised_amount"</span>: <span class="number">0</span>,
@@ -1653,12 +1724,21 @@ to update a single attribute without having to send the full <a href="/Crowdtilt
 
 </p>
 <pre><code><span class="title">PUT</span> /campaigns/:id</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X PUT -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "campaign": <span class="special">{</span>
+        "title":"A Different Campaign Title",
+    <span class="special">}</span>
+<span class="special">}</span>'    </code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"campaign"</span>: {
         <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
         <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
-        <span class="string">"title"</span>: <span class="string">"Campaign Title"</span>,
+        <span class="string">"title"</span>: <span class="string">"A Different Campaign Title"</span>,
         <span class="string">"description"</span>: <span class="string">"some description"</span>,
         <span class="string">"privacy"</span>: <span class="number">1</span>,
         <span class="string">"type"</span>: <span class="number">1</span>,
@@ -1668,7 +1748,6 @@ to update a single attribute without having to send the full <a href="/Crowdtilt
         <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"img"</span>: <span class="string">"https://url.to/img.jpg"</span>,
         <span class="string">"is_tilted"</span>: <span class="number">0</span>,
         <span class="string">"is_paid"</span>: <span class="number">0</span>,
         <span class="string">"is_expired"</span>: <span class="number">0</span>,
@@ -1677,7 +1756,7 @@ to update a single attribute without having to send the full <a href="/Crowdtilt
         <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
         <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
         <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-        <span class="string">"metadata"</span>: { },
+        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
         <span class="string">"stats"</span>: {
             <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
             <span class="string">"raised_amount"</span>: <span class="number">0</span>,
@@ -1709,17 +1788,20 @@ when the campaign tilts, you would set <code>admin_fee_amount</code> to <code>40
 the admin will only receive <code>$19.60</code> from the <code>$20.00</code> payment.
 
 </p>
-<pre><code><span class="title">POST</span> /campaigns/:id/payments
-
-{
-    "payment": {
+<pre><code><span class="title">POST</span> /campaigns/:id/payments</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA/payments <span class="command">\ </span>  
+-d'
+<span class="special">{</span>
+    "payment": <span class="special">{</span>
         "amount" : 2000,
         "user_fee_amount" : 40,
         "admin_fee_amount" : 40,
         "user_id": "USR521",
         "card_id": "CCPC41"
-    }
-}</code></pre>
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payment"</span> : {
@@ -1741,6 +1823,9 @@ the admin will only receive <code>$19.60</code> from the <code>$20.00</code> pay
 <pre><code><span class="setting">201 =<span class="value">> Created</span></span></code></pre>
 <h3 id='campaign-payments/get-campaign-payment'>Get campaign payment</h3 id='campaign-payments/get-campaign-payment'>
 <pre><code>GET /campaigns/:<span class="keyword">id</span>/payments/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMP96B/payments/CON233</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payment"</span> : {
@@ -1765,13 +1850,16 @@ the admin will only receive <code>$19.60</code> from the <code>$20.00</code> pay
 Note that you may only do this for payments with a status of &quot;rejected&quot;.
 
 </p>
-<pre><code>PUT /campaigns/:<span class="keyword">id</span>/payments/:<span class="keyword">id</span>
-
-{
-    <span class="string">"payment"</span>: {
-        <span class="string">"card_id"</span>: <span class="string">"CCPC42"</span>
-    }
-}</code></pre>
+<pre><code>PUT /campaigns/:<span class="keyword">id</span>/payments/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X PUT -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/campaigns/CMP96B/payments/CON233 <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "payment": <span class="special">{</span>
+        "card_id": "CCPC42"
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payment"</span> : {
@@ -1791,8 +1879,11 @@ Note that you may only do this for payments with a status of &quot;rejected&quot
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
-<h3 id='campaign-payments/get-campaign-payments'>Get campaign payments</h3 id='campaign-payments/get-campaign-payments'>
+<h3 id='campaign-payments/list-campaign-payments'>List campaign payments</h3 id='campaign-payments/list-campaign-payments'>
 <pre><code><span class="title">GET</span> /campaigns/:id/payments</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMP96B/payments</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payments"</span> : [
@@ -1822,6 +1913,9 @@ Note that you may only do this for payments with a status of &quot;rejected&quot
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='campaign-payments/get-rejected-payments'>Get rejected payments</h3 id='campaign-payments/get-rejected-payments'>
 <pre><code><span class="title">GET</span> /campaigns/:id/rejected_payments</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMP96B/rejected_payments</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payments"</span> : [
@@ -1855,10 +1949,10 @@ Note that you may only do this for payments with a status of &quot;rejected&quot
 refund subresource.
 
 </p>
-<pre><code><span class="constant">POST</span> /<span class="identifier">campaigns</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>/<span class="identifier">payments</span>/<span class="symbol">:<span class="identifier"><span class="keymethods">id</span></span></span>/<span class="identifier">refund</span>
-
-<span class="variable">$ </span><span class="identifier">curl</span> -<span class="constant">X</span> <span class="constant">POST</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span> \
-<span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">campaigns</span>/<span class="constant">CMP96B</span>/<span class="identifier">payments</span>/<span class="constant">CON233</span>/<span class="identifier">refund</span></code></pre>
+<pre><code>POST /campaigns/:<span class="keyword">id</span>/payments/:<span class="keyword">id</span>/refund</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> POST -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMP96B/payments/CON233/refund</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='campaign-settlements'>Campaign Settlements</h2 id='campaign-settlements'>
@@ -1886,20 +1980,42 @@ bank account.</li>
 <li><code>cleared</code> - this means that the funds have cleared the bank account and the
 settlement has completed successfully.</li>
 </ul>
+<h3 id='campaign-settlements/get-campaign-settlement'>Get Campaign Settlement</h3 id='campaign-settlements/get-campaign-settlement'>
+<pre><code>GET /campaigns/:<span class="keyword">id</span>/settlements/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/settlements/SMTD88</code></pre>
+<h4>Response</h4>
+<pre><code>{
+    <span class="string">"settlement"</span> : {
+        <span class="string">"id"</span> : <span class="string">"SMTD88"</span>,
+        <span class="string">"status"</span> : <span class="string">"pending"</span>,
+        <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
+        <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
+        <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
+        <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
+        <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> }
+    }
+}</code></pre>
 <h3 id='campaign-settlements/list-campaign-settlements'>List Campaign Settlements</h3 id='campaign-settlements/list-campaign-settlements'>
 <pre><code><span class="title">GET</span> /campaigns/:id/settlements</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/settlements</code></pre>
 <h4>Response</h4>
 <pre><code><span class="string">"settlements"</span> : [
     {
         <span class="string">"id"</span> : <span class="string">"SMTD88"</span>,
-            <span class="string">"status"</span> : <span class="string">"pending"</span>,
-            <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
-            <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
-            <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-            <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-            <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
-            <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
-            <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> }
+        <span class="string">"status"</span> : <span class="string">"pending"</span>,
+        <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
+        <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
+        <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
+        <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
+        <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> }
     },
     .
     .
@@ -1911,22 +2027,6 @@ settlement has completed successfully.</li>
     <span class="string">"total_entries"</span> : <span class="number">1</span>,
     <span class="string">"per_page"</span> : <span class="number">50</span>
 }</code></pre>
-<h3 id='campaign-settlements/get-campaign-settlement'>Get Campaign Settlement</h3 id='campaign-settlements/get-campaign-settlement'>
-<pre><code>GET /campaigns/:<span class="keyword">id</span>/settlements/:<span class="keyword">id</span></code></pre>
-<h4>Response</h4>
-<pre><code>{
-    <span class="string">"settlement"</span> : {
-        <span class="string">"id"</span> : <span class="string">"SMTD88"</span>,
-            <span class="string">"status"</span> : <span class="string">"pending"</span>,
-            <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
-            <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
-            <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-            <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-            <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
-            <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
-            <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> }
-    }
-}</code></pre>
 <h3 id='campaign-settlements/update-campaign-settlement-bank'>Update Campaign Settlement Bank</h3 id='campaign-settlements/update-campaign-settlement-bank'>
 <p>A Campaign Settlement can only be updated if the status is <code>needs bank account</code>.
 In this instance, a <code>bank</code> object can be sent with the <code>id</code> of a new bank
@@ -1934,10 +2034,13 @@ account to re-attempt the settlement with.
 
 </p>
 <pre><code>POST /campaigns/:<span class="keyword">id</span>/settlements/:<span class="keyword">id</span>/bank</code></pre>
-<h4>Request</h4>
-<pre><code>{
-    "<span class="attribute">bank</span>" : <span class="value">{ "<span class="attribute">id</span>" : <span class="value"><span class="string">"BAPCA4"</span> </span>}
-</span>}</code></pre>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X POST -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/settlements/SMTD88/bank <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "bank" : <span class="special">{</span> "id" : "BAPCA4" <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
 <h2 id='campaign-comments'>Campaign Comments</h2 id='campaign-comments'>
 <h3 id='campaign-comments/create-campaign-comment'>Create Campaign Comment</h3 id='campaign-comments/create-campaign-comment'>
 <p>To create a comment, POST to <code>/campaigns/:id/comments</code>.
@@ -1951,22 +2054,26 @@ You may provide a <code>parent_id</code> of null for top-level comments.
 The purpose of the <code>score</code> field is to provide support for voting on comments.
 
 </p>
-<pre><code><span class="title">POST</span> /campaigns/:id/comments
-
+<pre><code><span class="title">POST</span> /campaigns/:id/comments</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -X POST -H Content-Type:application/json -u key:secret \
+https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments</span>
+-d'
 {
-    "comment" : {
-        "user_id' : "USR123",
-        "title" : "<span class="title">Optional</span> Title<span class="string">",
-        "</span>body<span class="string">" : "</span>Comment Body<span class="string">",
+    <span class="string">"comment"</span> : {
+        <span class="string">"user_id' : "</span>USR123<span class="string">",
+        "</span>title<span class="string">" : "</span>Optional Title<span class="string">",
+        "</span><span class="keyword">body</span><span class="string">" : "</span>Comment Body<span class="string">",
         "</span>score<span class="string">" : 1,
         "</span>parent_id<span class="string">" : null
     }
-}</code></pre>
+}'</code></pre>
 <h4>Response</h4>
 <pre><code>{
     "comment" : {
         "id" : "CMT123",
         "user_id' : "USR123",
+        "campaign_id" : "CMPCCC",
         "title" : "<span class="title">Optional</span> Title<span class="string">",
         "</span>body<span class="string">" : "</span>Comment Body<span class="string">",
         "</span>score<span class="string">" : 1,
@@ -1978,13 +2085,18 @@ The purpose of the <code>score</code> field is to provide support for voting on 
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
-<h3 id='campaign-comments/get-campaign-comments'>Get Campaign Comments</h3 id='campaign-comments/get-campaign-comments'>
-<h4>Response</h4>
+<h3 id='campaign-comments/list-campaign-comments'>List Campaign Comments</h3 id='campaign-comments/list-campaign-comments'>
+<pre><code><span class="title">GET</span> /campaigns/:id/comments</code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/comments</code></pre>
+<h4>Response Body</h4>
 <pre><code>{
     <span class="string">"comments"</span> :<span class="sqbracket"> [
         {
             "id" : "CMT123",
             "user_id' : "USR123",
+            "campaign_id" : "CMPCCC",
             "title" : "Optional Title",
             "body" : "Comment Body",
             "score" : 1,
@@ -2000,11 +2112,15 @@ The purpose of the <code>score</code> field is to provide support for voting on 
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='campaign-comments/get-campaign-comment'>Get campaign comment</h3 id='campaign-comments/get-campaign-comment'>
 <pre><code>GET /campaigns/:<span class="keyword">id</span>/comments/:<span class="keyword">id</span></code></pre>
-<h4>Response</h4>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/comments/CMT123</code></pre>
+<h4>Response Body</h4>
 <pre><code>{
     "comment" : {
         "id" : "CMT123",
         "user_id' : "USR123",
+        "campaign_id" : "CMPCCC",
         "title" : "<span class="title">Optional</span> Title<span class="string">",
         "</span>body<span class="string">" : "</span>Comment Body<span class="string">",
         "</span>score<span class="string">" : 1,
@@ -2014,23 +2130,26 @@ The purpose of the <code>score</code> field is to provide support for voting on 
         "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">"
     }
 }</code></pre>
-<h4>Response Code</h4>
+<h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='campaign-comments/update-campaign-comment'>Update campaign comment</h3 id='campaign-comments/update-campaign-comment'>
 <p>Currently you can only alter the score and the metadata of a comment.
 
 </p>
 <pre><code>PUT /campaigns/:<span class="keyword">id</span>/comments/:<span class="keyword">id</span></code></pre>
-<h4>Request</h4>
-<pre><code>{
-    "<span class="attribute">comment</span>" : <span class="value">{
-        "<span class="attribute">score</span>" : <span class="value"><span class="number">2</span></span>,
-        "<span class="attribute">metadata</span>" : <span class="value">{
-            "<span class="attribute">key</span>" : <span class="value"><span class="string">"value"</span></span>,
-        }
-    </span>}
-</span>}</code></pre>
-<h4>Response</h4>
+<h4>Example Request</h4>
+<pre><code><span class="formula">$ curl -X PUT -H Content-Type:application/json -u key:secret <span class="command">\
+</span>https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments/CMT123 <span class="command">\
+</span>-d'
+<span class="special">{</span>
+    "comment" : <span class="special">{</span>
+        "score" : 2,
+        "metadata" : <span class="special">{</span>
+            "key" : "value",
+        <span class="special">}</span>
+    <span class="special">}</span>
+<span class="special">}</span>'</code></pre>
+<h4>Response Body</h4>
 <pre><code>{
     "comment" : {
         "id" : "CMT123",
@@ -2046,10 +2165,13 @@ The purpose of the <code>score</code> field is to provide support for voting on 
         "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">"
     }
 }</code></pre>
-<h4>Response Code</h4>
+<h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='campaign-comments/delete-a-comment'>Delete a comment</h3 id='campaign-comments/delete-a-comment'>
 <pre><code>DELETE /campaigns/:<span class="keyword">id</span>/comments/:<span class="keyword">id</span></code></pre>
+<h4>Example Request</h4>
+<pre><code>$ curl -<span class="built_in">X</span> DELETE -H Content-Type:application/json -u key:secret \
+<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/comments/CMT123</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='api-examples'>API Examples</h2 id='api-examples'>
@@ -2063,7 +2185,7 @@ $ curl -X POST -u key:secret  -H Content-Type:application/json \
     https:<span class="comment">//api-sandbox.crowdtilt.com/v1/users \</span>
     -d<span class="string">'{
         "user":{
-            "email" : "user@gmail.com"
+            "email"    : "user@gmail.com"
         }
     }'</span>
 
@@ -2125,57 +2247,55 @@ second user to make a payment on the campaign.
             "expiration_date" : "2012-10-31T12:00:00Z",
             "title" : "Halloween Awesome Fest",
             "description" : "This will be the best thing ever!",
-            "tilt_amount" : 300000
+            "tilt_amount" : 300000,
         }
     }'</span>
 
 <span class="comment"># Response</span>
 {
     <span class="string">"campaign"</span> : {
-        <span class="string">"img"</span> : <span class="keyword">null</span>,
-            <span class="string">"tilter"</span> : <span class="keyword">null</span>,
-            <span class="string">"min_payment_amount"</span> : <span class="number">0</span>,
-            <span class="string">"first_contributor"</span> : <span class="keyword">null</span>,
+        <span class="string">"tilter"</span> : <span class="keyword">null</span>,
+        <span class="string">"min_payment_amount"</span> : <span class="number">0</span>,
+        <span class="string">"first_contributor"</span> : <span class="keyword">null</span>,
+        <span class="string">"metadata"</span> : {},
+        <span class="string">"id"</span> : <span class="string">"CMP542"</span>,
+        <span class="string">"is_paid"</span> : <span class="number">0</span>,
+        <span class="string">"settlements_uri"</span> : <span class="string">"/v1/campaigns/CMP542/settlements"</span>,
+        <span class="string">"privacy"</span> : <span class="number">1</span>,
+        <span class="string">"admin"</span> : {
+            <span class="string">"firstname"</span> : <span class="keyword">null</span>,
+            <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/paid_campaigns"</span>,
+            <span class="string">"email"</span> : <span class="string">"user@gmail.com"</span>,
             <span class="string">"metadata"</span> : {},
-            <span class="string">"id"</span> : <span class="string">"CMP542"</span>,
-            <span class="string">"is_paid"</span> : <span class="number">0</span>,
-            <span class="string">"settlements_uri"</span> : <span class="string">"/v1/campaigns/CMP542/settlements"</span>,
-            <span class="string">"privacy"</span> : <span class="number">1</span>,
-            <span class="string">"admin"</span> : {
-                <span class="string">"firstname"</span> : <span class="keyword">null</span>,
-                <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/paid_campaigns"</span>,
-                <span class="string">"img"</span> : <span class="keyword">null</span>,
-                <span class="string">"email"</span> : <span class="string">"user@gmail.com"</span>,
-                <span class="string">"metadata"</span> : {},
-                <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
-                <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC55"</span>,
-                <span class="string">"creation_date"</span> : <span class="string">"2012-10-31T00:41:55Z"</span>,
-                <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/campaigns"</span>,
-                <span class="string">"last_login_date"</span> : <span class="string">"2012-10-30T17:41:55.834029000Z"</span>,
-                <span class="string">"lastname"</span> : <span class="keyword">null</span>,
-                <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRC55/payments"</span>,
-                <span class="string">"is_verified"</span> : <span class="number">0</span>
-            },
-            <span class="string">"is_expired"</span> : <span class="number">0</span>,
-            <span class="string">"fixed_payment_amount"</span> : <span class="number">0</span>,
-            <span class="string">"tilt_amount"</span> : <span class="number">300000</span>,
-            <span class="string">"description"</span> : <span class="string">"This will be the best thing ever!"</span>,
-            <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP542"</span>,
-            <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
-            <span class="string">"user_id"</span> : <span class="string">"USRC55"</span>,
-            <span class="string">"title"</span> : <span class="string">"Halloween Awesome Fest"</span>,
-            <span class="string">"payments_uri"</span> : <span class="string">"/v1/campaigns/CMP542/payments"</span>,
-            <span class="string">"modification_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
-            <span class="string">"stats"</span> : {
-                <span class="string">"tilt_percent"</span> : <span class="number">0</span>,
-                <span class="string">"raised_amount"</span> : <span class="number">0</span>,
-                <span class="string">"unique_contributors"</span> : <span class="number">0</span>,
-                <span class="string">"number_of_contributions"</span> : <span class="number">0</span>
-            },
-            <span class="string">"expiration_date"</span> : <span class="string">"2012-10-31T12:00:00Z"</span>,
-            <span class="string">"is_tilted"</span> : <span class="number">0</span>,
-            <span class="string">"tax_id"</span> : <span class="keyword">null</span>,
-            <span class="string">"tax_name"</span> : <span class="keyword">null</span>
+            <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
+            <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC55"</span>,
+            <span class="string">"creation_date"</span> : <span class="string">"2012-10-31T00:41:55Z"</span>,
+            <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/campaigns"</span>,
+            <span class="string">"last_login_date"</span> : <span class="string">"2012-10-30T17:41:55.834029000Z"</span>,
+            <span class="string">"lastname"</span> : <span class="keyword">null</span>,
+            <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRC55/payments"</span>,
+            <span class="string">"is_verified"</span> : <span class="number">0</span>
+        },
+        <span class="string">"is_expired"</span> : <span class="number">0</span>,
+        <span class="string">"fixed_payment_amount"</span> : <span class="number">0</span>,
+        <span class="string">"tilt_amount"</span> : <span class="number">300000</span>,
+        <span class="string">"description"</span> : <span class="string">"This will be the best thing ever!"</span>,
+        <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP542"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
+        <span class="string">"user_id"</span> : <span class="string">"USRC55"</span>,
+        <span class="string">"title"</span> : <span class="string">"Halloween Awesome Fest"</span>,
+        <span class="string">"payments_uri"</span> : <span class="string">"/v1/campaigns/CMP542/payments"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
+        <span class="string">"stats"</span> : {
+            <span class="string">"tilt_percent"</span> : <span class="number">0</span>,
+            <span class="string">"raised_amount"</span> : <span class="number">0</span>,
+            <span class="string">"unique_contributors"</span> : <span class="number">0</span>,
+            <span class="string">"number_of_contributions"</span> : <span class="number">0</span>
+        },
+        <span class="string">"expiration_date"</span> : <span class="string">"2012-10-31T12:00:00Z"</span>,
+        <span class="string">"is_tilted"</span> : <span class="number">0</span>,
+        <span class="string">"tax_id"</span> : <span class="keyword">null</span>,
+        <span class="string">"tax_name"</span> : <span class="keyword">null</span>
     }
 }</code></pre>
 <h3 id='api-examples/create-a-card'>Create a card</h3 id='api-examples/create-a-card'>
@@ -2228,13 +2348,11 @@ second user to make a payment on the campaign.
        <span class="string">"status"</span> : <span class="string">"authorized"</span>,
        <span class="string">"user_fee_amount"</span> : <span class="string">"100"</span>,
        <span class="string">"campaign"</span> : {
-          <span class="string">"img"</span> : <span class="keyword">null</span>,
           <span class="string">"tilter"</span> : <span class="keyword">null</span>,
           <span class="string">"min_payment_amount"</span> : <span class="number">0</span>,
           <span class="string">"first_contributor"</span> : {
              <span class="string">"firstname"</span> : <span class="string">""</span>,
              <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRE32/paid_campaigns"</span>,
-             <span class="string">"img"</span> : <span class="keyword">null</span>,
              <span class="string">"email"</span> : <span class="string">"payer@gmail.com"</span>,
              <span class="string">"metadata"</span> : {},
              <span class="string">"id"</span> : <span class="string">"USRE32"</span>,
@@ -2244,7 +2362,7 @@ second user to make a payment on the campaign.
              <span class="string">"last_login_date"</span> : <span class="string">"2012-11-01T13:56:19.964087000Z"</span>,
              <span class="string">"lastname"</span> : <span class="string">""</span>,
              <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRE32/payments"</span>,
-         <span class="string">"is_verified"</span> : <span class="number">0</span>
+             <span class="string">"is_verified"</span> : <span class="number">0</span>
           },
           <span class="string">"metadata"</span> : {},
           <span class="string">"id"</span> : <span class="string">"CMP542"</span>,
@@ -2252,9 +2370,8 @@ second user to make a payment on the campaign.
           <span class="string">"settlements_uri"</span> : <span class="string">"/v1/campaigns/CMP542"</span>,
           <span class="string">"privacy"</span> : <span class="number">1</span>,
           <span class="string">"admin"</span> : {
-         <span class="string">"firstname"</span> : <span class="string">""</span>,
+             <span class="string">"firstname"</span> : <span class="string">""</span>,
              <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/paid_campaigns"</span>,
-             <span class="string">"img"</span> : <span class="keyword">null</span>,
              <span class="string">"email"</span> : <span class="string">"user@gmail.com"</span>,
              <span class="string">"metadata"</span> : {},
              <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
@@ -2289,7 +2406,6 @@ second user to make a payment on the campaign.
        <span class="string">"user"</span> : {
           <span class="string">"firstname"</span> : <span class="string">""</span>,
           <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USR962FB8E0246611E2AEDE84A52A776874/paid_campaigns"</span>,
-          <span class="string">"img"</span> : <span class="keyword">null</span>,
           <span class="string">"email"</span> : <span class="string">"payer@gmail.com"</span>,
           <span class="string">"metadata"</span> : {},
           <span class="string">"id"</span> : <span class="string">"USRE32"</span>,
@@ -2350,17 +2466,18 @@ where you will be collecting credit card or bank account information:
 </p>
 <pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"https://api.crowdtilt.com/v1/js/crowdtilt.js"</span>></span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
 <h3 id='tokenizing-sensitive-user-information/initialize-the-crowdtilt-object'>Initialize the crowdtilt object</h3 id='tokenizing-sensitive-user-information/initialize-the-crowdtilt-object'>
-<p>In a separate script tag, initialize the crowdtilt object:
+<p>In a separate script tag, initialize the crowdtilt object. NOTE: this defaults to using the sandbox api when 
+no parameter is passed to the init method:
 
 </p>
 <pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>></span><span class="javascript">
     crowdtilt.init();
 </span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
-<p>IMPORTANT NOTE: If you are working in the sandbox, pass &#39;sandbox&#39; in as a parameter:
+<p>Once you are ready to go to production, pass &#39;production&#39; as a parameter:
 
 </p>
 <pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>></span><span class="javascript">
-    crowdtilt.init(<span class="string">'sandbox'</span>);
+    crowdtilt.init(<span class="string">'production'</span>);
 </span><span class="tag">&lt;/<span class="title">script</span>></span></code></pre>
 <h3 id='tokenizing-sensitive-user-information/make-sure-to-create-users-first'>Make sure to create users first</h3 id='tokenizing-sensitive-user-information/make-sure-to-create-users-first'>
 <p>Credit cards and bank accounts must be associated with existing <code>user</code> objects created through
@@ -2748,12 +2865,6 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>Whether this user is verified to receive money</td>
         </tr>
         <tr>
-            <td>img</td>
-            <td>string</td>
-            <td>No</td>
-            <td>A url for user&#39;s image</td>
-        </tr>
-        <tr>
             <td>creation_date</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
@@ -2772,7 +2883,7 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>metadata</td>
             <td>JSON object</td>
             <td>No</td>
-            <td>Key-Value pair for any extra data the API consumer wants to store.</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a user&#39;s profile image.</td>
         </tr>
         <tr>
             <td>uri</td>
@@ -2802,6 +2913,75 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
 </table>
 
 
+<h2 id='card-definition'>Card Definition</h2 id='card-definition'>
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>A unique identifier for the card</td>
+        </tr>
+        <tr>
+            <td>last_four</td>
+            <td>string</td>
+            <td>Read-Only</td>
+            <td>Last four digits of credit card number</td>
+        </tr>
+        <tr>
+            <td>expiration_month</td>
+            <td>string</td>
+            <td>Yes</td>
+            <td>Expiration month (string representing 2 digits)</td>
+        </tr>
+        <tr>
+            <td>expiration_year</td>
+            <td>number</td>
+            <td>Yes</td>
+            <td>Expiration year (4 digit number)</td>
+        </tr>
+        <tr>
+            <td>card_type</td>
+            <td>string</td>
+            <td>Read-Only</td>
+            <td>Identifies the card&#39;s brand (VISA, Mastercard, etc)</td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>JSON object</td>
+            <td>Read-Only</td>
+            <td> The user object that owns this card</td>
+        </tr>
+        <tr>
+            <td>metadata</td>
+            <td>JSON object</td>
+            <td>No</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store.</td>
+        </tr>
+        <tr>
+            <td>uri</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>The uri for this user resource</td>
+        </tr>
+        <tr>
+            <td>creation_date</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>It is ISO8601 DateTime format</td>
+        </tr>
+    </tbody>
+</table>
+
+
 <h2 id='bank-definition'>Bank Definition</h2 id='bank-definition'>
 <table>
     <thead>
@@ -2815,7 +2995,7 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
     <tbody>
         <tr>
             <td>id</td>
-            <td>String</td>
+            <td>string</td>
             <td>Auto generated and read-only</td>
             <td>A unique identifier for the bank</td>
         </tr>
@@ -2911,12 +3091,6 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>string</td>
             <td>Yes</td>
             <td>The description of the campaign</td>
-        </tr>
-        <tr>
-            <td>img</td>
-            <td>string</td>
-            <td>No</td>
-            <td>A URI to an image to be used for the campaign</td>
         </tr>
         <tr>
             <td>is_expired</td>
@@ -3091,7 +3265,7 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>metadata</td>
             <td>JSON object</td>
             <td>No</td>
-            <td>Key-Value pair for any extra data the API consumer wants to store.</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a campaign image.</td>
         </tr>
         <tr>
             <td>stats</td>
@@ -3362,7 +3536,6 @@ of <strong>50</strong> entries per page. For example:
             "email": "foo.bar@gmail.com",
             "firstname": "Foo",
             "lastname": "Bar",
-            "img": "https://example.com/profile.png",
             "is_verified": 1,
             "creation_date": "2011-07-02T14:20:48Z",
             "last_login_date": "2012-09-22T01:55:49Z",
