@@ -2629,11 +2629,11 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
 <p>Checks that the number is formatted correctly and passes the <a href="http://en.wikipedia.org/wiki/Luhn_algorithm" target="_blank">Luhn check</a>. Note that spaces and other punctuation are ignored.
 
 </p>
-<pre><code><span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111111111111111'</span>);      <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
-<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111-1111-1111-1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
-<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111 1111 1111 1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
-<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'123456'</span>);                <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span>, <span class="identifier">too</span> <span class="identifier">short</span>
-<span class="identifier">crowdtilt</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4242-1111-1111-1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span>, <span class="identifier">doesn</span><span class="string">'t pass Luhn check</code></pre>
+<pre><code><span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111111111111111'</span>);      <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111-1111-1111-1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4111 1111 1111 1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">true</span></span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'123456'</span>);                <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span>, <span class="identifier">too</span> <span class="identifier">short</span>
+<span class="identifier">crowdtilt</span>.<span class="identifier">card</span>.<span class="identifier">isCardNumberValid</span>(<span class="string">'4242-1111-1111-1111'</span>);   <span class="regexp">//</span> <span class="identifier"><span class="keyword">false</span></span>, <span class="identifier">doesn</span><span class="string">'t pass Luhn check</code></pre>
 <p><strong>Determining Card Brand</strong>
 
 </p>
@@ -2686,9 +2686,9 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
 <p>Use ONLY for USA-based bank accounts. Checks against the <a href="http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format" target="_blank">MICR Routing Number Format</a>
 
 </p>
-<pre><code><span class="title">crowdtilt</span>.bankAccount.validateUSARoutingNumber('<span class="number">321174851</span>') // passes
-<span class="title">crowdtilt</span>.bankAccount.validateUSARoutingNumber('<span class="number">021000021</span>') // passes
-<span class="title">crowdtilt</span>.bankAccount.validateUSARoutingNumber('<span class="number">123457890</span>') // fails</code></pre>
+<pre><code><span class="title">crowdtilt</span>.bank.validateUSARoutingNumber('<span class="number">321174851</span>') // passes
+<span class="title">crowdtilt</span>.bank.validateUSARoutingNumber('<span class="number">021000021</span>') // passes
+<span class="title">crowdtilt</span>.bank.validateUSARoutingNumber('<span class="number">123457890</span>') // fails</code></pre>
 <h3 id='tokenizing-sensitive-user-information/tokenization-examples'>Tokenization Examples</h3 id='tokenizing-sensitive-user-information/tokenization-examples'>
 <p>Here we include two sample forms, one to collect credit card information and one to collect bank account information.
 
