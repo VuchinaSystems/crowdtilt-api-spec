@@ -109,10 +109,6 @@
                 </li>
               
                 <li>
-                  <a href="#users/authenticate-user">Authenticate User</a>
-                </li>
-              
-                <li>
                   <a href="#users/get-user">Get User</a>
                 </li>
               
@@ -135,14 +131,6 @@
               
                 <li>
                   <a href="#user-campaigns/get-user-campaigns">Get User Campaigns</a>
-                </li>
-              
-                <li>
-                  <a href="#user-campaigns/get-user-campaign">Get User Campaign</a>
-                </li>
-              
-                <li>
-                  <a href="#user-campaigns/list-user-paid-campaigns">List User Paid Campaigns</a>
                 </li>
               
             </ul>
@@ -476,24 +464,22 @@
 
 </p>
 <ul>
-<li>Developers can use the Crowdtilt API with their own payment processor
-  as it works with <a href="https://stripe.com/">Stripe</a>,
-  <a href="https://www.balancedpayments.com/">Balanced</a>,
-  <a href="https://www.braintreepayments.com">BrainTree</a>.</li>
-<li>Though we have the above preferred partners for the Crowdtilt API already
-  built out and ready to use, our API is actually built around our universal
+<li>Our API is built around our universal
   payments interface, which allows developers to integrate any payment
   processor from around the world right into our system.  For more information
   about how to get access to this interface to build support for your favorite
   processor, drop us a note at <a href="mailto:support.api@crowdtilt.com">support.api@crowdtilt.com</a>.</li>
-<li>The API also works with credit cards and ACH debit payments or a combination
-  of these.</li>
+<li>Out of the box the Crowdtilt API works with <a href="https://www.balancedpayments.com/">Balanced Payments</a>.</li>
+<li>Support for <a href="https://stripe.com/">Stripe</a> and 
+<a href="https://www.braintreepayments.com">BrainTree</a> coming soon.</li>
+<li>Support for multiple currencies and international languages coming soon.</li>
+<li>The API works with credit cards.</li>
+<li>Support for ACH debit payments coming soon.</li>
 <li>The API provides collaboration tools such as commenting/updates, nested
   comments, messaging, notifications, and tracking of those that have paid and
   those that haven&#39;t.</li>
-<li>The API supports both multiple currencies and international languages.</li>
 <li>We also provide a tool to tokenize the sensitive information you collect (credit card 
-and bank account numbers), so you don&#39;t have to worry about PCI compliance</li>
+and bank account numbers), so you don&#39;t have to worry about PCI compliance.</li>
 </ul>
 <h1>Menu</h1>
 <ul>
@@ -533,10 +519,8 @@ and bank account numbers), so you don&#39;t have to worry about PCI compliance</
 </ul>
 <h2 id='introduction'>Introduction</h2 id='introduction'>
 <p>It is important to understand that the Crowdtilt API is a layer of abstraction
-on top of payment processors. Currently, we support Balanced, which is recommended
-for multi-project services such as Kickstarter. We also support Stripe, which is
-suitable for single-project services such as Lockitron. Finally, we support
-Braintree, which is highly suitable for international projects.
+on top of payment processors. Currently, we support <a href="https://www.balancedpayments.com/">Balanced Payments</a>, which is well-suited 
+for single-project sites like Lockitron, or multi-project services such as Kickstarter. Support fo <a href="https://stripe.com/">Stripe</a> and <a href="https://www.braintreepayments.com">BrainTree</a> is coming soon.
 
 </p>
 <p>When interacting with a payment gateway, the focus is highly transactional and
@@ -554,7 +538,7 @@ payments</code>, e.g., donations.
 <p><code>Payments</code> are simply a way for users to achieve the campaign goal. We believe
 that a good crowdfunding service should support any type of payment. Therefore,
 we are working on supporting as many payment methods as possible. Currently, we
-support credit cards and ACH debits.
+support credit cards transactions. ACH debits support coming soon.
 
 </p>
 <p>When the campaign is created, it has to have at least one <code>user</code> to act as the
@@ -721,13 +705,6 @@ pairs that did not change.
             <td> List of users </td>
         </tr>
         <tr>
-            <td>/users/authentication</td>
-            <td>
-                <a href="#authenticate-user">GET</a>
-            </td>
-            <td> Authenticate a user</td>
-        </tr>
-        <tr>
             <td>/users/:id</td>
             <td>
                 <a href="#get-user">GET</a>
@@ -747,14 +724,7 @@ pairs that did not change.
             <td>
                 <a href="#get-user-campaigns">GET</a>
             </td>
-            <td> All campaigns the user is involved with </td>
-        </tr>
-        <tr>
-            <td>/users/:id/paid_campaigns</td>
-            <td>
-                <a href="#get-user-paid-campaigns">GET</a>
-            </td>
-            <td> Campaigns this user paid for </td>
+            <td> All campaigns this user is admin of </td>
         </tr>
         <tr>
             <td>/users/:id/cards</td>
@@ -831,10 +801,11 @@ a profile image.
         "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Bar"</span></span>,
         "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
         "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
-        "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
+        "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2011-09-02T14:20:48Z"</span></span>,
         "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
+        "<span class="attribute">cards_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/cards"</span></span>,
+        "<span class="attribute">banks_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/banks"</span></span>,
         "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
-        "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
         "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
         "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
     </span>}
@@ -888,30 +859,6 @@ will be set to 1 to reflect this change.
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span>
 <span class="setting">400 =<span class="value">> Bad Data, or Could not Verify admin information</span></span>
 <span class="setting">449 =<span class="value">> Retry with SSN</span></span></code></pre>
-<h3 id='users/authenticate-user'>Authenticate User</h3 id='users/authenticate-user'>
-<p>To authenticate a user, you can pass in the user&#39;s login credentials, email and
-password, as query parameters.
-
-</p>
-<pre><code><span class="title">GET</span> /users/authentication?email=user<span class="variable">@example</span>.com&amp;password=mypassword</code></pre>
-<h4>Example Request</h4>
-<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
-<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/users/authentication?email=user@example<span class="preprocessor">.com</span>&amp;password=mypassword</code></pre>
-<h4>Response Body</h4>
-<pre><code>{
-   "<span class="attribute">user</span>" : <span class="value">{
-      "<span class="attribute">id</span>" : <span class="value"><span class="string">"USRB07"</span></span>,
-      "<span class="attribute">firstname</span>" : <span class="value"><span class="string">"foo"</span></span>,
-      "<span class="attribute">lastname</span>" : <span class="value"><span class="string">"bar"</span></span>,
-      "<span class="attribute">email</span>" : <span class="value"><span class="string">"user@example.com"</span></span>,
-      "<span class="attribute">is_verified</span>" : <span class="value"><span class="number">0</span></span>,
-      "<span class="attribute">creation_date</span>" : <span class="value"><span class="string">"2012-09-26T10:22:03.900529000Z"</span></span>,
-      "<span class="attribute">last_login_date</span>" : <span class="value"><span class="string">"2012-09-26T17:22:20Z"</span>
-   </span>}
-</span>}</code></pre>
-<h4>Response Codes</h4>
-<pre><code><span class="setting">302 =<span class="value">> Found</span></span>
-<span class="setting">401 =<span class="value">> Unauthorized</span></span></code></pre>
 <h3 id='users/get-user'>Get User</h3 id='users/get-user'>
 <pre><code><span class="title">GET</span>  /users/:id</code></pre>
 <h4>Example Request</h4>
@@ -924,12 +871,13 @@ password, as query parameters.
         "<span class="attribute">email</span>": <span class="value"><span class="string">"foo.bar@gmail.com"</span></span>,
         "<span class="attribute">firstname</span>": <span class="value"><span class="string">"Foo"</span></span>,
         "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Bar"</span></span>,
-        "<span class="attribute">is_verified</span>": <span class="value"><span class="number">1</span></span>,
+        "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
         "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
-        "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
+        "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2011-09-02T14:20:48Z"</span></span>,
         "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
+        "<span class="attribute">cards_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/cards"</span></span>,
+        "<span class="attribute">banks_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/banks"</span></span>,
         "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
-        "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
         "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
         "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
     </span>}
@@ -944,9 +892,10 @@ password, as query parameters.
 <h4>Response Body</h4>
 <pre><code>{
     "<span class="attribute">pagination</span>": <span class="value">{
-        "<span class="attribute">total_pages</span>": <span class="value"><span class="number">1</span></span>,
         "<span class="attribute">page</span>": <span class="value"><span class="number">1</span></span>,
-        "<span class="attribute">total_entries</span>": <span class="value"><span class="number">2</span></span>,
+        "<span class="attribute">entries_on_this_page</span>": <span class="value"><span class="number">3</span></span>,
+        "<span class="attribute">total_pages</span>": <span class="value"><span class="number">1</span></span>,
+        "<span class="attribute">total_entries</span>": <span class="value"><span class="number">3</span></span>,
         "<span class="attribute">per_page</span>": <span class="value"><span class="number">50</span>
     </span>}</span>,
     "<span class="attribute">users</span>": <span class="value">[
@@ -957,10 +906,11 @@ password, as query parameters.
             "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Bar"</span></span>,
             "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
             "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
-            "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
+            "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2011-09-02T14:20:48Z"</span></span>,
             "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
+            "<span class="attribute">cards_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/cards"</span></span>,
+            "<span class="attribute">banks_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/banks"</span></span>,
             "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
-            "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
             "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
             "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
         </span>},
@@ -979,7 +929,7 @@ to update a single attribute without having to send the full
 </p>
 <pre><code><span class="title">PUT</span> /users/:id</code></pre>
 <h4>Example Request</h4>
-<pre><code><span class="formula">$ curl -X GET -H Content-Type:application/json -u key:secret <span class="command">\
+<pre><code><span class="formula">$ curl -X PUT -H Content-Type:application/json -u key:secret <span class="command">\
 </span>https://api-sandbox.crowdtilt.com/v1/users/USREC5 <span class="command">\
 </span>-d'
 <span class="special">{</span>
@@ -996,10 +946,11 @@ to update a single attribute without having to send the full
         "<span class="attribute">lastname</span>": <span class="value"><span class="string">"new last name"</span></span>,
         "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>,
         "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2011-07-02T14:20:48Z"</span></span>,
-        "<span class="attribute">last_login_date</span>": <span class="value"><span class="string">"2012-09-22T01:55:49Z"</span></span>,
+        "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2011-09-02T14:20:48Z"</span></span>,
         "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USREC5"</span></span>,
+        "<span class="attribute">cards_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/cards"</span></span>,
+        "<span class="attribute">banks_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/banks"</span></span>,
         "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/campaigns"</span></span>,
-        "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/paid_campaigns"</span></span>,
         "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USREC5/payments"</span></span>,
         "<span class="attribute">metadata</span>" : <span class="value">{ "<span class="attribute">img</span>" : <span class="value"><span class="string">"http://www.example.com/path-to-profile-image"</span> </span>}
     </span>}
@@ -1019,18 +970,16 @@ campaigns that he paid for.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"pagination"</span>: {
-        <span class="string">"total_pages"</span>: <span class="number">0</span>,
         <span class="string">"page"</span>: <span class="number">1</span>,
-        <span class="string">"total_entries"</span>: <span class="number">0</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
         <span class="string">"per_page"</span>: <span class="number">50</span>
     },
     <span class="string">"campaigns"</span>: [
         {
             <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
-            <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
             <span class="string">"title"</span>: <span class="string">"Campaign Title"</span>,
-            <span class="string">"description"</span>: <span class="string">"some description"</span>,
-            <span class="string">"privacy"</span>: <span class="number">1</span>,
             <span class="string">"tilt_amount"</span>: <span class="number">100</span>,
             <span class="string">"min_payment_amount"</span>: <span class="number">0</span>,
             <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>,
@@ -1038,111 +987,21 @@ campaigns that he paid for.
             <span class="string">"is_tilted"</span>: <span class="number">0</span>,
             <span class="string">"is_paid"</span>: <span class="number">0</span>,
             <span class="string">"is_expired"</span>: <span class="number">0</span>,
-            <span class="string">"tax_id"</span>: null,
-            <span class="string">"tax_name"</span>: null,
             <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
             <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
+            <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/settlements"</span>,
             <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
-            <span class="string">"metadata"</span>: { },
+            <span class="string">"first_contributor"</span>: null,
+            <span class="string">"tilter"</span>: null,
             <span class="string">"stats"</span>: {
                 <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
                 <span class="string">"raised_amount"</span>: <span class="number">0</span>,
                 <span class="string">"unique_contributors"</span>: <span class="number">0</span>,
-                <span class="string">"number_of_payments"</span>: <span class="number">0</span>
-            }
-        },
-        .
-        .
-        .
-    ]
-}</code></pre>
-<h4>Response Codes</h4>
-<pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
-<h3 id='user-campaigns/get-user-campaign'>Get User Campaign</h3 id='user-campaigns/get-user-campaign'>
-<p>This resource returns a specific campaign created by this user.
-
-</p>
-<pre><code>GET /users/:<span class="keyword">id</span>/campaigns/:<span class="keyword">id</span></code></pre>
-<h4>Example Request</h4>
-<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
-<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USREC5/campaigns/CMP96B</code></pre>
-<h4>Response Body</h4>
-<pre><code>{
-   <span class="string">"campaign"</span> : {
-      <span class="string">"metadata"</span> : { },
-      <span class="string">"id"</span> : <span class="string">"CMP96B"</span>,
-      <span class="string">"is_paid"</span> : <span class="number">0</span>,
-      <span class="string">"privacy"</span> : <span class="number">1</span>,
-      <span class="string">"is_expired"</span> : <span class="number">1</span>,
-      <span class="string">"fixed_payment_amount"</span> : <span class="number">0</span>,
-      <span class="string">"tilt_amount"</span> : <span class="number">100</span>,
-      <span class="string">"description"</span> : <span class="string">"some description"</span>,
-      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>,
-      <span class="string">"creation_date"</span> : <span class="string">"2012-10-19T15:09:01.869085000Z"</span>,
-      <span class="string">"first_contributor"</span> : { <span class="string">"id"</span> : <span class="string">"USR123"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR123"</span>, <span class="keyword">...</span> },
-      <span class="string">"tilter"</span> : { <span class="string">"id"</span> : <span class="string">"USR456"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR456"</span>, <span class="keyword">...</span> },
-      <span class="string">"user_id"</span> : <span class="string">"USR521"</span>,
-      <span class="string">"title"</span> : <span class="string">"some title"</span>,
-      <span class="string">"modification_date"</span> : <span class="string">"2012-10-19T15:09:01.869085000Z"</span>,
-      <span class="string">"stats"</span> : {
-         <span class="string">"tilt_percent"</span> : <span class="number">0</span>,
-         <span class="string">"raised_amount"</span> : <span class="number">0</span>,
-         <span class="string">"unique_contributors"</span> : <span class="number">0</span>,
-         <span class="string">"number_of_payments"</span> : <span class="number">0</span>
-      },
-      <span class="string">"expiration_date"</span> : <span class="string">"2000-01-02T01:02:03Z"</span>,
-      <span class="string">"is_tilted"</span> : <span class="number">0</span>,
-      <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="keyword">...</span> },
-      <span class="string">"min_payment_amount"</span> : <span class="number">0</span>,
-      <span class="string">"tax_id"</span> : null,
-      <span class="string">"tax_name"</span> : null,
-      <span class="string">"payments_uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments"</span>
-   }
-}</code></pre>
-<h4>Response Codes</h4>
-<pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
-<h3 id='user-campaigns/list-user-paid-campaigns'>List User Paid Campaigns</h3 id='user-campaigns/list-user-paid-campaigns'>
-<p>This resource returns all the campaigns that the user paid for.
-
-</p>
-<pre><code><span class="title">GET</span> /users/:id/paid_campaigns</code></pre>
-<h4>Example Request</h4>
-<pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
-<span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USREC5/campaigns/CMP96B</code></pre>
-<h4>Response Body</h4>
-<pre><code>{
-    <span class="string">"pagination"</span>: {
-        <span class="string">"total_pages"</span>: <span class="number">0</span>,
-        <span class="string">"page"</span>: <span class="number">1</span>,
-        <span class="string">"total_entries"</span>: <span class="number">0</span>,
-        <span class="string">"per_page"</span>: <span class="number">50</span>
-    },
-    <span class="string">"campaigns"</span>: [
-        {
-            <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
-            <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
-            <span class="string">"title"</span>: <span class="string">"Campaign Title"</span>,
-            <span class="string">"description"</span>: <span class="string">"some description"</span>,
-            <span class="string">"privacy"</span>: <span class="number">1</span>,
-            <span class="string">"tilt_amount"</span>: <span class="number">100</span>,
-            <span class="string">"min_payment_amount"</span>: <span class="number">0</span>,
-            <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>,
-            <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-            <span class="string">"is_tilted"</span>: <span class="number">0</span>,
-            <span class="string">"is_paid"</span>: <span class="number">0</span>,
-            <span class="string">"is_expired"</span>: <span class="number">0</span>,
-            <span class="string">"tax_id"</span>: null,
-            <span class="string">"tax_name"</span>: null,
-            <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
-            <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
-            <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-            <span class="string">"metadata"</span>: { },
-            <span class="string">"stats"</span>: {
-                <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
-                <span class="string">"raised_amount"</span>: <span class="number">0</span>,
-                <span class="string">"unique_contributors"</span>: <span class="number">0</span>,
-                <span class="string">"number_of_payments"</span>: <span class="number">0</span>
-            }
+                <span class="string">"number_of_contributions"</span>: <span class="number">0</span>
+            },
+            <span class="string">"creation_date"</span>: <span class="string">"2011-07-02T14:20:48Z"</span>,
+            <span class="string">"modification_date"</span>: <span class="string">"2011-09-02T14:20:48Z"</span>,                
+            <span class="string">"metadata"</span>: { }            
         },
         .
         .
@@ -1168,20 +1027,18 @@ campaigns that he paid for.
 <span class="special">}</span>'</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
-    <span class="string">"cards"</span> : [
-          {
-             <span class="string">"last_four"</span> : <span class="string">"1111"</span>,
-             <span class="string">"expiration_year"</span> : <span class="number">2023</span>,
-             <span class="string">"expiration_month"</span> : <span class="string">"01"</span>,
-             <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR50A"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A"</span>, <span class="keyword">...</span> },
-             <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
-             <span class="string">"card_type"</span> : <span class="string">"VISA card"</span>,
-             <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
-             <span class="string">"metadata"</span> : {},
-             <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>
-          },
-          <span class="keyword">...</span>
-      ]
+    <span class="string">"card"</span>: {
+        <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>,
+        <span class="string">"last_four"</span> : <span class="string">"1111"</span>,
+        <span class="string">"expiration_year"</span> : <span class="number">2023</span>,
+        <span class="string">"expiration_month"</span> : <span class="string">"01"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR50A"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
+        <span class="string">"card_type"</span> : <span class="string">"VISA card"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {}
+    }
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">201 =<span class="value">> Created</span></span></code></pre>
@@ -1193,15 +1050,16 @@ campaigns that he paid for.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"card"</span>: {
-        <span class="string">"last_four"</span> : <span class="string">"1234"</span>,
-            <span class="string">"expiration_year"</span> : <span class="number">2034</span>,
-            <span class="string">"expiration_month"</span> : <span class="string">"04"</span>,
-            <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR50A"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A"</span>, <span class="keyword">...</span> },
-            <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
-            <span class="string">"card_type"</span> : null,
-            <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
-            <span class="string">"metadata"</span> : {},
-            <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>
+        <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>,
+        <span class="string">"last_four"</span> : <span class="string">"1111"</span>,
+        <span class="string">"expiration_year"</span> : <span class="number">2023</span>,
+        <span class="string">"expiration_month"</span> : <span class="string">"01"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR50A"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
+        <span class="string">"card_type"</span> : <span class="string">"VISA card"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {}
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1213,14 +1071,31 @@ campaigns that he paid for.
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR50A/cards</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
-    "<span class="attribute">pagination</span>": <span class="value">{
-        "<span class="attribute">total_pages</span>": <span class="value"><span class="number">0</span></span>,
-        "<span class="attribute">page</span>": <span class="value"><span class="number">1</span></span>,
-        "<span class="attribute">total_entries</span>": <span class="value"><span class="number">0</span></span>,
-        "<span class="attribute">per_page</span>": <span class="value"><span class="number">50</span>
-    </span>}</span>,
-    "<span class="attribute">cards</span>": <span class="value">[]
-</span>}</code></pre>
+    <span class="string">"pagination"</span>: {
+        <span class="string">"page"</span>: <span class="number">1</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
+        <span class="string">"per_page"</span>: <span class="number">50</span>
+    },
+    <span class="string">"cards"</span> : [
+          {
+             <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>,
+             <span class="string">"last_four"</span> : <span class="string">"1111"</span>,
+             <span class="string">"expiration_year"</span> : <span class="number">2023</span>,
+             <span class="string">"expiration_month"</span> : <span class="string">"01"</span>,
+             <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR50A"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A"</span>, <span class="keyword">...</span> },
+             <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
+             <span class="string">"card_type"</span> : <span class="string">"VISA card"</span>,
+             <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+             <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+             <span class="string">"metadata"</span> : {}
+          },
+          .
+          .
+          .
+    ]
+}</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h3 id='user-cards/update-user-card'>Update User Card</h3 id='user-cards/update-user-card'>
@@ -1244,17 +1119,18 @@ request.  Other fields submitted will be ignored.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"card"</span>: {
-        <span class="string">"last_four"</span> : <span class="string">"1234"</span>,
-        <span class="string">"expiration_year"</span> : <span class="number">2034</span>,
-        <span class="string">"expiration_month"</span> : <span class="string">"04"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span>: <span class="string">"USR50A"</span>, <span class="keyword">...</span> },
+        <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>,
+        <span class="string">"last_four"</span> : <span class="string">"1111"</span>,
+        <span class="string">"expiration_year"</span> : <span class="number">2023</span>,
+        <span class="string">"expiration_month"</span> : <span class="string">"01"</span>,
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR50A"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A"</span>, <span class="keyword">...</span> },
         <span class="string">"uri"</span> : <span class="string">"/v1/users/USR50A/cards/CCP6D6"</span>,
-        <span class="string">"card_type"</span> : null,
+        <span class="string">"card_type"</span> : <span class="string">"VISA card"</span>,
         <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
         <span class="string">"metadata"</span> : {
             <span class="string">"key1"</span> : <span class="string">"value1"</span>
-        },
-        <span class="string">"id"</span> : <span class="string">"CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0"</span>
+        }
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1279,21 +1155,23 @@ request.  Other fields submitted will be ignored.
 <span class="special">{</span>
     "bank": <span class="special">{</span>
         "account_number" : "1234567890",
-        "name" : "Bank Name",
-        "bank_code" : "321174851",
+        "name" : "John Smith",
+        "bank_code" : "321174851"
     <span class="special">}</span>
 <span class="special">}</span></code></pre>
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
-        <span class="string">"metadata"</span> : {},
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"is_default"</span> : <span class="number">0</span>,
-        <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+        <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,  
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {}
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1315,14 +1193,16 @@ following request:
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
-        <span class="string">"metadata"</span> : {},
-        <span class="string">"is_default"</span> : <span class="number">1</span>,
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+        <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
+        <span class="string">"is_default"</span> : <span class="number">1</span>,  
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {}
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1338,14 +1218,16 @@ following request:
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span>: {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
-        <span class="string">"metadata"</span> : {},
-        <span class="string">"is_default"</span> : <span class="number">1</span>,
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+        <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
+        <span class="string">"is_default"</span> : <span class="number">1</span>,  
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {}
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1358,14 +1240,16 @@ following request:
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span> : {
-        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
-        <span class="string">"metadata"</span> : {},
         <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"is_default"</span> : <span class="number">0</span>,
-        <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
         <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+        <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,  
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+        <span class="string">"metadata"</span> : {}
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1381,22 +1265,28 @@ following request:
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"pagination"</span>: {
-        <span class="string">"total_pages"</span>: <span class="number">0</span>,
         <span class="string">"page"</span>: <span class="number">1</span>,
-        <span class="string">"total_entries"</span>: <span class="number">0</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
         <span class="string">"per_page"</span>: <span class="number">50</span>
     },
     <span class="string">"banks"</span>: [
         {
-            <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
-            <span class="string">"metadata"</span> : {},
             <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-            <span class="string">"is_default"</span> : <span class="number">0</span>,
-            <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
-            <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+            <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
             <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-            <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
-        }
+            <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
+            <span class="string">"is_default"</span> : <span class="number">0</span>,  
+            <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+            <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>,
+            <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+            <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
+            <span class="string">"metadata"</span> : {}
+        },
+        .
+        .
+        .
     ]
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1422,16 +1312,18 @@ request.  Other fields submitted will be ignored.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"bank"</span> : {
+        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
         <span class="string">"account_number_last_four"</span> : <span class="string">"7890"</span>,
+        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
+        <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
+        <span class="string">"is_default"</span> : <span class="number">0</span>,  
+        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-08-23T07:42:46.134467000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-09-23T07:42:46.134467000Z"</span>,
         <span class="string">"metadata"</span> : {
             <span class="string">"key1"</span> : <span class="string">"value1"</span>
-        },
-        <span class="string">"id"</span> : <span class="string">"BAP688"</span>,
-        <span class="string">"is_default"</span> : <span class="number">0</span>,
-        <span class="string">"name"</span> : <span class="string">"John Doe"</span>,
-        <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
-        <span class="string">"bank_code_last_four"</span> : <span class="string">"4851"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B/banks/BAP688"</span>
+        }
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1439,7 +1331,7 @@ request.  Other fields submitted will be ignored.
 <h3 id='user-banks/delete-user-bank'>Delete User Bank</h3 id='user-banks/delete-user-bank'>
 <pre><code>DELETE /users/:<span class="keyword">id</span>/banks/:<span class="keyword">id</span></code></pre>
 <h4>Example Request</h4>
-<pre><code>$ curl -<span class="built_in">X</span> DELETE -HContent-Type:application/json -u key:secret \
+<pre><code>$ curl -<span class="built_in">X</span> DELETE -H Content-Type:application/json -u key:secret \
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/banks/BAP688</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
@@ -1451,14 +1343,33 @@ request.  Other fields submitted will be ignored.
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/users/USR54B/payments</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
-    "<span class="attribute">pagination</span>": <span class="value">{
-        "<span class="attribute">total_pages</span>": <span class="value"><span class="number">0</span></span>,
-        "<span class="attribute">page</span>": <span class="value"><span class="number">1</span></span>,
-        "<span class="attribute">total_entries</span>": <span class="value"><span class="number">0</span></span>,
-        "<span class="attribute">per_page</span>": <span class="value"><span class="number">50</span>
-    </span>}</span>,
-    "<span class="attribute">payments</span>": <span class="value">[]
-</span>}</code></pre>
+    <span class="string">"pagination"</span>: {
+        <span class="string">"page"</span>: <span class="number">1</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
+        <span class="string">"per_page"</span>: <span class="number">50</span>
+    },
+    <span class="string">"payments"</span>: [
+        {
+          <span class="string">"id"</span> : <span class="string">"CON234"</span>,
+          <span class="string">"status"</span> : <span class="string">"charged"</span>,
+          <span class="string">"amount"</span> : <span class="number">2000</span>,
+          <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
+          <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
+          <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON234"</span>,
+          <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
+          <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC42"</span>, <span class="keyword">...</span> },
+          <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR54B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR54B"</span>, <span class="keyword">...</span> },
+          <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+          <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,            
+          <span class="string">"metadata"</span> : {}
+        },
+        .
+        .
+        .        
+    ]
+}</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
 <h2 id='campaign-resources'>Campaign Resources</h2 id='campaign-resources'>
@@ -1577,7 +1488,7 @@ and then be able to receive the money collected in their campaign.
 
 </p>
 <p>The metadata field is a great place to store references to other campaign assets, such as
-a campaign image.
+a campaign image or description.
 
 </p>
 <pre><code><span class="title">POST</span> /campaigns</code></pre>
@@ -1589,7 +1500,6 @@ a campaign image.
     "campaign": <span class="special">{</span>
         "user_id":"USREC5",
         "title":"Campaign Title",
-        "description":"some description",
         "expiration_date":"2000-01-02T01:02:03Z",
         "tilt_amount":100,
         "metadata" : <span class="special">{</span> "img" : "http://www.example.com/path-to-campaign-image" <span class="special">}</span>
@@ -1599,32 +1509,29 @@ a campaign image.
 <pre><code>{
     <span class="string">"campaign"</span>: {
         <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
-        <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
         <span class="string">"title"</span>: <span class="string">"Campaign Title"</span>,
-        <span class="string">"description"</span>: <span class="string">"some description"</span>,
-        <span class="string">"privacy"</span>: <span class="number">1</span>,
-        <span class="string">"type"</span>: <span class="number">1</span>,
         <span class="string">"tilt_amount"</span>: <span class="number">100</span>,
         <span class="string">"min_payment_amount"</span>: <span class="number">0</span>,
         <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>,
         <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"is_tilted"</span>: <span class="number">0</span>,
         <span class="string">"is_paid"</span>: <span class="number">0</span>,
         <span class="string">"is_expired"</span>: <span class="number">0</span>,
-        <span class="string">"tax_id"</span>: null,
-        <span class="string">"tax_name"</span>: null,
         <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
-        <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
         <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
+        <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/settlements"</span>,
+        <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
+        <span class="string">"first_contributor"</span>: null,
+        <span class="string">"tilter"</span>: null,
         <span class="string">"stats"</span>: {
             <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
             <span class="string">"raised_amount"</span>: <span class="number">0</span>,
             <span class="string">"unique_contributors"</span>: <span class="number">0</span>,
-            <span class="string">"number_of_payments"</span>: <span class="number">0</span>
-        }
+            <span class="string">"number_of_contributions"</span>: <span class="number">0</span>
+        },
+        <span class="string">"creation_date"</span>: <span class="string">"2011-07-02T14:20:48Z"</span>,
+        <span class="string">"modification_date"</span>: <span class="string">"2011-09-02T14:20:48Z"</span>,                
+        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> }  
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1638,32 +1545,29 @@ a campaign image.
 <pre><code>{
     <span class="string">"campaign"</span>: {
         <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
-        <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
         <span class="string">"title"</span>: <span class="string">"Campaign Title"</span>,
-        <span class="string">"description"</span>: <span class="string">"some description"</span>,
-        <span class="string">"privacy"</span>: <span class="number">1</span>,
-        <span class="string">"type"</span>: <span class="number">1</span>,
         <span class="string">"tilt_amount"</span>: <span class="number">100</span>,
         <span class="string">"min_payment_amount"</span>: <span class="number">0</span>,
         <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>,
         <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"is_tilted"</span>: <span class="number">0</span>,
         <span class="string">"is_paid"</span>: <span class="number">0</span>,
         <span class="string">"is_expired"</span>: <span class="number">0</span>,
-        <span class="string">"tax_id"</span>: null,
-        <span class="string">"tax_name"</span>: null,
         <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
-        <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
         <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
+        <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/settlements"</span>,
+        <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
+        <span class="string">"first_contributor"</span>: null,
+        <span class="string">"tilter"</span>: null,
         <span class="string">"stats"</span>: {
             <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
             <span class="string">"raised_amount"</span>: <span class="number">0</span>,
             <span class="string">"unique_contributors"</span>: <span class="number">0</span>,
-            <span class="string">"number_of_payments"</span>: <span class="number">0</span>
-        }
+            <span class="string">"number_of_contributions"</span>: <span class="number">0</span>
+        },
+        <span class="string">"creation_date"</span>: <span class="string">"2011-07-02T14:20:48Z"</span>,
+        <span class="string">"modification_date"</span>: <span class="string">"2011-09-02T14:20:48Z"</span>,                
+        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> } 
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1676,40 +1580,38 @@ a campaign image.
 <h4>Response Body</h4>
 <pre><code>{
     <span class="string">"pagination"</span>: {
-        <span class="string">"total_pages"</span>: <span class="number">34337</span>,
         <span class="string">"page"</span>: <span class="number">1</span>,
-        <span class="string">"total_entries"</span>: <span class="number">1716893</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
         <span class="string">"per_page"</span>: <span class="number">50</span>
     },
     <span class="string">"campaigns"</span>: [
         {
             <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
-            <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
             <span class="string">"title"</span>: <span class="string">"Campaign Title"</span>,
-            <span class="string">"description"</span>: <span class="string">"some description"</span>,
-            <span class="string">"privacy"</span>: <span class="number">1</span>,
-            <span class="string">"type"</span>: <span class="number">1</span>,
             <span class="string">"tilt_amount"</span>: <span class="number">100</span>,
             <span class="string">"min_payment_amount"</span>: <span class="number">0</span>,
             <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>,
             <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-            <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-            <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
             <span class="string">"is_tilted"</span>: <span class="number">0</span>,
             <span class="string">"is_paid"</span>: <span class="number">0</span>,
-            <span class="string">"is_expired"</span> : <span class="number">0</span>,
-            <span class="string">"tax_id"</span>: null,
-            <span class="string">"tax_name"</span>: null,
+            <span class="string">"is_expired"</span>: <span class="number">0</span>,
             <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
-            <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
             <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-            <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
+            <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/settlements"</span>,
+            <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
+            <span class="string">"first_contributor"</span>: null,
+            <span class="string">"tilter"</span>: null,
             <span class="string">"stats"</span>: {
                 <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
                 <span class="string">"raised_amount"</span>: <span class="number">0</span>,
                 <span class="string">"unique_contributors"</span>: <span class="number">0</span>,
-                <span class="string">"number_of_payments"</span>: <span class="number">0</span>
-            }
+                <span class="string">"number_of_contributions"</span>: <span class="number">0</span>
+            },
+            <span class="string">"creation_date"</span>: <span class="string">"2011-07-02T14:20:48Z"</span>,
+            <span class="string">"modification_date"</span>: <span class="string">"2011-09-02T14:20:48Z"</span>,                
+            <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> } 
         },
         .
         .
@@ -1737,32 +1639,29 @@ to update a single attribute without having to send the full <a href="/Crowdtilt
 <pre><code>{
     <span class="string">"campaign"</span>: {
         <span class="string">"id"</span>: <span class="string">"CMPBDA"</span>,
-        <span class="string">"user_id"</span>: <span class="string">"USREC5"</span>,
         <span class="string">"title"</span>: <span class="string">"A Different Campaign Title"</span>,
-        <span class="string">"description"</span>: <span class="string">"some description"</span>,
-        <span class="string">"privacy"</span>: <span class="number">1</span>,
-        <span class="string">"type"</span>: <span class="number">1</span>,
         <span class="string">"tilt_amount"</span>: <span class="number">100</span>,
         <span class="string">"min_payment_amount"</span>: <span class="number">0</span>,
         <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>,
         <span class="string">"expiration_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"creation_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
-        <span class="string">"modification_date"</span>: <span class="string">"2000-01-02T01:02:03Z"</span>,
         <span class="string">"is_tilted"</span>: <span class="number">0</span>,
         <span class="string">"is_paid"</span>: <span class="number">0</span>,
         <span class="string">"is_expired"</span>: <span class="number">0</span>,
-        <span class="string">"tax_id"</span>: null,
-        <span class="string">"tax_name"</span>: null,
         <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPBDA"</span>,
-        <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
         <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/payments"</span>,
-        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> },
+        <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPBDA/settlements"</span>,
+        <span class="string">"admin"</span>: { <span class="string">"id"</span>: <span class="string">"USREC5"</span>, <span class="string">"uri"</span>: <span class="string">"/v1/users/USREC5"</span>, <span class="keyword">...</span> },
+        <span class="string">"first_contributor"</span>: null,
+        <span class="string">"tilter"</span>: null,
         <span class="string">"stats"</span>: {
             <span class="string">"tilt_percent"</span>: <span class="number">0</span>,
             <span class="string">"raised_amount"</span>: <span class="number">0</span>,
             <span class="string">"unique_contributors"</span>: <span class="number">0</span>,
-            <span class="string">"number_of_payments"</span>: <span class="number">0</span>
-        }
+            <span class="string">"number_of_contributions"</span>: <span class="number">0</span>
+        },
+        <span class="string">"creation_date"</span>: <span class="string">"2011-07-02T14:20:48Z"</span>,
+        <span class="string">"modification_date"</span>: <span class="string">"2011-09-02T14:20:48Z"</span>,                
+        <span class="string">"metadata"</span> : { <span class="string">"img"</span> : <span class="string">"http://www.example.com/path-to-campaign-image"</span> }
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1805,18 +1704,18 @@ the admin will only receive <code>$19.60</code> from the <code>$20.00</code> pay
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payment"</span> : {
-      <span class="string">"status"</span> : <span class="string">"charged"</span>,
-      <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,
-      <span class="string">"metadata"</span> : {},
       <span class="string">"id"</span> : <span class="string">"CON233"</span>,
-      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
+      <span class="string">"status"</span> : <span class="string">"charged"</span>,
       <span class="string">"amount"</span> : <span class="number">2000</span>,
       <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
       <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
-      <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
       <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
       <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC41"</span>, <span class="keyword">...</span> },
       <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR521"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521"</span>, <span class="keyword">...</span> },
+      <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+      <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,            
+      <span class="string">"metadata"</span> : {}
    }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1829,18 +1728,18 @@ the admin will only receive <code>$19.60</code> from the <code>$20.00</code> pay
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payment"</span> : {
-      <span class="string">"status"</span> : <span class="string">"charged"</span>,
-      <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,
-      <span class="string">"metadata"</span> : {},
       <span class="string">"id"</span> : <span class="string">"CON233"</span>,
-      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
+      <span class="string">"status"</span> : <span class="string">"charged"</span>,
       <span class="string">"amount"</span> : <span class="number">2000</span>,
       <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
       <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
-      <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
       <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
       <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC41"</span>, <span class="keyword">...</span> },
       <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR521"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521"</span>, <span class="keyword">...</span> },
+      <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+      <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,            
+      <span class="string">"metadata"</span> : {}
    }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1863,18 +1762,18 @@ Note that you may only do this for payments with a status of &quot;rejected&quot
 <h4>Response Body</h4>
 <pre><code>{
    <span class="string">"payment"</span> : {
+      <span class="string">"id"</span> : <span class="string">"CON234"</span>,
       <span class="string">"status"</span> : <span class="string">"charged"</span>,
-      <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,
-      <span class="string">"metadata"</span> : {},
-      <span class="string">"id"</span> : <span class="string">"CON233"</span>,
-      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
       <span class="string">"amount"</span> : <span class="number">2000</span>,
       <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
       <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
-      <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+      <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON234"</span>,
       <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
-      <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC42"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC41"</span>, <span class="keyword">...</span> },
+      <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC42"</span>, <span class="keyword">...</span> },
       <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR521"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521"</span>, <span class="keyword">...</span> },
+      <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+      <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,            
+      <span class="string">"metadata"</span> : {}
    }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -1886,28 +1785,32 @@ Note that you may only do this for payments with a status of &quot;rejected&quot
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMP96B/payments</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
+   <span class="string">"pagination"</span> : {
+        <span class="string">"page"</span>: <span class="number">1</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
+        <span class="string">"per_page"</span>: <span class="number">50</span>
+   },       
    <span class="string">"payments"</span> : [
       {
-         <span class="string">"status"</span> : <span class="string">"charged"</span>,
-         <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,
-         <span class="string">"metadata"</span> : {},
-         <span class="string">"id"</span> : <span class="string">"CON233"</span>,
-         <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
-         <span class="string">"amount"</span> : <span class="number">2000</span>,
-         <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
-         <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
-         <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
-         <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
-         <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC41"</span>, <span class="keyword">...</span> },
-         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR521"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521"</span>, <span class="keyword">...</span> },
-      }
-   ],
-   <span class="string">"pagination"</span> : {
-      <span class="string">"total_pages"</span> : <span class="number">1</span>,
-      <span class="string">"page"</span> : <span class="number">1</span>,
-      <span class="string">"total_entries"</span> : <span class="number">1</span>,
-      <span class="string">"per_page"</span> : <span class="number">50</span>
-   }
+          <span class="string">"id"</span> : <span class="string">"CON233"</span>,
+          <span class="string">"status"</span> : <span class="string">"charged"</span>,
+          <span class="string">"amount"</span> : <span class="number">2000</span>,
+          <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
+          <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
+          <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
+          <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
+          <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC41"</span>, <span class="keyword">...</span> },
+          <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR521"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521"</span>, <span class="keyword">...</span> },
+          <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
+          <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,            
+          <span class="string">"metadata"</span> : {}
+      },
+      .
+      .
+      .
+   ]
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
@@ -1918,28 +1821,32 @@ Note that you may only do this for payments with a status of &quot;rejected&quot
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMP96B/rejected_payments</code></pre>
 <h4>Response Body</h4>
 <pre><code>{
-   <span class="string">"payments"</span> : [
+    <span class="string">"pagination"</span> : {
+        <span class="string">"page"</span>: <span class="number">1</span>,
+        <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+        <span class="string">"total_pages"</span>: <span class="number">1</span>,
+        <span class="string">"total_entries"</span>: <span class="number">3</span>,
+        <span class="string">"per_page"</span>: <span class="number">50</span>
+    } 
+    <span class="string">"payments"</span> : [         
       {
-         <span class="string">"status"</span> : <span class="string">"rejected"</span>,
-         <span class="string">"modification_date"</span> : <span class="string">"2012-10-20T15:45:47Z"</span>,
-         <span class="string">"metadata"</span> : {},
-         <span class="string">"id"</span> : <span class="string">"CON233"</span>,
-         <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B/payments/CON233"</span>,
-         <span class="string">"amount"</span> : <span class="number">2000</span>,
-         <span class="string">"user_fee_amount"</span> : <span class="number">40</span>,
-         <span class="string">"admin_fee_amount"</span> : <span class="number">40</span>,
-         <span class="string">"creation_date"</span> : <span class="string">"2012-10-20T15:45:13Z"</span>,
-         <span class="string">"campaign"</span> : { <span class="string">"id"</span>: <span class="string">"CMP96B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP96B"</span>, <span class="keyword">...</span> },
-         <span class="string">"card"</span> : { <span class="string">"id"</span> : <span class="string">"CCPC41"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521/cards/CCPC41"</span>, <span class="keyword">...</span> },
-         <span class="string">"user"</span>: { <span class="string">"id"</span> : <span class="string">"USR521"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USR521"</span>, <span class="keyword">...</span> },
-      }
-   ],
-   <span class="string">"pagination"</span> : {
-      <span class="string">"total_pages"</span> : <span class="number">1</span>,
-      <span class="string">"page"</span> : <span class="number">1</span>,
-      <span class="string">"total_entries"</span> : <span class="number">1</span>,
-      <span class="string">"per_page"</span> : <span class="number">50</span>
-   }
+          <span class="string">"id"</span> : <span class="string">"CON234"</span>,
+          <span class="string">"status"</span> : rejected<span class="string">",
+          "</span>amount<span class="string">" : 2000,
+          "</span>user_fee_amount<span class="string">" : 40,
+          "</span>admin_fee_amount<span class="string">" : 40,
+          "</span>uri<span class="string">" : "</span>/v1/campaigns/CMP96B/payments/CON234<span class="string">",
+          "c</span>ampaign<span class="string">" : { "</span>id<span class="string">": "</span>CMP96B<span class="string">", "</span>uri<span class="string">" : "</span>/v1/campaigns/CMP96B<span class="string">", ... },
+          "c</span>ard<span class="string">" : { "</span>id<span class="string">" : "</span>CCPC41<span class="string">", "</span>uri<span class="string">" : "</span>/v1/users/USR521/cards/CCPC41<span class="string">", ... },
+          "</span>use<span class="string">r": { "</span>id<span class="string">" : "</span>USR521<span class="string">", "</span>uri<span class="string">" : "</span>/v1/users/USR521<span class="string">", ... },
+          "c</span>reation_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-<span class="number">20</span>T15:<span class="number">45</span>:<span class="number">13</span>Z<span class="string">",
+          "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-<span class="number">20</span>T15:<span class="number">45</span>:<span class="number">47</span>Z<span class="string">",            
+          "</span>metadata<span class="string">" : {}
+      },
+      .
+      .
+      .
+   ]
 }</code></pre>
 <h4>Response Codes</h4>
 <pre><code><span class="setting">200 =<span class="value">> OK</span></span></code></pre>
@@ -1985,18 +1892,19 @@ settlement has completed successfully.</li>
 <h4>Example Request</h4>
 <pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/settlements/SMTD88</code></pre>
-<h4>Response</h4>
+<h4>Response Body</h4>
 <pre><code>{
     <span class="string">"settlement"</span> : {
         <span class="string">"id"</span> : <span class="string">"SMTD88"</span>,
         <span class="string">"status"</span> : <span class="string">"pending"</span>,
         <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
         <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
-        <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-        <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
         <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
         <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
-        <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> }
+        <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> },
+        <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPCCC/settlements/SMTD88"</span>,
+        <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
+        <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>
     }
 }</code></pre>
 <h3 id='campaign-settlements/list-campaign-settlements'>List Campaign Settlements</h3 id='campaign-settlements/list-campaign-settlements'>
@@ -2004,28 +1912,32 @@ settlement has completed successfully.</li>
 <h4>Example Request</h4>
 <pre><code>$ curl -<span class="built_in">X</span> GET -H Content-Type:application/json -u key:secret \
 <span class="label">https:</span>//api-sandbox<span class="preprocessor">.crowdtilt</span><span class="preprocessor">.com</span>/v1/campaigns/CMPCCC/settlements</code></pre>
-<h4>Response</h4>
-<pre><code><span class="string">"settlements"</span> : [
-    {
-        <span class="string">"id"</span> : <span class="string">"SMTD88"</span>,
-        <span class="string">"status"</span> : <span class="string">"pending"</span>,
-        <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
-        <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
-        <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-        <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
-        <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
-        <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
-        <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> }
-    },
-    .
-    .
-    .
-],
-<span class="string">"pagination"</span> : {
-    <span class="string">"total_pages"</span> : <span class="number">1</span>,
-    <span class="string">"page"</span> : <span class="number">1</span>,
-    <span class="string">"total_entries"</span> : <span class="number">1</span>,
-    <span class="string">"per_page"</span> : <span class="number">50</span>
+<h4>Response Body</h4>
+<pre><code>{
+    <span class="string">"pagination"</span> : {
+            <span class="string">"page"</span>: <span class="number">1</span>,
+            <span class="string">"entries_on_this_page"</span>: <span class="number">3</span>,
+            <span class="string">"total_pages"</span>: <span class="number">1</span>,
+            <span class="string">"total_entries"</span>: <span class="number">3</span>,
+            <span class="string">"per_page"</span>: <span class="number">50</span>
+        }
+    <span class="string">"settlements"</span> : [
+        {
+            <span class="string">"id"</span> : <span class="string">"SMTD88"</span>,
+            <span class="string">"status"</span> : <span class="string">"pending"</span>,
+            <span class="string">"admin_amount"</span> : <span class="number">1960</span>,
+            <span class="string">"escrow_amount"</span> : <span class="number">40</span>,
+            <span class="string">"bank"</span> : { <span class="string">"id"</span> : <span class="string">"BAPCA3"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC77/banks/BAPCA3"</span>, <span class="keyword">...</span> },
+            <span class="string">"campaign"</span> : { <span class="string">"id"</span> : <span class="string">"CMPCCC"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMPCCC"</span>, <span class="keyword">...</span> },
+            <span class="string">"user"</span> : { <span class="string">"id"</span> : <span class="string">"USRC7B"</span>, <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC7B"</span>, <span class="keyword">...</span> },
+            <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPCCC/settlements/SMTD88"</span>,
+            <span class="string">"creation_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>,
+            <span class="string">"modification_date"</span> : <span class="string">"2012-10-29T15:34:48.177091000Z"</span>
+        },
+        .
+        .
+        .
+    ]
 }</code></pre>
 <h3 id='campaign-settlements/update-campaign-settlement-bank'>Update Campaign Settlement Bank</h3 id='campaign-settlements/update-campaign-settlement-bank'>
 <p>A Campaign Settlement can only be updated if the status is <code>needs bank account</code>.
@@ -2078,9 +1990,9 @@ https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comm
         "</span>body<span class="string">" : "</span>Comment Body<span class="string">",
         "</span>score<span class="string">" : 1,
         "</span>parent_id<span class="string">" : null,
-        "</span>metadata<span class="string">" : { },
         "</span>creation_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">",
-        "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">"
+        "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">",
+        "</span>metadata<span class="string">" : { }
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -2101,11 +2013,13 @@ https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comm
             "body" : "Comment Body",
             "score" : 1,
             "parent_id" : null,
-            "metadata" : { },
             "creation_date" : "2012-10-01T00:00:00Z",
-            "modification_date" : "2012-10-01T00:00:00Z"
+            "modification_date" : "2012-10-01T00:00:00Z",
+            "metadata" : { }
         },
-        ...
+        .
+        .
+        .
     ]</span>
 }</code></pre>
 <h4>Response Codes</h4>
@@ -2125,9 +2039,9 @@ https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comm
         "</span>body<span class="string">" : "</span>Comment Body<span class="string">",
         "</span>score<span class="string">" : 1,
         "</span>parent_id<span class="string">" : null,
-        "</span>metadata<span class="string">" : { },
         "</span>creation_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">",
-        "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">"
+        "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">",
+        "</span>metadata<span class="string">" : { }
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -2154,15 +2068,16 @@ https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comm
     "comment" : {
         "id" : "CMT123",
         "user_id' : "USR123",
+        "campaign_id" : "CMPCCC",
         "title" : "<span class="title">Optional</span> Title<span class="string">",
         "</span>body<span class="string">" : "</span>Comment Body<span class="string">",
-        "</span>score<span class="string">" : 2,
+        "</span>score<span class="string">" : 1,
         "</span>parent_id<span class="string">" : null,
-        "</span>metadata<span class="string">" : {
-        "</span>key<span class="string">" : "</span>value<span class="string">",
-        },
         "</span>creation_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">",
-        "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">"
+        "</span>modification_date<span class="string">" : "</span><span class="number">2012</span>-<span class="number">10</span>-01T00:<span class="number">00</span>:00Z<span class="string">",
+        "</span>metadata<span class="string">" : {
+            "</span>key<span class="string">" : "</span>value<span class="string">",
+        }
     }
 }</code></pre>
 <h4>Response Codes</h4>
@@ -2192,18 +2107,19 @@ $ curl -X POST -u key:secret  -H Content-Type:application/json \
 <span class="comment"># Response</span>
 {
     <span class="string">"user"</span> : {
-       <span class="string">"last_login_date"</span> : <span class="keyword">null</span>,
-       <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/paid_campaigns"</span>,
-       <span class="string">"is_verified"</span> : <span class="number">0</span>,
-       <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC55"</span>,
-       <span class="string">"firstname"</span> : <span class="keyword">null</span>,
-       <span class="string">"lastname"</span> : <span class="keyword">null</span>,
-       <span class="string">"email"</span> : <span class="string">"user@gmail.com"</span>,
-       <span class="string">"creation_date"</span> : <span class="string">"2012-10-31T00:41:55Z"</span>,
-       <span class="string">"metadata"</span> : {},
-       <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
-       <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/campaigns"</span>,
-       <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRC55/payments"</span>
+        <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR38/banks"</span>, 
+        <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR38/campaigns"</span>, 
+        <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR38/cards"</span>, 
+        <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+        <span class="string">"email"</span>: <span class="string">"user@gmail.com"</span>, 
+        <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+        <span class="string">"id"</span>: <span class="string">"USR38"</span>, 
+        <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+        <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+        <span class="string">"metadata"</span>: {}, 
+        <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+        <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR38/payments"</span>, 
+        <span class="string">"uri"</span>: <span class="string">"/v1/users/USR38"</span>
     }
  }
 
@@ -2219,18 +2135,19 @@ $ curl -X POST -u key:secret  -H Content-Type:application/json \
  <span class="comment"># Response</span>
  {
      <span class="string">"user"</span> : {
-        <span class="string">"last_login_date"</span> : <span class="keyword">null</span>,
-        <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRE32/paid_campaigns"</span>,
-        <span class="string">"is_verified"</span> : <span class="number">0</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/users/USRE32"</span>,
-        <span class="string">"firstname"</span> : <span class="keyword">null</span>,
-        <span class="string">"lastname"</span> : <span class="keyword">null</span>,
-        <span class="string">"email"</span> : <span class="string">"payer@gmail.com"</span>,
-        <span class="string">"creation_date"</span> : <span class="string">"2012-10-31T00:41:55Z"</span>,
-        <span class="string">"metadata"</span> : {},
-        <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
-        <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRE32/campaigns"</span>,
-        <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRE32/payments"</span>
+        <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR55/banks"</span>, 
+        <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR55/campaigns"</span>, 
+        <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR55/cards"</span>, 
+        <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+        <span class="string">"email"</span>: <span class="string">"payer@gmail.com"</span>, 
+        <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+        <span class="string">"id"</span>: <span class="string">"USR55"</span>, 
+        <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+        <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+        <span class="string">"metadata"</span>: {}, 
+        <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+        <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR55/payments"</span>, 
+        <span class="string">"uri"</span>: <span class="string">"/v1/users/USR55"</span>
      }
   }</code></pre>
 <h3 id='api-examples/create-a-campaign'>Create a campaign</h3 id='api-examples/create-a-campaign'>
@@ -2243,87 +2160,98 @@ second user to make a payment on the campaign.
     https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns \</span>
     -d<span class="string">'{
         "campaign" : {
-            "user_id" : "USRC55",
+            "user_id" : "USR38",
             "expiration_date" : "2012-10-31T12:00:00Z",
             "title" : "Halloween Awesome Fest",
-            "description" : "This will be the best thing ever!",
-            "tilt_amount" : 300000,
+            "tilt_amount" : 300000
         }
     }'</span>
 
 <span class="comment"># Response</span>
 {
     <span class="string">"campaign"</span> : {
-        <span class="string">"tilter"</span> : <span class="keyword">null</span>,
-        <span class="string">"min_payment_amount"</span> : <span class="number">0</span>,
-        <span class="string">"first_contributor"</span> : <span class="keyword">null</span>,
-        <span class="string">"metadata"</span> : {},
-        <span class="string">"id"</span> : <span class="string">"CMP542"</span>,
-        <span class="string">"is_paid"</span> : <span class="number">0</span>,
-        <span class="string">"settlements_uri"</span> : <span class="string">"/v1/campaigns/CMP542/settlements"</span>,
-        <span class="string">"privacy"</span> : <span class="number">1</span>,
-        <span class="string">"admin"</span> : {
-            <span class="string">"firstname"</span> : <span class="keyword">null</span>,
-            <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/paid_campaigns"</span>,
-            <span class="string">"email"</span> : <span class="string">"user@gmail.com"</span>,
-            <span class="string">"metadata"</span> : {},
-            <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
-            <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC55"</span>,
-            <span class="string">"creation_date"</span> : <span class="string">"2012-10-31T00:41:55Z"</span>,
-            <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/campaigns"</span>,
-            <span class="string">"last_login_date"</span> : <span class="string">"2012-10-30T17:41:55.834029000Z"</span>,
-            <span class="string">"lastname"</span> : <span class="keyword">null</span>,
-            <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRC55/payments"</span>,
-            <span class="string">"is_verified"</span> : <span class="number">0</span>
-        },
-        <span class="string">"is_expired"</span> : <span class="number">0</span>,
-        <span class="string">"fixed_payment_amount"</span> : <span class="number">0</span>,
-        <span class="string">"tilt_amount"</span> : <span class="number">300000</span>,
-        <span class="string">"description"</span> : <span class="string">"This will be the best thing ever!"</span>,
-        <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP542"</span>,
-        <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
-        <span class="string">"user_id"</span> : <span class="string">"USRC55"</span>,
-        <span class="string">"title"</span> : <span class="string">"Halloween Awesome Fest"</span>,
-        <span class="string">"payments_uri"</span> : <span class="string">"/v1/campaigns/CMP542/payments"</span>,
-        <span class="string">"modification_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
-        <span class="string">"stats"</span> : {
-            <span class="string">"tilt_percent"</span> : <span class="number">0</span>,
-            <span class="string">"raised_amount"</span> : <span class="number">0</span>,
-            <span class="string">"unique_contributors"</span> : <span class="number">0</span>,
-            <span class="string">"number_of_contributions"</span> : <span class="number">0</span>
-        },
-        <span class="string">"expiration_date"</span> : <span class="string">"2012-10-31T12:00:00Z"</span>,
-        <span class="string">"is_tilted"</span> : <span class="number">0</span>,
-        <span class="string">"tax_id"</span> : <span class="keyword">null</span>,
-        <span class="string">"tax_name"</span> : <span class="keyword">null</span>
+        <span class="string">"admin"</span>: {
+            <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR38/banks"</span>, 
+            <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR38/campaigns"</span>, 
+            <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR38/cards"</span>, 
+            <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+            <span class="string">"email"</span>: <span class="string">"user@gmail.com"</span>, 
+            <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+            <span class="string">"id"</span>: <span class="string">"USR38"</span>, 
+            <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+            <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+            <span class="string">"metadata"</span>: {}, 
+            <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+            <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR38/payments"</span>, 
+            <span class="string">"uri"</span>: <span class="string">"/v1/users/USR38"</span>
+        }, 
+        <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:34:13.518139000Z"</span>, 
+        <span class="string">"expiration_date"</span>: <span class="string">"2012-10-31T12:00:00Z"</span>, 
+        <span class="string">"first_contributor"</span>: <span class="keyword">null</span>, 
+        <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>, 
+        <span class="string">"id"</span>: <span class="string">"CMPDE8"</span>, 
+        <span class="string">"is_expired"</span>: <span class="number">0</span>, 
+        <span class="string">"is_paid"</span>: <span class="number">0</span>, 
+        <span class="string">"is_tilted"</span>: <span class="number">0</span>, 
+        <span class="string">"metadata"</span>: {}, 
+        <span class="string">"min_payment_amount"</span>: <span class="number">0</span>, 
+        <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:34:13.518139000Z"</span>, 
+        <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPDE8/payments"</span>, 
+        <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPDE8/settlements"</span>, 
+        <span class="string">"stats"</span>: {
+            <span class="string">"number_of_contributions"</span>: <span class="number">0</span>, 
+            <span class="string">"raised_amount"</span>: <span class="number">0</span>, 
+            <span class="string">"tilt_percent"</span>: <span class="number">0</span>, 
+            <span class="string">"unique_contributors"</span>: <span class="number">0</span>
+        }, 
+        <span class="string">"tilt_amount"</span>: <span class="number">300000</span>, 
+        <span class="string">"tilter"</span>: <span class="keyword">null</span>, 
+        <span class="string">"title"</span>: <span class="string">"Halloween Awesome Fest"</span>, 
+        <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPDE8"</span>
     }
 }</code></pre>
 <h3 id='api-examples/create-a-card'>Create a card</h3 id='api-examples/create-a-card'>
 <p>Now, we&#39;ll create a credit card for the paying user.
 
 </p>
-<pre><code><span class="variable">$ </span><span class="identifier">curl</span> -<span class="constant">X</span> <span class="constant">POST</span> -<span class="identifier">u</span> <span class="identifier">key</span><span class="symbol">:<span class="identifier">secret</span></span>  -<span class="constant">H</span> <span class="constant">Content</span>-<span class="constant">Type</span><span class="symbol">:<span class="identifier">application</span></span>/<span class="identifier">json</span> \
-    <span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/api-sandbox.crowdtilt.com/v</span>1/<span class="identifier">users</span>/<span class="constant">USRE32</span>/<span class="identifier">cards</span> \
-    -<span class="identifier">d</span><span class="string">'{
+<pre><code>$ curl -X POST -u key:secret  -H Content-Type:application/json \
+    https:<span class="comment">//api-sandbox.crowdtilt.com/v1/users/USR55/cards \</span>
+    -d<span class="string">'{
         "card" : {
             "number" : "4111111111111111",
             "expiration_month" : "07",
-            "expiration_year" : "2032",
+            "expiration_year" : "2023",
             "security_code" : "123"
         }
     }'</span>
 
 <span class="comment"># Response</span>
 {
-    <span class="string">"card"</span> <span class="symbol">:</span> {
-       <span class="string">"last_four"</span> <span class="symbol">:</span> <span class="string">"1111"</span>,
-       <span class="string">"expiration_year"</span> <span class="symbol">:</span> <span class="string">"2032"</span>,
-       <span class="string">"expiration_month"</span> <span class="symbol">:</span> <span class="string">"07"</span>,
-       <span class="string">"uri"</span> <span class="symbol">:</span> <span class="string">"/v1/users/USRE32/cards/CCPA69"</span>,
-       <span class="string">"card_type"</span> <span class="symbol">:</span> <span class="string">"VISA card"</span>,
-       <span class="string">"creation_date"</span> <span class="symbol">:</span> <span class="string">"2012-11-01T20:49:37Z"</span>,
-       <span class="string">"metadata"</span> <span class="symbol">:</span> {},
-       <span class="string">"id"</span> <span class="symbol">:</span> <span class="string">"CCPA69"</span>
+    <span class="string">"card"</span> : {
+        <span class="string">"card_type"</span>: <span class="string">"VISA card"</span>, 
+        <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:36:21.682748000Z"</span>, 
+        <span class="string">"expiration_month"</span>: <span class="string">"07"</span>, 
+        <span class="string">"expiration_year"</span>: <span class="number">2023</span>, 
+        <span class="string">"id"</span>: <span class="string">"CCP2A"</span>, 
+        <span class="string">"last_four"</span>: <span class="string">"1111"</span>, 
+        <span class="string">"metadata"</span>: {}, 
+        <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:36:21.682748000Z"</span>, 
+        <span class="string">"uri"</span>: <span class="string">"/v1/users/USR55/cards/CCP2AE"</span>, 
+        <span class="string">"user"</span>: {
+            <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR55/banks"</span>, 
+            <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR55/campaigns"</span>, 
+            <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR55/cards"</span>, 
+            <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+            <span class="string">"email"</span>: <span class="string">"payer@gmail.com"</span>, 
+            <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+            <span class="string">"id"</span>: <span class="string">"USR55"</span>, 
+            <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+            <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+            <span class="string">"metadata"</span>: {}, 
+            <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+            <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR55/payments"</span>, 
+            <span class="string">"uri"</span>: <span class="string">"/v1/users/USR55"</span>
+        }
     }
  }</code></pre>
 <h3 id='api-examples/create-a-payment'>Create a payment</h3 id='api-examples/create-a-payment'>
@@ -2331,108 +2259,110 @@ second user to make a payment on the campaign.
 
 </p>
 <pre><code>$ curl -X POST -u key:secret  -H Content-Type:application/json \
-    https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaings/CMP542/payments \</span>
+    https:<span class="comment">//api-sandbox.crowdtilt.com/v1/campaigns/CMP542/payments \</span>
     -d<span class="string">'{
         "payment" : {
-            "user_id" : "USRE32",
-            "amount" : "2000",
+            "user_id" : "USR55",
+            "amount" : "3000",
             "user_fee_amount" : "100",
-            "admin_fee_amount" : "200",
-            "card_id" : "CCPA69"
+            "admin_fee_amount" : "40",
+            "card_id" : "CCP2AE"
         }
     }'</span>
 
 <span class="comment"># Response</span>
 {
     <span class="string">"payment"</span> : {
-       <span class="string">"status"</span> : <span class="string">"authorized"</span>,
-       <span class="string">"user_fee_amount"</span> : <span class="string">"100"</span>,
-       <span class="string">"campaign"</span> : {
-          <span class="string">"tilter"</span> : <span class="keyword">null</span>,
-          <span class="string">"min_payment_amount"</span> : <span class="number">0</span>,
-          <span class="string">"first_contributor"</span> : {
-             <span class="string">"firstname"</span> : <span class="string">""</span>,
-             <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRE32/paid_campaigns"</span>,
-             <span class="string">"email"</span> : <span class="string">"payer@gmail.com"</span>,
-             <span class="string">"metadata"</span> : {},
-             <span class="string">"id"</span> : <span class="string">"USRE32"</span>,
-             <span class="string">"uri"</span> : <span class="string">"/v1/users/USRE32"</span>,
-             <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T20:56:19Z"</span>,
-             <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRE32/campaigns"</span>,
-             <span class="string">"last_login_date"</span> : <span class="string">"2012-11-01T13:56:19.964087000Z"</span>,
-             <span class="string">"lastname"</span> : <span class="string">""</span>,
-             <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRE32/payments"</span>,
-             <span class="string">"is_verified"</span> : <span class="number">0</span>
-          },
-          <span class="string">"metadata"</span> : {},
-          <span class="string">"id"</span> : <span class="string">"CMP542"</span>,
-          <span class="string">"is_paid"</span> : <span class="number">0</span>,
-          <span class="string">"settlements_uri"</span> : <span class="string">"/v1/campaigns/CMP542"</span>,
-          <span class="string">"privacy"</span> : <span class="number">1</span>,
-          <span class="string">"admin"</span> : {
-             <span class="string">"firstname"</span> : <span class="string">""</span>,
-             <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/paid_campaigns"</span>,
-             <span class="string">"email"</span> : <span class="string">"user@gmail.com"</span>,
-             <span class="string">"metadata"</span> : {},
-             <span class="string">"id"</span> : <span class="string">"USRC55"</span>,
-             <span class="string">"uri"</span> : <span class="string">"/v1/users/USRC55"</span>,
-             <span class="string">"creation_date"</span> : <span class="string">"2012-10-31T00:41:55Z"</span>,
-             <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRC55/campaigns"</span>,
-             <span class="string">"last_login_date"</span> : <span class="string">"2012-10-30T17:41:55.834029000Z"</span>,
-             <span class="string">"lastname"</span> : <span class="string">""</span>,
-             <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRC55/payments"</span>,
-             <span class="string">"is_verified"</span> : <span class="number">0</span>
-          },
-          <span class="string">"is_expired"</span> : <span class="number">1</span>,
-          <span class="string">"fixed_payment_amount"</span> : <span class="number">0</span>,
-          <span class="string">"tilt_amount"</span> : <span class="number">300000</span>,
-          <span class="string">"description"</span> : <span class="string">"This will be the best thing ever!"</span>,
-          <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP542"</span>,
-          <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
-          <span class="string">"title"</span> : <span class="string">"Halloween Awesome Fest"</span>,
-          <span class="string">"payments_uri"</span> : <span class="string">"/v1/campaigns/CMP5422B558246411E281ED84A52A776874/payments"</span>,
-          <span class="string">"modification_date"</span> : <span class="string">"2012-11-01T13:40:10.153237000Z"</span>,
-          <span class="string">"stats"</span> : {
-             <span class="string">"tilt_percent"</span> : <span class="number">2</span>,
-             <span class="string">"raised_amount"</span> : <span class="number">6000</span>,
-             <span class="string">"unique_contributors"</span> : <span class="number">1</span>,
-             <span class="string">"number_of_contributions"</span> : <span class="number">3</span>
-          },
-          <span class="string">"expiration_date"</span> : <span class="string">"2012-10-31T12:00:00Z"</span>,
-          <span class="string">"is_tilted"</span> : <span class="number">0</span>,
-          <span class="string">"tax_id"</span> : <span class="keyword">null</span>,
-          <span class="string">"tax_name"</span> : <span class="keyword">null</span>
-       },
-       <span class="string">"user"</span> : {
-          <span class="string">"firstname"</span> : <span class="string">""</span>,
-          <span class="string">"paid_campaigns_uri"</span> : <span class="string">"/v1/users/USR962FB8E0246611E2AEDE84A52A776874/paid_campaigns"</span>,
-          <span class="string">"email"</span> : <span class="string">"payer@gmail.com"</span>,
-          <span class="string">"metadata"</span> : {},
-          <span class="string">"id"</span> : <span class="string">"USRE32"</span>,
-          <span class="string">"uri"</span> : <span class="string">"/v1/users/USRE32"</span>,
-          <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T20:56:19Z"</span>,
-          <span class="string">"campaigns_uri"</span> : <span class="string">"/v1/users/USRE32/campaigns"</span>,
-          <span class="string">"last_login_date"</span> : <span class="string">"2012-11-01T13:56:19.964087000Z"</span>,
-          <span class="string">"lastname"</span> : <span class="string">""</span>,
-          <span class="string">"payments_uri"</span> : <span class="string">"/v1/users/USRE32/payments"</span>,
-          <span class="string">"is_verified"</span> : <span class="number">0</span>
-       },
-       <span class="string">"metadata"</span> : {},
-       <span class="string">"id"</span> : <span class="string">"CON036"</span>,
-       <span class="string">"uri"</span> : <span class="string">"/v1/campaigns/CMP542/payments/CON036"</span>,
-       <span class="string">"card"</span> : {
-          <span class="string">"last_four"</span> : <span class="string">"1111"</span>,
-          <span class="string">"metadata"</span> : {},
-          <span class="string">"id"</span> : <span class="string">"CCPA69"</span>,
-          <span class="string">"expiration_year"</span> : <span class="number">2032</span>,
-          <span class="string">"expiration_month"</span> : <span class="string">"07"</span>,
-          <span class="string">"uri"</span> : <span class="string">"/v1/users/USRE32/cards/CCPA69"</span>,
-          <span class="string">"card_type"</span> : <span class="string">"VISA card"</span>,
-          <span class="string">"creation_date"</span> : <span class="string">"2012-11-01T20:57:20Z"</span>
-       },
-       <span class="string">"amount"</span> : <span class="string">"2000"</span>,
-       <span class="string">"admin_fee_amount"</span> : <span class="string">"200"</span>,
-    }
+        <span class="string">"admin_fee_amount"</span>: <span class="number">40</span>, 
+        <span class="string">"amount"</span>: <span class="number">3000</span>, 
+        <span class="string">"campaign"</span> : {
+            <span class="string">"admin"</span>: {
+                <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR38/banks"</span>, 
+                <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR38/campaigns"</span>, 
+                <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR38/cards"</span>, 
+                <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+                <span class="string">"email"</span>: <span class="string">"user@gmail.com"</span>, 
+                <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+                <span class="string">"id"</span>: <span class="string">"USR38"</span>, 
+                <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+                <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+                <span class="string">"metadata"</span>: {}, 
+                <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+                <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR38/payments"</span>, 
+                <span class="string">"uri"</span>: <span class="string">"/v1/users/USR38"</span>
+            }, 
+            <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:34:13.518139000Z"</span>, 
+            <span class="string">"expiration_date"</span>: <span class="string">"2012-10-31T12:00:00Z"</span>, 
+            <span class="string">"first_contributor"</span>: <span class="keyword">null</span>, 
+            <span class="string">"fixed_payment_amount"</span>: <span class="number">0</span>, 
+            <span class="string">"id"</span>: <span class="string">"CMPDE8"</span>, 
+            <span class="string">"is_expired"</span>: <span class="number">0</span>, 
+            <span class="string">"is_paid"</span>: <span class="number">0</span>, 
+            <span class="string">"is_tilted"</span>: <span class="number">0</span>, 
+            <span class="string">"metadata"</span>: {}, 
+            <span class="string">"min_payment_amount"</span>: <span class="number">0</span>, 
+            <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:34:13.518139000Z"</span>, 
+            <span class="string">"payments_uri"</span>: <span class="string">"/v1/campaigns/CMPDE8/payments"</span>, 
+            <span class="string">"settlements_uri"</span>: <span class="string">"/v1/campaigns/CMPDE8/settlements"</span>, 
+            <span class="string">"stats"</span>: {
+                <span class="string">"number_of_contributions"</span>: <span class="number">1</span>, 
+                <span class="string">"raised_amount"</span>: <span class="number">3000</span>, 
+                <span class="string">"tilt_percent"</span>: <span class="number">1</span>, 
+                <span class="string">"unique_contributors"</span>: <span class="number">1</span>
+            }, 
+            <span class="string">"tilt_amount"</span>: <span class="number">300000</span>, 
+            <span class="string">"tilter"</span>: <span class="keyword">null</span>, 
+            <span class="string">"title"</span>: <span class="string">"Halloween Awesome Fest"</span>, 
+            <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPDE8"</span>
+        },  
+        <span class="string">"card"</span>: {
+            <span class="string">"card_type"</span>: <span class="string">"VISA card"</span>, 
+            <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:36:21.682748000Z"</span>, 
+            <span class="string">"expiration_month"</span>: <span class="string">"07"</span>, 
+            <span class="string">"expiration_year"</span>: <span class="number">2023</span>, 
+            <span class="string">"id"</span>: <span class="string">"CCP2A"</span>, 
+            <span class="string">"last_four"</span>: <span class="string">"1111"</span>, 
+            <span class="string">"metadata"</span>: {}, 
+            <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:36:21.682748000Z"</span>, 
+            <span class="string">"uri"</span>: <span class="string">"/v1/users/USR55/cards/CCP2AE"</span>, 
+            <span class="string">"user"</span>: {
+                <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR55/banks"</span>, 
+                <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR55/campaigns"</span>, 
+                <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR55/cards"</span>, 
+                <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+                <span class="string">"email"</span>: <span class="string">"payer@gmail.com"</span>, 
+                <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+                <span class="string">"id"</span>: <span class="string">"USR55"</span>, 
+                <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+                <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+                <span class="string">"metadata"</span>: {}, 
+                <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+                <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR55/payments"</span>, 
+                <span class="string">"uri"</span>: <span class="string">"/v1/users/USR55"</span>
+            }
+        },  
+        <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:38:38.736326000Z"</span>, 
+        <span class="string">"id"</span>: <span class="string">"CON7C9"</span>, 
+        <span class="string">"metadata"</span>: {}, 
+        <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:38:41Z"</span>, 
+        <span class="string">"status"</span>: <span class="string">"authorized"</span>, 
+        <span class="string">"uri"</span>: <span class="string">"/v1/campaigns/CMPDE8/payments/CON7C9"</span>, 
+        <span class="string">"user"</span>: {
+            <span class="string">"banks_uri"</span>: <span class="string">"/v1/users/USR55/banks"</span>, 
+            <span class="string">"campaigns_uri"</span>: <span class="string">"/v1/users/USR55/campaigns"</span>, 
+            <span class="string">"cards_uri"</span>: <span class="string">"/v1/users/USR55/cards"</span>, 
+            <span class="string">"creation_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>, 
+            <span class="string">"email"</span>: <span class="string">"payer@gmail.com"</span>, 
+            <span class="string">"firstname"</span>: <span class="keyword">null</span>, 
+            <span class="string">"id"</span>: <span class="string">"USR55"</span>, 
+            <span class="string">"is_verified"</span>: <span class="number">0</span>, 
+            <span class="string">"lastname"</span>: <span class="keyword">null</span>, 
+            <span class="string">"metadata"</span>: {}, 
+            <span class="string">"modification_date"</span>: <span class="string">"2013-03-19T03:29:34.605286000Z"</span>,  
+            <span class="string">"payments_uri"</span>: <span class="string">"/v1/users/USR55/payments"</span>, 
+            <span class="string">"uri"</span>: <span class="string">"/v1/users/USR55"</span>
+        }, 
+        <span class="string">"user_fee_amount"</span>: <span class="number">100</span>
  }</code></pre>
 <p>This payment will charge <code>$21.00</code> to the user&#39;s credit card (<code>$20.00</code> from the
 <code>amount</code> field, plus <code>$1.00</code> from the <code>user_fee_amount</code> field), and the admin of
@@ -2520,14 +2450,31 @@ crowdtilt<span class="preprocessor">.card</span><span class="preprocessor">.crea
 </p>
 <pre><code>{
     "<span class="attribute">card</span>": <span class="value">{
-        "<span class="attribute">last_four</span>":<span class="value"><span class="string">"1111"</span></span>,
-        "<span class="attribute">expiration_year</span>":<span class="value"><span class="number">2013</span></span>,
-        "<span class="attribute">expiration_month</span>":<span class="value"><span class="string">"03"</span></span>,
-        "<span class="attribute">uri</span>":<span class="value"><span class="string">"/v1/users/USR1E0A9BCE5F6111E28F485D097AC0CAB6/cards/CCP59BCB06C601F11E28057FB337AC0CAB6"</span></span>,
-        "<span class="attribute">card_type</span>":<span class="value"><span class="string">"VISA card"</span></span>,
-        "<span class="attribute">creation_date</span>":<span class="value"><span class="string">"2013-01-16T20:57:34Z"</span></span>,
-        "<span class="attribute">metadata</span>":<span class="value">{}</span>,
-        "<span class="attribute">id</span>":<span class="value"><span class="string">"CCP59BCB06C601F11E28057FB337AC0CAB6"</span>
+        "<span class="attribute">card_type</span>": <span class="value"><span class="string">"VISA card"</span></span>, 
+        "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2013-03-19T03:48:59.685761000Z"</span></span>, 
+        "<span class="attribute">expiration_month</span>": <span class="value"><span class="string">"03"</span></span>, 
+        "<span class="attribute">expiration_year</span>": <span class="value"><span class="number">2023</span></span>, 
+        "<span class="attribute">id</span>": <span class="value"><span class="string">"CCPEEBABE72904711E2AB7EDDC43A854B4C"</span></span>, 
+        "<span class="attribute">last_four</span>": <span class="value"><span class="string">"1111"</span></span>, 
+        "<span class="attribute">metadata</span>": <span class="value">{}</span>, 
+        "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2013-03-19T03:48:59.685761000Z"</span></span>, 
+        "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/cards/CCPEEBABE72904711E2AB7EDDC43A854B4C"</span></span>, 
+        "<span class="attribute">user</span>": <span class="value">{
+            "<span class="attribute">banks_uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/banks"</span></span>, 
+            "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/campaigns"</span></span>, 
+            "<span class="attribute">cards_uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/cards"</span></span>, 
+            "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2013-02-18T00:09:39Z"</span></span>, 
+            "<span class="attribute">email</span>": <span class="value"><span class="string">"mark@ting.com"</span></span>, 
+            "<span class="attribute">firstname</span>": <span class="value"><span class="string">"John"</span></span>, 
+            "<span class="attribute">id</span>": <span class="value"><span class="string">"USR7C7CE3AC795F11E2901DABD956AC4F1A"</span></span>, 
+            "<span class="attribute">is_verified</span>": <span class="value"><span class="number">0</span></span>, 
+            "<span class="attribute">lastname</span>": <span class="value"><span class="string">"Smith"</span></span>, 
+            "<span class="attribute">metadata</span>": <span class="value">{}</span>, 
+            "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2013-03-19T00:03:56Z"</span></span>, 
+            "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/paid_campaigns"</span></span>, 
+            "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/payments"</span></span>, 
+            "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A"</span>
+        </span>}
     </span>}</span>,
     "<span class="attribute">request_id</span>":<span class="value"><span class="string">"REQ5735A0D8601F11E2998D00347AC0CAB6"</span></span>,
     "<span class="attribute">status</span>":<span class="value"><span class="number">201</span>
@@ -2578,7 +2525,7 @@ you need to make an additional API call to set this new bank account as the &#39
 
 </p>
 <pre><code><span class="string">"bankData"</span>: {
-    <span class="string">"name"</span> : <span class="string">"Bank Name"</span>,
+    <span class="string">"name"</span> : <span class="string">"John Smith"</span>,
     <span class="string">"account_number"</span> : <span class="string">"1234567890"</span>,
     <span class="string">"bank_code"</span> : <span class="string">"321174851"</span>
 }
@@ -2600,13 +2547,31 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
 </p>
 <pre><code>{
     "<span class="attribute">bank</span>": <span class="value">{
-        "<span class="attribute">account_number_last_four</span>":<span class="value"><span class="string">"0000"</span></span>,
-        "<span class="attribute">metadata</span>":<span class="value">{}</span>,"<span class="attribute">id</span>":<span class="value"><span class="string">"BAP5973D36A601F11E29CF3FB337AC0CAB6"</span></span>,
-        "<span class="attribute">is_valid</span>":<span class="value"><span class="number">1</span></span>,
-        "<span class="attribute">name</span>":<span class="value"><span class="string">"Wells Fargo"</span></span>,
-        "<span class="attribute">user_uri</span>":<span class="value"><span class="string">"/v1/users/USR1E0A9BCE5F6111E28F485D097AC0CAB6"</span></span>,
-        "<span class="attribute">bank_code_last_four</span>":<span class="value"><span class="string">"4851"</span></span>,
-        "<span class="attribute">uri</span>":<span class="value"><span class="string">"/v1/users/USR1E0A9BCE5F6111E28F485D097AC0CAB6/banks/BAP5973D36A601F11E29CF3FB337AC0CAB6"</span>
+        "<span class="attribute">account_number_last_four</span>": <span class="value"><span class="string">"7890"</span></span>, 
+        "<span class="attribute">bank_code_last_four</span>": <span class="value"><span class="string">"1234"</span></span>, 
+        "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2013-03-19T03:46:45.557777000Z"</span></span>, 
+        "<span class="attribute">id</span>": <span class="value"><span class="string">"BAP9EC85D70904711E2AB7EDDC43A854B4C"</span></span>, 
+        "<span class="attribute">is_default</span>": <span class="value"><span class="number">0</span></span>, 
+        "<span class="attribute">metadata</span>": <span class="value">{}</span>, 
+        "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2013-03-19T03:46:45.557777000Z"</span></span>, 
+        "<span class="attribute">name</span>": <span class="value"><span class="string">"John Smith"</span></span>, 
+        "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/banks/BAP9EC85D70904711E2AB7EDDC43A854B4C"</span></span>, 
+        "<span class="attribute">user</span>": <span class="value">{
+            "<span class="attribute">banks_uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/banks"</span></span>, 
+            "<span class="attribute">campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/campaigns"</span></span>, 
+            "<span class="attribute">cards_uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/cards"</span></span>, 
+            "<span class="attribute">creation_date</span>": <span class="value"><span class="string">"2013-02-19T18:11:37Z"</span></span>, 
+            "<span class="attribute">email</span>": <span class="value"><span class="string">"happyness@sauce.com"</span></span>, 
+            "<span class="attribute">firstname</span>": <span class="value"><span class="string">"marc"</span></span>, 
+            "<span class="attribute">id</span>": <span class="value"><span class="string">"USRCD2689FA7ABF11E2863ADF5C03071083"</span></span>, 
+            "<span class="attribute">is_verified</span>": <span class="value"><span class="number">1</span></span>, 
+            "<span class="attribute">lastname</span>": <span class="value"><span class="literal">null</span></span>, 
+            "<span class="attribute">metadata</span>": <span class="value">{}</span>, 
+            "<span class="attribute">modification_date</span>": <span class="value"><span class="string">"2013-03-04T06:14:25.991725000Z"</span></span>, 
+            "<span class="attribute">paid_campaigns_uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/paid_campaigns"</span></span>, 
+            "<span class="attribute">payments_uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/payments"</span></span>, 
+            "<span class="attribute">uri</span>": <span class="value"><span class="string">"/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083"</span>
+        </span>}
     </span>}</span>,
     "<span class="attribute">request_id</span>":<span class="value"><span class="string">"REQ5743854A601F11E2B79201347AC0CAB6"</span></span>,
     "<span class="attribute">status</span>":<span class="value"><span class="number">201</span>
@@ -2871,19 +2836,10 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>It is ISO8601 DateTime format</td>
         </tr>
         <tr>
-            <td>last_login_date</td>
+            <td>modification_date</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
-            <td>
-                It is ISO8601 DateTime format, updated when a user
-                is authenticated.
-            </td>
-        </tr>
-        <tr>
-            <td>metadata</td>
-            <td>JSON object</td>
-            <td>No</td>
-            <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a user&#39;s profile image.</td>
+            <td>It is ISO8601 DateTime format</td>
         </tr>
         <tr>
             <td>uri</td>
@@ -2892,16 +2848,22 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>The uri for this user resource</td>
         </tr>
         <tr>
+            <td>cards_uri</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>The uri for listing user&#39;s cards</td>
+        </tr>
+        <tr>
+            <td>banks_uri</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>The uri for listing user&#39;s banks</td>
+        </tr>
+        <tr>
             <td>campaigns_uri</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
             <td>The uri for listing user&#39;s campaigns</td>
-        </tr>
-        <tr>
-            <td>paid_campaigns_uri</td>
-            <td>string</td>
-            <td>Auto generated and read-only</td>
-            <td>The uri for listing the campaigns the user paid for</td>
         </tr>
         <tr>
             <td>payments_uri</td>
@@ -2909,6 +2871,13 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>Auto generated and read-only</td>
             <td>The uri for the user&#39;s payments</td>
         </tr>
+        <tr>
+            <td>metadata</td>
+            <td>JSON object</td>
+            <td>No</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a user&#39;s profile image.</td>
+        </tr>
+
     </tbody>
 </table>
 
@@ -2960,23 +2929,30 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>Read-Only</td>
             <td> The user object that owns this card</td>
         </tr>
-        <tr>
-            <td>metadata</td>
-            <td>JSON object</td>
-            <td>No</td>
-            <td>Key-Value pair for any extra data the API consumer wants to store.</td>
-        </tr>
+
         <tr>
             <td>uri</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
-            <td>The uri for this user resource</td>
+            <td>The uri for this card resource</td>
         </tr>
         <tr>
             <td>creation_date</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
             <td>It is ISO8601 DateTime format</td>
+        </tr>
+        <tr>
+            <td>modification_date</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>It is ISO8601 DateTime format</td>
+        </tr>
+        <tr>
+            <td>metadata</td>
+            <td>JSON object</td>
+            <td>No</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store.</td>
         </tr>
     </tbody>
 </table>
@@ -3000,28 +2976,10 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>A unique identifier for the bank</td>
         </tr>
         <tr>
-            <td>is_default</td>
-            <td>Integer (1 or 0)</td>
-            <td>Read-only</td>
-            <td> Tells you if this bank is currently the default for the user </td>
-        </tr>
-        <tr>
-            <td>account_number</td>
-            <td>string</td>
-            <td>Yes, not returned</td>
-            <td> Bank Account Number </td>
-        </tr>
-        <tr>
             <td>account_number_last_four</td>
             <td>string</td>
             <td>Read-Only</td>
             <td>Last four digits of account nummber</td>
-        </tr>
-        <tr>
-            <td>bank_code</td>
-            <td>string</td>
-            <td>Yes, not returned</td>
-            <td> Bank Routing Code </td>
         </tr>
         <tr>
             <td>bank_code_last_four</td>
@@ -3036,22 +2994,40 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td> The name of this bank account </td>
         </tr>
         <tr>
+            <td>is_default</td>
+            <td>Integer (1 or 0)</td>
+            <td>Read-only</td>
+            <td> Tells you if this bank is currently the default for the user </td>
+        </tr>
+        <tr>
             <td>user</td>
             <td>JSON object</td>
             <td>Read-Only</td>
             <td> The user object that owns this bank</td>
         </tr>
         <tr>
+            <td>uri</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>The uri for this bank resource</td>
+        </tr>
+        <tr>
+            <td>creation_date</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>It is ISO8601 DateTime format</td>
+        </tr>
+        <tr>
+            <td>modification_date</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>It is ISO8601 DateTime format</td>
+        </tr>
+        <tr>
             <td>metadata</td>
             <td>JSON object</td>
             <td>No</td>
             <td>Key-Value pair for any extra data the API consumer wants to store.</td>
-        </tr>
-        <tr>
-            <td>uri</td>
-            <td>string</td>
-            <td>Auto generated and read-only</td>
-            <td>The uri for this user resource</td>
         </tr>
     </tbody>
 </table>
@@ -3075,65 +3051,10 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>A unique identifier for the campaign</td>
         </tr>
         <tr>
-            <td>user_id</td>
-            <td>string</td>
-            <td>Yes</td>
-            <td>The id of the campaign admin</td>
-        </tr>
-        <tr>
             <td>title</td>
             <td>string</td>
             <td>Yes</td>
             <td>The title of the campaign</td>
-        </tr>
-        <tr>
-            <td>description</td>
-            <td>string</td>
-            <td>Yes</td>
-            <td>The description of the campaign</td>
-        </tr>
-        <tr>
-            <td>is_expired</td>
-            <td>number</td>
-            <td>No</td>
-            <td>Whether or not the campaign is expired
-                <table>
-                    <tr>
-                        <td>Value</td>
-                        <td>Description</td>
-                    </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>Not Expired</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Expired</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>privacy</td>
-            <td>number</td>
-            <td>No</td>
-            <td>The privacy settings for the campaign. It defaults to 1.
-            Available values
-                <table>
-                    <tr>
-                        <td>Value</td>
-                        <td>Description</td>
-                    </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>public</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>private</td>
-                    </tr>
-                </table>
-            </td>
         </tr>
         <tr>
             <td>tilt_amount</td>
@@ -3166,18 +3087,6 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>The expiration date of the campaign</td>
         </tr>
         <tr>
-            <td>creation_date</td>
-            <td>String. ISO8601 DateTime format</td>
-            <td>Auto generated and read-only</td>
-            <td>The creation date of the campaign</td>
-        </tr>
-        <tr>
-            <td>modification_date</td>
-            <td>String. ISO8601 DateTime format</td>
-            <td>Auto generated and read-only</td>
-            <td>The modification date of the campaign</td>
-        </tr>
-        <tr>
             <td>is_tilted</td>
             <td>number</td>
             <td>Read-only</td>
@@ -3191,59 +3100,26 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             admin</td>
         </tr>
         <tr>
-            <td>type</td>
+            <td>is_expired</td>
             <td>number</td>
             <td>No</td>
-            <td>The type of the campaign. Available values
+            <td>Whether or not the campaign is expired
                 <table>
                     <tr>
                         <td>Value</td>
                         <td>Description</td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>Friendly</td>
+                        <td>0</td>
+                        <td>Not Expired</td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>non-profit</td>
+                        <td>1</td>
+                        <td>Expired</td>
                     </tr>
                 </table>
             </td>
-        </tr>
-        <tr>
-            <td>tax_id</td>
-            <td>string</td>
-            <td>No</td>
-            <td>The EIN for a business or non-profit organization. This
-            attribute is required only if the campaign type is a non-profit.
-            </td>
-        </tr>
-        <tr>
-            <td>tax_name</td>
-            <td>string</td>
-            <td>No</td>
-            <td>The name of the business or non-profit</td>
-        </tr>
-        <tr>
-            <td>admin</td>
-            <td>JSON User object</td>
-            <td>Auto generated and read-only</td>
-            <td>This campaign&#39;s admin</td>
-        </tr>
-        <tr>
-            <td>tilter</td>
-            <td>JSON User object</td>
-            <td>Auto generated and read-only</td>
-            <td>This campaign&#39;s tilter (if tilted)</td>
-        </tr>
-        <tr>
-            <td>first_contributor</td>
-            <td>JSON User object</td>
-            <td>Auto generated and read-only</td>
-            <td>This campaign&#39;s first contributor</td>
-        </tr>
-        <tr>
+        </tr><br>        <tr>
             <td>uri</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
@@ -3262,16 +3138,46 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>The uri with the settlements for this campaign</td>
         </tr>
         <tr>
-            <td>metadata</td>
-            <td>JSON object</td>
-            <td>No</td>
-            <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a campaign image.</td>
+            <td>admin</td>
+            <td>JSON User object</td>
+            <td>Auto generated and read-only</td>
+            <td>This campaign&#39;s admin</td>
+        </tr>
+        <tr>
+            <td>first_contributor</td>
+            <td>JSON User object</td>
+            <td>Auto generated and read-only</td>
+            <td>This campaign&#39;s first contributor</td>
+        </tr>
+        <tr>
+            <td>tilter</td>
+            <td>JSON User object</td>
+            <td>Auto generated and read-only</td>
+            <td>This campaign&#39;s tilter (if tilted)</td>
         </tr>
         <tr>
             <td>stats</td>
             <td>JSON object</td>
             <td>No</td>
             <td>Statistics information about the campaign.</td>
+        </tr>
+        <tr>
+            <td>creation_date</td>
+            <td>String. ISO8601 DateTime format</td>
+            <td>Auto generated and read-only</td>
+            <td>The creation date of the campaign</td>
+        </tr>
+        <tr>
+            <td>modification_date</td>
+            <td>String. ISO8601 DateTime format</td>
+            <td>Auto generated and read-only</td>
+            <td>The modification date of the campaign</td>
+        </tr>
+        <tr>
+            <td>metadata</td>
+            <td>JSON object</td>
+            <td>No</td>
+            <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a campaign image.</td>
         </tr>
     </tbody>
 </table>
@@ -3293,6 +3199,27 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>string</td>
             <td>Auto generated and read-only</td>
             <td>A unique identifier for the payment</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>Reflects the status of the payment. Available values:
+                <table>
+                    <tr>
+                        <td>authorized</td>
+                    </tr>
+                    <tr>
+                        <td>charged</td>
+                    </tr>
+                    <tr>
+                        <td>refunded</td>
+                    </tr>
+                    <tr>
+                        <td>rejected</td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td>amount</td>
@@ -3327,25 +3254,27 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             </td>
         </tr>
         <tr>
-            <td>status</td>
+            <td>uri</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
-            <td>Reflects the status of the payment. Available values:
-                <table>
-                    <tr>
-                        <td>authorized</td>
-                    </tr>
-                    <tr>
-                        <td>charged</td>
-                    </tr>
-                    <tr>
-                        <td>refunded</td>
-                    </tr>
-                    <tr>
-                        <td>rejected</td>
-                    </tr>
-                </table>
-            </td>
+            <td>The uri for this payment resource</td>
+        </tr>
+        <tr>
+            <td>campaign</td>
+            <td>JSON Campaign object</td>
+            <td>Auto generated and read-only</td>
+            <td>The campaign this payment is for</td>
+        </tr>
+        <tr>
+            <td>card</td>
+            <td>JSON Card object</td>
+            <td>Auto generated and read-only</td>
+            <td>The card used for this payment</td>
+        </tr><br>        <tr>
+            <td>user</td>
+            <td>JSON User object</td>
+            <td>Auto generated and read-only</td>
+            <td>The contributor of this payment</td>
         </tr>
         <tr>
             <td>creation_date</td>
@@ -3358,30 +3287,6 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>String. ISO8601 DateTime format</td>
             <td>Auto generated and read-only</td>
             <td>The modification date of the payment</td>
-        </tr>
-        <tr>
-            <td>uri</td>
-            <td>string</td>
-            <td>Auto generated and read-only</td>
-            <td>The uri for this campaign resource</td>
-        </tr>
-        <tr>
-            <td>user</td>
-            <td>JSON User object</td>
-            <td>Auto generated and read-only</td>
-            <td>The contributor of this payment</td>
-        </tr>
-        <tr>
-            <td>card</td>
-            <td>JSON Card object</td>
-            <td>Auto generated and read-only</td>
-            <td>The card used for this payment</td>
-        </tr>
-        <tr>
-            <td>campaign</td>
-            <td>JSON Campaign object</td>
-            <td>Auto generated and read-only</td>
-            <td>The campaign this payment is for</td>
         </tr>
         <tr>
             <td>metadata</td>
@@ -3408,25 +3313,7 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>id</td>
             <td>string</td>
             <td>Auto generated and read-only</td>
-            <td>A unique identifier for the payment</td>
-        </tr>
-        <tr>
-            <td>admin_amount</td>
-            <td>number</td>
-            <td>Auto generated and read-only</td>
-            <td>
-                The amount of this payment that is going to the admin bank
-                account (the bank account shown in the <code>bank</code> sub-object).
-            </td>
-        </tr>
-        <tr>
-            <td>escrow_amount</td>
-            <td>number</td>
-            <td>Auto generated and read-only</td>
-            <td>
-                The amount of this payment that is going into the API Users
-                escrow account.
-            </td>
+            <td>A unique identifier for the settlement</td>
         </tr>
         <tr>
             <td>status</td>
@@ -3471,6 +3358,47 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             </td>
         </tr>
         <tr>
+            <td>admin_amount</td>
+            <td>number</td>
+            <td>Auto generated and read-only</td>
+            <td>
+                The amount of this settlement that is going to the admin bank
+                account (the bank account shown in the <code>bank</code> sub-resource).
+            </td>
+        </tr>
+        <tr>
+            <td>escrow_amount</td>
+            <td>number</td>
+            <td>Auto generated and read-only</td>
+            <td>
+                The amount of this settlement that is going into the API User&#39;s
+                escrow account (it represents fees charged to the admin and payers)
+            </td>
+        </tr>
+        <tr>
+            <td>bank</td>
+            <td>JSON Bank object</td>
+            <td>Auto generated and read-only</td>
+            <td>The bank account that received this settlement</td>
+        </tr><br>        <tr>
+            <td>campaign</td>
+            <td>JSON Campaign object</td>
+            <td>Auto generated and read-only</td>
+            <td>The campaign this settlement is for</td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>JSON User object</td>
+            <td>Auto generated and read-only</td>
+            <td>The user who received this settlement (admin of the campaign)</td>
+        </tr>
+        <tr>
+            <td>uri</td>
+            <td>string</td>
+            <td>Auto generated and read-only</td>
+            <td>The uri for this settlement</td>
+        </tr>
+        <tr>
             <td>creation_date</td>
             <td>String. ISO8601 DateTime format</td>
             <td>Auto generated and read-only</td>
@@ -3481,30 +3409,6 @@ crowdtilt<span class="preprocessor">.bank</span><span class="preprocessor">.crea
             <td>String. ISO8601 DateTime format</td>
             <td>Auto generated and read-only</td>
             <td>The modification date of the settlement</td>
-        </tr>
-        <tr>
-            <td>uri</td>
-            <td>string</td>
-            <td>Auto generated and read-only</td>
-            <td>The uri for this settlement</td>
-        </tr>
-        <tr>
-            <td>user</td>
-            <td>JSON User object</td>
-            <td>Auto generated and read-only</td>
-            <td>The user who received this settlement</td>
-        </tr>
-        <tr>
-            <td>bank</td>
-            <td>JSON Bank object</td>
-            <td>Auto generated and read-only</td>
-            <td>The bank account that received this settlement</td>
-        </tr>
-        <tr>
-            <td>campaign</td>
-            <td>JSON Campaign object</td>
-            <td>Auto generated and read-only</td>
-            <td>The campaign this payment is for</td>
         </tr>
         <tr>
             <td>metadata</td>
@@ -3525,8 +3429,9 @@ of <strong>50</strong> entries per page. For example:
 
 {
     <span class="string">"pagination"</span>: {
-        <span class="string">"total_pages"</span>: 2,
         <span class="string">"page"</span>: 1,
+        <span class="string">"entries_on_this_page"</span>: 3,
+        <span class="string">"total_pages"</span>: 2,
         <span class="string">"total_entries"</span>: 100,
         <span class="string">"per_page"</span>: 50
     },
@@ -3536,14 +3441,15 @@ of <strong>50</strong> entries per page. For example:
             "email": "foo.bar@gmail.com",
             "firstname": "Foo",
             "lastname": "Bar",
-            "is_verified": 1,
+            "is_verified": 0,
             "creation_date": "2011-07-02T14:20:48Z",
-            "last_login_date": "2012-09-22T01:55:49Z",
+            "modification_date": "2011-09-02T14:20:48Z",
             "uri": "/v1/users/USREC5",
+            "cards_uri": "/v1/users/USREC5/cards",
+            "banks_uri": "/v1/users/USREC5/banks",
             "campaigns_uri": "/v1/users/USREC5/campaigns",
-            "paid_campaigns_uri": "/v1/users/USREC5/paid_campaigns",
             "payments_uri": "/v1/users/USREC5/payments",
-            "metadata": {}
+            "metadata" : { "img" : "http://www.example.com/path-to-profile-image" }
         },
         .
         .
