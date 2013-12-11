@@ -1,6 +1,6 @@
 ![Crowdtilt](http://f9b43d4100c64ffefa80-01a69cdaa3d52fbca65973574eec9d29.r21.cf2.rackcdn.com/ct_logo.png)
 
-# Crowdtilt API Specs (BETA)
+# Crowdtilt API Specs
 
 The Crowdtilt API opens up the opportunity for developers to:
 
@@ -133,8 +133,7 @@ your use-case or idea could utilize our API, don't hesitate to
 
 ## Getting Started
 
-The first step is to get an ``API_KEY`` and ``API_SECRET``. During our beta
-program, please contact
+The first step is to get an ``API_KEY`` and ``API_SECRET``.  Please contact
 [support.api@crowdtilt.com](mailto:support.api@crowdtilt.com?Subject=API%20Creds)
 to request these.  Once you receive your Crowdtilt API credentials, you are
 ready to use the API.  Remember that all API requests have to go over SSL.
