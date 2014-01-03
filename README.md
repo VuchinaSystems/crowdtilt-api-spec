@@ -325,7 +325,7 @@ a profile image.
        "user" : {
           "firstname" : "foo",
           "lastname" : "bar",
-          "email" : "user@example.com"
+          "email" : "user@example.com",
           "metadata" : { "img" : "http://www.example.com/path-to-profile-image" }
        }
     }'
