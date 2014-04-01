@@ -1,4 +1,4 @@
-![Crowdtilt](http://f9b43d4100c64ffefa80-01a69cdaa3d52fbca65973574eec9d29.r21.cf2.rackcdn.com/ct_logo.png)
+![Crowdtilt](https://s3.amazonaws.com/ct-assets-alt/crowdtilt-logo.png)
 
 # Crowdtilt API Specs
 
