@@ -1353,7 +1353,7 @@ to update a single attribute without having to send the full [campaign object](/
     -d'
     {
         "campaign": {
-            "title":"A Different Campaign Title",
+            "title":"A Different Campaign Title"
         }
     }'
 
