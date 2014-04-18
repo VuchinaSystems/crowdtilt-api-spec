@@ -19,7 +19,7 @@ What we think is cool about the Crowdtilt API:
     about how to get access to this interface to build support for your favorite
     processor, drop us a note at [support.api@crowdtilt.com](mailto:support.api@crowdtilt.com).
 * Out of the box the Crowdtilt API works with [Balanced Payments](https://www.balancedpayments.com/).
-*  Support for [Stripe](https://stripe.com/) and 
+*  Support for [Stripe](https://stripe.com/) and
 [BrainTree](https://www.braintreepayments.com) coming soon.
 * Support for multiple currencies and international languages coming soon.
 * The API works with credit cards.
@@ -27,7 +27,7 @@ What we think is cool about the Crowdtilt API:
 * The API provides collaboration tools such as commenting/updates, nested
     comments, messaging, notifications, and tracking of those that have paid and
     those that haven't.
-* We also provide a tool to tokenize the sensitive information you collect (credit card 
+* We also provide a tool to tokenize the sensitive information you collect (credit card
   and bank account numbers), so you don't have to worry about PCI compliance.
 
 # Menu
@@ -47,7 +47,7 @@ What we think is cool about the Crowdtilt API:
     * [Rejected Payments](#rejected-payments)
     * [Refunds](#refunds)
     * [Campaign Settlements](#campaign-settlements)
-    * [Campaign Comments](#campaign-comments)   
+    * [Campaign Comments](#campaign-comments)
 * [API Examples](#api-examples)
 * [Tokenizing Sensitive User Information](#tokenizing-sensitive-user-information)
 * [Resource Definitions](#resource-definitions)
@@ -64,7 +64,7 @@ What we think is cool about the Crowdtilt API:
 ## Introduction
 
 It is important to understand that the Crowdtilt API is a layer of abstraction
-on top of payment processors. Currently, we support [Balanced Payments](https://www.balancedpayments.com/), which is well-suited 
+on top of payment processors. Currently, we support [Balanced Payments](https://www.balancedpayments.com/), which is well-suited
 for single-project sites like Lockitron, or multi-project services such as Kickstarter. Support fo [Stripe](https://stripe.com/) and [BrainTree](https://www.braintreepayments.com) is coming soon.
 
 When interacting with a payment gateway, the focus is highly transactional and
@@ -102,8 +102,8 @@ Compliant environment.
 Crowdtilt provides a PCI-compliant javascript library, `crowdtilt.js`,
 which is easy to implement on your website. Sensitive payment information can
 then be securely collected without ever touching your servers, keeping you
-completely outside of PCI and regulatory scope. See 
-[Tokenizing Sensitive User Information](#tokenizing-sensitive-user-information) 
+completely outside of PCI and regulatory scope. See
+[Tokenizing Sensitive User Information](#tokenizing-sensitive-user-information)
 for more information.
 
 We investigate all reported security issues with extreme immediacy. If you
@@ -205,11 +205,11 @@ branch.
 All resources contain a metadata field for storing key-value pairs of extra data. Store
 as many of these key-value pairs as you wish.
 
-Some common uses of this field include storing extra user data, such as address fields or 
+Some common uses of this field include storing extra user data, such as address fields or
 profile image urls, or storing extra campaign data, such as a campaign description field
 or campaign image url.
 
-**Important Note:** 
+**Important Note:**
 Updating the metadata field completely overwrites its contents. Be sure to include
 the entirety of the data you wish to store when making an update, including key-value
 pairs that did not change.
@@ -446,7 +446,7 @@ will be set to 1 to reflect this change.
 
 #### Example Request
 
-    $ curl -X GET -H Content-Type:application/json -u key:secret \ 
+    $ curl -X GET -H Content-Type:application/json -u key:secret \
     https://api-sandbox.crowdtilt.com/v1/users
 
 #### Response Body
@@ -565,6 +565,7 @@ campaigns that he paid for.
                 "is_tilted": 0,
                 "is_paid": 0,
                 "is_expired": 0,
+                "needs_bank": 0,
                 "uri": "/v1/campaigns/CMPBDA",
                 "payments_uri": "/v1/campaigns/CMPBDA/payments",
                 "settlements_uri": "/v1/campaigns/CMPBDA/settlements",
@@ -578,8 +579,8 @@ campaigns that he paid for.
                     "number_of_contributions": 0
                 },
                 "creation_date": "2011-07-02T14:20:48Z",
-                "modification_date": "2011-09-02T14:20:48Z",                
-                "metadata": { }            
+                "modification_date": "2011-09-02T14:20:48Z",
+                "metadata": { }
             },
             .
             .
@@ -795,7 +796,7 @@ Note that the `bank_code` field is also referred to as a "routing number" in the
             "account_number_last_four" : "7890",
             "bank_code_last_four" : "4851",
             "name" : "John Smith",
-            "is_default" : 0,  
+            "is_default" : 0,
             "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
             "uri" : "/v1/users/USR54B/banks/BAP688",
             "creation_date" : "2012-08-23T07:42:46.134467000Z",
@@ -834,7 +835,7 @@ following request:
             "account_number_last_four" : "7890",
             "bank_code_last_four" : "4851",
             "name" : "John Smith",
-            "is_default" : 1,  
+            "is_default" : 1,
             "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
             "uri" : "/v1/users/USR54B/banks/BAP688",
             "creation_date" : "2012-08-23T07:42:46.134467000Z",
@@ -866,7 +867,7 @@ To get the current default bank for a user, you can simply request:
             "account_number_last_four" : "7890",
             "bank_code_last_four" : "4851",
             "name" : "John Smith",
-            "is_default" : 1,  
+            "is_default" : 1,
             "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
             "uri" : "/v1/users/USR54B/banks/BAP688",
             "creation_date" : "2012-08-23T07:42:46.134467000Z",
@@ -896,7 +897,7 @@ To get the current default bank for a user, you can simply request:
             "account_number_last_four" : "7890",
             "bank_code_last_four" : "4851",
             "name" : "John Smith",
-            "is_default" : 0,  
+            "is_default" : 0,
             "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
             "uri" : "/v1/users/USR54B/banks/BAP688",
             "creation_date" : "2012-08-23T07:42:46.134467000Z",
@@ -936,7 +937,7 @@ This resource lists the bank accounts associated with this user.
                 "account_number_last_four" : "7890",
                 "bank_code_last_four" : "4851",
                 "name" : "John Smith",
-                "is_default" : 0,  
+                "is_default" : 0,
                 "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
                 "uri" : "/v1/users/USR54B/banks/BAP688",
                 "creation_date" : "2012-08-23T07:42:46.134467000Z",
@@ -983,7 +984,7 @@ request.  Other fields submitted will be ignored.
             "account_number_last_four" : "7890",
             "bank_code_last_four" : "4851",
             "name" : "John Smith",
-            "is_default" : 0,  
+            "is_default" : 0,
             "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
             "uri" : "/v1/users/USR54B/banks/BAP688",
             "creation_date" : "2012-08-23T07:42:46.134467000Z",
@@ -1046,12 +1047,12 @@ request.  Other fields submitted will be ignored.
               "card" : { "id" : "CCPC41", "uri" : "/v1/users/USR521/cards/CCPC42", ... },
               "user": { "id" : "USR54B", "uri" : "/v1/users/USR54B", ... },
               "creation_date" : "2012-10-20T15:45:13Z",
-              "modification_date" : "2012-10-20T15:45:47Z",            
+              "modification_date" : "2012-10-20T15:45:47Z",
               "metadata" : {}
             },
             .
             .
-            .        
+            .
         ]
     }
 
@@ -1182,7 +1183,7 @@ a campaign image or description.
     POST /campaigns
 
 #### Example Request
-    
+
     $ curl -X POST -H Content-Type:application/json -u key:secret \
     https://api-sandbox.crowdtilt.com/v1/campaigns \
     -d'
@@ -1209,6 +1210,7 @@ a campaign image or description.
             "is_tilted": 0,
             "is_paid": 0,
             "is_expired": 0,
+            "needs_bank": 0,
             "uri": "/v1/campaigns/CMPBDA",
             "payments_uri": "/v1/campaigns/CMPBDA/payments",
             "settlements_uri": "/v1/campaigns/CMPBDA/settlements",
@@ -1222,8 +1224,8 @@ a campaign image or description.
                 "number_of_contributions": 0
             },
             "creation_date": "2011-07-02T14:20:48Z",
-            "modification_date": "2011-09-02T14:20:48Z",                
-            "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" }  
+            "modification_date": "2011-09-02T14:20:48Z",
+            "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" }
         }
     }
 
@@ -1254,6 +1256,7 @@ a campaign image or description.
             "is_tilted": 0,
             "is_paid": 0,
             "is_expired": 0,
+            "needs_bank": 0,
             "uri": "/v1/campaigns/CMPBDA",
             "payments_uri": "/v1/campaigns/CMPBDA/payments",
             "settlements_uri": "/v1/campaigns/CMPBDA/settlements",
@@ -1267,8 +1270,8 @@ a campaign image or description.
                 "number_of_contributions": 0
             },
             "creation_date": "2011-07-02T14:20:48Z",
-            "modification_date": "2011-09-02T14:20:48Z",                
-            "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" } 
+            "modification_date": "2011-09-02T14:20:48Z",
+            "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" }
         }
     }
 
@@ -1307,6 +1310,7 @@ a campaign image or description.
                 "is_tilted": 0,
                 "is_paid": 0,
                 "is_expired": 0,
+                "needs_bank": 0,
                 "uri": "/v1/campaigns/CMPBDA",
                 "payments_uri": "/v1/campaigns/CMPBDA/payments",
                 "settlements_uri": "/v1/campaigns/CMPBDA/settlements",
@@ -1320,8 +1324,8 @@ a campaign image or description.
                     "number_of_contributions": 0
                 },
                 "creation_date": "2011-07-02T14:20:48Z",
-                "modification_date": "2011-09-02T14:20:48Z",                
-                "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" } 
+                "modification_date": "2011-09-02T14:20:48Z",
+                "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" }
             },
             .
             .
@@ -1348,9 +1352,9 @@ to update a single attribute without having to send the full [campaign object](/
     -d'
     {
         "campaign": {
-            "title":"A Different Campaign Title",
+            "title":"A Different Campaign Title"
         }
-    }'    
+    }'
 
 #### Response Body
 
@@ -1365,6 +1369,7 @@ to update a single attribute without having to send the full [campaign object](/
             "is_tilted": 0,
             "is_paid": 0,
             "is_expired": 0,
+            "needs_bank": 0,
             "uri": "/v1/campaigns/CMPBDA",
             "payments_uri": "/v1/campaigns/CMPBDA/payments",
             "settlements_uri": "/v1/campaigns/CMPBDA/settlements",
@@ -1378,7 +1383,7 @@ to update a single attribute without having to send the full [campaign object](/
                 "number_of_contributions": 0
             },
             "creation_date": "2011-07-02T14:20:48Z",
-            "modification_date": "2011-09-02T14:20:48Z",                
+            "modification_date": "2011-09-02T14:20:48Z",
             "metadata" : { "img" : "http://www.example.com/path-to-campaign-image" }
         }
     }
@@ -1413,7 +1418,7 @@ the admin will only receive `$19.60` from the `$20.00` payment.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA/payments \   
+    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA/payments \
     -d'
     {
         "payment": {
@@ -1440,7 +1445,7 @@ the admin will only receive `$19.60` from the `$20.00` payment.
           "card" : { "id" : "CCPC41", "uri" : "/v1/users/USR521/cards/CCPC41", ... },
           "user": { "id" : "USR521", "uri" : "/v1/users/USR521", ... },
           "creation_date" : "2012-10-20T15:45:13Z",
-          "modification_date" : "2012-10-20T15:45:47Z",            
+          "modification_date" : "2012-10-20T15:45:47Z",
           "metadata" : {}
        }
     }
@@ -1473,7 +1478,7 @@ the admin will only receive `$19.60` from the `$20.00` payment.
           "card" : { "id" : "CCPC41", "uri" : "/v1/users/USR521/cards/CCPC41", ... },
           "user": { "id" : "USR521", "uri" : "/v1/users/USR521", ... },
           "creation_date" : "2012-10-20T15:45:13Z",
-          "modification_date" : "2012-10-20T15:45:47Z",            
+          "modification_date" : "2012-10-20T15:45:47Z",
           "metadata" : {}
        }
     }
@@ -1516,7 +1521,7 @@ Note that you may only do this for payments with a status of "rejected".
           "card" : { "id" : "CCPC41", "uri" : "/v1/users/USR521/cards/CCPC42", ... },
           "user": { "id" : "USR521", "uri" : "/v1/users/USR521", ... },
           "creation_date" : "2012-10-20T15:45:13Z",
-          "modification_date" : "2012-10-20T15:45:47Z",            
+          "modification_date" : "2012-10-20T15:45:47Z",
           "metadata" : {}
        }
     }
@@ -1544,7 +1549,7 @@ Note that you may only do this for payments with a status of "rejected".
             "total_pages": 1,
             "total_entries": 3,
             "per_page": 50
-       },       
+       },
        "payments" : [
           {
               "id" : "CON233",
@@ -1557,7 +1562,7 @@ Note that you may only do this for payments with a status of "rejected".
               "card" : { "id" : "CCPC41", "uri" : "/v1/users/USR521/cards/CCPC41", ... },
               "user": { "id" : "USR521", "uri" : "/v1/users/USR521", ... },
               "creation_date" : "2012-10-20T15:45:13Z",
-              "modification_date" : "2012-10-20T15:45:47Z",            
+              "modification_date" : "2012-10-20T15:45:47Z",
               "metadata" : {}
           },
           .
@@ -1589,8 +1594,8 @@ Note that you may only do this for payments with a status of "rejected".
             "total_pages": 1,
             "total_entries": 3,
             "per_page": 50
-        } 
-        "payments" : [         
+        }
+        "payments" : [
           {
               "id" : "CON234",
               "status" : rejected",
@@ -1602,7 +1607,7 @@ Note that you may only do this for payments with a status of "rejected".
               "card" : { "id" : "CCPC41", "uri" : "/v1/users/USR521/cards/CCPC41", ... },
               "user": { "id" : "USR521", "uri" : "/v1/users/USR521", ... },
               "creation_date" : "2012-10-20T15:45:13Z",
-              "modification_date" : "2012-10-20T15:45:47Z",            
+              "modification_date" : "2012-10-20T15:45:47Z",
               "metadata" : {}
           },
           .
@@ -1645,8 +1650,6 @@ is how much money from the campaign is going into your escrow account (it
 represents fees charged to the admin and payers).  Possible statuses for a
 campaign settlement are:
 
-* `needs bank account` - this means that admin of the campaign needs to set up
-  his or her bank account before the funds will be sent.
 * `pending` - this means that the funds are being transfered to the bank account
   specified in the settlement.
 * `rejected` - this means that the settlement was rejected and could not be
@@ -1725,7 +1728,7 @@ campaign settlement are:
 
 ### Update Campaign Settlement Bank
 
-A Campaign Settlement can only be updated if the status is `needs bank account`.
+A Campaign Settlement can only be updated if the status is `rejected`.
 In this instance, a `bank` object can be sent with the `id` of a new bank
 account to re-attempt the settlement with.
 
@@ -1908,7 +1911,7 @@ Currently you can only alter the score and the metadata of a comment.
 
     $ curl -X DELETE -H Content-Type:application/json -u key:secret \
     https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments/CMT123
-    
+
 #### Response Codes
 
     200 => OK
@@ -1933,18 +1936,18 @@ create two users, an admin, and a contributor.
     # Response
     {
         "user" : {
-            "banks_uri": "/v1/users/USR38/banks", 
-            "campaigns_uri": "/v1/users/USR38/campaigns", 
-            "cards_uri": "/v1/users/USR38/cards", 
-            "creation_date": "2013-03-19T03:29:34.605286000Z", 
-            "email": "user@gmail.com", 
-            "firstname": null, 
-            "id": "USR38", 
-            "is_verified": 0, 
-            "lastname": null, 
-            "metadata": {}, 
-            "modification_date": "2013-03-19T03:29:34.605286000Z",  
-            "payments_uri": "/v1/users/USR38/payments", 
+            "banks_uri": "/v1/users/USR38/banks",
+            "campaigns_uri": "/v1/users/USR38/campaigns",
+            "cards_uri": "/v1/users/USR38/cards",
+            "creation_date": "2013-03-19T03:29:34.605286000Z",
+            "email": "user@gmail.com",
+            "firstname": null,
+            "id": "USR38",
+            "is_verified": 0,
+            "lastname": null,
+            "metadata": {},
+            "modification_date": "2013-03-19T03:29:34.605286000Z",
+            "payments_uri": "/v1/users/USR38/payments",
             "uri": "/v1/users/USR38"
         }
      }
@@ -1961,18 +1964,18 @@ create two users, an admin, and a contributor.
      # Response
      {
          "user" : {
-            "banks_uri": "/v1/users/USR55/banks", 
-            "campaigns_uri": "/v1/users/USR55/campaigns", 
-            "cards_uri": "/v1/users/USR55/cards", 
-            "creation_date": "2013-03-19T03:29:34.605286000Z", 
-            "email": "payer@gmail.com", 
-            "firstname": null, 
-            "id": "USR55", 
-            "is_verified": 0, 
-            "lastname": null, 
-            "metadata": {}, 
-            "modification_date": "2013-03-19T03:29:34.605286000Z",  
-            "payments_uri": "/v1/users/USR55/payments", 
+            "banks_uri": "/v1/users/USR55/banks",
+            "campaigns_uri": "/v1/users/USR55/campaigns",
+            "cards_uri": "/v1/users/USR55/cards",
+            "creation_date": "2013-03-19T03:29:34.605286000Z",
+            "email": "payer@gmail.com",
+            "firstname": null,
+            "id": "USR55",
+            "is_verified": 0,
+            "lastname": null,
+            "metadata": {},
+            "modification_date": "2013-03-19T03:29:34.605286000Z",
+            "payments_uri": "/v1/users/USR55/payments",
             "uri": "/v1/users/USR55"
          }
       }
@@ -1998,42 +2001,43 @@ second user to make a payment on the campaign.
     {
         "campaign" : {
             "admin": {
-                "banks_uri": "/v1/users/USR38/banks", 
-                "campaigns_uri": "/v1/users/USR38/campaigns", 
-                "cards_uri": "/v1/users/USR38/cards", 
-                "creation_date": "2013-03-19T03:29:34.605286000Z", 
-                "email": "user@gmail.com", 
-                "firstname": null, 
-                "id": "USR38", 
-                "is_verified": 0, 
-                "lastname": null, 
-                "metadata": {}, 
-                "modification_date": "2013-03-19T03:29:34.605286000Z",  
-                "payments_uri": "/v1/users/USR38/payments", 
+                "banks_uri": "/v1/users/USR38/banks",
+                "campaigns_uri": "/v1/users/USR38/campaigns",
+                "cards_uri": "/v1/users/USR38/cards",
+                "creation_date": "2013-03-19T03:29:34.605286000Z",
+                "email": "user@gmail.com",
+                "firstname": null,
+                "id": "USR38",
+                "is_verified": 0,
+                "lastname": null,
+                "metadata": {},
+                "modification_date": "2013-03-19T03:29:34.605286000Z",
+                "payments_uri": "/v1/users/USR38/payments",
                 "uri": "/v1/users/USR38"
-            }, 
-            "creation_date": "2013-03-19T03:34:13.518139000Z", 
-            "expiration_date": "2012-10-31T12:00:00Z", 
-            "first_contributor": null, 
-            "fixed_payment_amount": 0, 
-            "id": "CMPDE8", 
-            "is_expired": 0, 
-            "is_paid": 0, 
-            "is_tilted": 0, 
-            "metadata": {}, 
-            "min_payment_amount": 0, 
-            "modification_date": "2013-03-19T03:34:13.518139000Z", 
-            "payments_uri": "/v1/campaigns/CMPDE8/payments", 
-            "settlements_uri": "/v1/campaigns/CMPDE8/settlements", 
+            },
+            "creation_date": "2013-03-19T03:34:13.518139000Z",
+            "expiration_date": "2012-10-31T12:00:00Z",
+            "first_contributor": null,
+            "fixed_payment_amount": 0,
+            "id": "CMPDE8",
+            "is_expired": 0,
+            "needs_bank": 0,
+            "is_paid": 0,
+            "is_tilted": 0,
+            "metadata": {},
+            "min_payment_amount": 0,
+            "modification_date": "2013-03-19T03:34:13.518139000Z",
+            "payments_uri": "/v1/campaigns/CMPDE8/payments",
+            "settlements_uri": "/v1/campaigns/CMPDE8/settlements",
             "stats": {
-                "number_of_contributions": 0, 
-                "raised_amount": 0, 
-                "tilt_percent": 0, 
+                "number_of_contributions": 0,
+                "raised_amount": 0,
+                "tilt_percent": 0,
                 "unique_contributors": 0
-            }, 
-            "tilt_amount": 300000, 
-            "tilter": null, 
-            "title": "Halloween Awesome Fest", 
+            },
+            "tilt_amount": 300000,
+            "tilter": null,
+            "title": "Halloween Awesome Fest",
             "uri": "/v1/campaigns/CMPDE8"
         }
     }
@@ -2056,28 +2060,28 @@ Now, we'll create a credit card for the paying user.
     # Response
     {
         "card" : {
-            "card_type": "VISA card", 
-            "creation_date": "2013-03-19T03:36:21.682748000Z", 
-            "expiration_month": "07", 
-            "expiration_year": 2023, 
-            "id": "CCP2A", 
-            "last_four": "1111", 
-            "metadata": {}, 
-            "modification_date": "2013-03-19T03:36:21.682748000Z", 
-            "uri": "/v1/users/USR55/cards/CCP2AE", 
+            "card_type": "VISA card",
+            "creation_date": "2013-03-19T03:36:21.682748000Z",
+            "expiration_month": "07",
+            "expiration_year": 2023,
+            "id": "CCP2A",
+            "last_four": "1111",
+            "metadata": {},
+            "modification_date": "2013-03-19T03:36:21.682748000Z",
+            "uri": "/v1/users/USR55/cards/CCP2AE",
             "user": {
-                "banks_uri": "/v1/users/USR55/banks", 
-                "campaigns_uri": "/v1/users/USR55/campaigns", 
-                "cards_uri": "/v1/users/USR55/cards", 
-                "creation_date": "2013-03-19T03:29:34.605286000Z", 
-                "email": "payer@gmail.com", 
-                "firstname": null, 
-                "id": "USR55", 
-                "is_verified": 0, 
-                "lastname": null, 
-                "metadata": {}, 
-                "modification_date": "2013-03-19T03:29:34.605286000Z",  
-                "payments_uri": "/v1/users/USR55/payments", 
+                "banks_uri": "/v1/users/USR55/banks",
+                "campaigns_uri": "/v1/users/USR55/campaigns",
+                "cards_uri": "/v1/users/USR55/cards",
+                "creation_date": "2013-03-19T03:29:34.605286000Z",
+                "email": "payer@gmail.com",
+                "firstname": null,
+                "id": "USR55",
+                "is_verified": 0,
+                "lastname": null,
+                "metadata": {},
+                "modification_date": "2013-03-19T03:29:34.605286000Z",
+                "payments_uri": "/v1/users/USR55/payments",
                 "uri": "/v1/users/USR55"
             }
         }
@@ -2102,95 +2106,96 @@ Now we'll create a payment by the paying user to the campaign we created.
     # Response
     {
         "payment" : {
-            "admin_fee_amount": 40, 
-            "amount": 3000, 
+            "admin_fee_amount": 40,
+            "amount": 3000,
             "campaign" : {
                 "admin": {
-                    "banks_uri": "/v1/users/USR38/banks", 
-                    "campaigns_uri": "/v1/users/USR38/campaigns", 
-                    "cards_uri": "/v1/users/USR38/cards", 
-                    "creation_date": "2013-03-19T03:29:34.605286000Z", 
-                    "email": "user@gmail.com", 
-                    "firstname": null, 
-                    "id": "USR38", 
-                    "is_verified": 0, 
-                    "lastname": null, 
-                    "metadata": {}, 
-                    "modification_date": "2013-03-19T03:29:34.605286000Z",  
-                    "payments_uri": "/v1/users/USR38/payments", 
+                    "banks_uri": "/v1/users/USR38/banks",
+                    "campaigns_uri": "/v1/users/USR38/campaigns",
+                    "cards_uri": "/v1/users/USR38/cards",
+                    "creation_date": "2013-03-19T03:29:34.605286000Z",
+                    "email": "user@gmail.com",
+                    "firstname": null,
+                    "id": "USR38",
+                    "is_verified": 0,
+                    "lastname": null,
+                    "metadata": {},
+                    "modification_date": "2013-03-19T03:29:34.605286000Z",
+                    "payments_uri": "/v1/users/USR38/payments",
                     "uri": "/v1/users/USR38"
-                }, 
-                "creation_date": "2013-03-19T03:34:13.518139000Z", 
-                "expiration_date": "2012-10-31T12:00:00Z", 
-                "first_contributor": null, 
-                "fixed_payment_amount": 0, 
-                "id": "CMPDE8", 
-                "is_expired": 0, 
-                "is_paid": 0, 
-                "is_tilted": 0, 
-                "metadata": {}, 
-                "min_payment_amount": 0, 
-                "modification_date": "2013-03-19T03:34:13.518139000Z", 
-                "payments_uri": "/v1/campaigns/CMPDE8/payments", 
-                "settlements_uri": "/v1/campaigns/CMPDE8/settlements", 
+                },
+                "creation_date": "2013-03-19T03:34:13.518139000Z",
+                "expiration_date": "2012-10-31T12:00:00Z",
+                "first_contributor": null,
+                "fixed_payment_amount": 0,
+                "id": "CMPDE8",
+                "is_expired": 0,
+                "needs_bank": 0,
+                "is_paid": 0,
+                "is_tilted": 0,
+                "metadata": {},
+                "min_payment_amount": 0,
+                "modification_date": "2013-03-19T03:34:13.518139000Z",
+                "payments_uri": "/v1/campaigns/CMPDE8/payments",
+                "settlements_uri": "/v1/campaigns/CMPDE8/settlements",
                 "stats": {
-                    "number_of_contributions": 1, 
-                    "raised_amount": 3000, 
-                    "tilt_percent": 1, 
+                    "number_of_contributions": 1,
+                    "raised_amount": 3000,
+                    "tilt_percent": 1,
                     "unique_contributors": 1
-                }, 
-                "tilt_amount": 300000, 
-                "tilter": null, 
-                "title": "Halloween Awesome Fest", 
+                },
+                "tilt_amount": 300000,
+                "tilter": null,
+                "title": "Halloween Awesome Fest",
                 "uri": "/v1/campaigns/CMPDE8"
-            },  
+            },
             "card": {
-                "card_type": "VISA card", 
-                "creation_date": "2013-03-19T03:36:21.682748000Z", 
-                "expiration_month": "07", 
-                "expiration_year": 2023, 
-                "id": "CCP2A", 
-                "last_four": "1111", 
-                "metadata": {}, 
-                "modification_date": "2013-03-19T03:36:21.682748000Z", 
-                "uri": "/v1/users/USR55/cards/CCP2AE", 
+                "card_type": "VISA card",
+                "creation_date": "2013-03-19T03:36:21.682748000Z",
+                "expiration_month": "07",
+                "expiration_year": 2023,
+                "id": "CCP2A",
+                "last_four": "1111",
+                "metadata": {},
+                "modification_date": "2013-03-19T03:36:21.682748000Z",
+                "uri": "/v1/users/USR55/cards/CCP2AE",
                 "user": {
-                    "banks_uri": "/v1/users/USR55/banks", 
-                    "campaigns_uri": "/v1/users/USR55/campaigns", 
-                    "cards_uri": "/v1/users/USR55/cards", 
-                    "creation_date": "2013-03-19T03:29:34.605286000Z", 
-                    "email": "payer@gmail.com", 
-                    "firstname": null, 
-                    "id": "USR55", 
-                    "is_verified": 0, 
-                    "lastname": null, 
-                    "metadata": {}, 
-                    "modification_date": "2013-03-19T03:29:34.605286000Z",  
-                    "payments_uri": "/v1/users/USR55/payments", 
+                    "banks_uri": "/v1/users/USR55/banks",
+                    "campaigns_uri": "/v1/users/USR55/campaigns",
+                    "cards_uri": "/v1/users/USR55/cards",
+                    "creation_date": "2013-03-19T03:29:34.605286000Z",
+                    "email": "payer@gmail.com",
+                    "firstname": null,
+                    "id": "USR55",
+                    "is_verified": 0,
+                    "lastname": null,
+                    "metadata": {},
+                    "modification_date": "2013-03-19T03:29:34.605286000Z",
+                    "payments_uri": "/v1/users/USR55/payments",
                     "uri": "/v1/users/USR55"
                 }
-            },  
-            "creation_date": "2013-03-19T03:38:38.736326000Z", 
-            "id": "CON7C9", 
-            "metadata": {}, 
-            "modification_date": "2013-03-19T03:38:41Z", 
-            "status": "authorized", 
-            "uri": "/v1/campaigns/CMPDE8/payments/CON7C9", 
+            },
+            "creation_date": "2013-03-19T03:38:38.736326000Z",
+            "id": "CON7C9",
+            "metadata": {},
+            "modification_date": "2013-03-19T03:38:41Z",
+            "status": "authorized",
+            "uri": "/v1/campaigns/CMPDE8/payments/CON7C9",
             "user": {
-                "banks_uri": "/v1/users/USR55/banks", 
-                "campaigns_uri": "/v1/users/USR55/campaigns", 
-                "cards_uri": "/v1/users/USR55/cards", 
-                "creation_date": "2013-03-19T03:29:34.605286000Z", 
-                "email": "payer@gmail.com", 
-                "firstname": null, 
-                "id": "USR55", 
-                "is_verified": 0, 
-                "lastname": null, 
-                "metadata": {}, 
-                "modification_date": "2013-03-19T03:29:34.605286000Z",  
-                "payments_uri": "/v1/users/USR55/payments", 
+                "banks_uri": "/v1/users/USR55/banks",
+                "campaigns_uri": "/v1/users/USR55/campaigns",
+                "cards_uri": "/v1/users/USR55/cards",
+                "creation_date": "2013-03-19T03:29:34.605286000Z",
+                "email": "payer@gmail.com",
+                "firstname": null,
+                "id": "USR55",
+                "is_verified": 0,
+                "lastname": null,
+                "metadata": {},
+                "modification_date": "2013-03-19T03:29:34.605286000Z",
+                "payments_uri": "/v1/users/USR55/payments",
                 "uri": "/v1/users/USR55"
-            }, 
+            },
             "user_fee_amount": 100
      }
 
@@ -2206,14 +2211,14 @@ campaign by another user!
 
 If you want to store sensitive financial information from your users (like
 credit card and bank account numbers), you are required to be compliant
-with the <a href="https://www.pcisecuritystandards.org/" target="_blank">Payment 
+with the <a href="https://www.pcisecuritystandards.org/" target="_blank">Payment
 Card Industry Data Security Standard (PCI DSS)</a>.
 Crowdtilt handles this for you by providing a PCI-compliant javascript library, `crowdtilt.js`,
 which is easy to implement on your website. Sensitive payment information can
 then be securely collected without ever touching your servers, keeping you
 completely outside of PCI and regulatory scope.
 
-To implement `crowdtilt.js`, follow the steps below. You can also check out this 
+To implement `crowdtilt.js`, follow the steps below. You can also check out this
 [example implementation](#tokenization-examples).
 
 ### Include the Library
@@ -2223,13 +2228,13 @@ where you will be collecting credit card or bank account information:
     <script type="text/javascript" src="https://api.crowdtilt.com/v1/js/crowdtilt.js"></script>
 
 ### Initialize the crowdtilt object
-In a separate script tag, initialize the crowdtilt object. NOTE: this defaults to using the sandbox api when 
+In a separate script tag, initialize the crowdtilt object. NOTE: this defaults to using the sandbox api when
 no parameter is passed to the init method:
 
     <script type="text/javascript">
         crowdtilt.init();
     </script>
-    
+
 Once you are ready to go to production, pass 'production' as a parameter:
 
     <script type="text/javascript">
@@ -2238,11 +2243,11 @@ Once you are ready to go to production, pass 'production' as a parameter:
 
 ### Make sure to create users first
 Credit cards and bank accounts must be associated with existing `user` objects created through
-our API. This means that you need to collect user account information in a step *before* collecting credit 
-card or bank account information. See [creating users](#create-user) for more information. You'll need the 
+our API. This means that you need to collect user account information in a step *before* collecting credit
+card or bank account information. See [creating users](#create-user) for more information. You'll need the
 resulting `user id` to create credit cards and bank accounts for that user.
 
-### Create a Credit Card    
+### Create a Credit Card
 Once you have a `user`, the next step is to collect her credit card information and pass it to the
 `crowdtilt.card.create` function along with her `user id`, as well as a function to handle the response
 (more on that in a second).
@@ -2253,10 +2258,10 @@ Example:
         "number":"4111111111111111",
         "expiration_month":"03",
         "expiration_year":2023,
-        "security_code":123 
+        "security_code":123
     }
-    
-    crowdtilt.card.create(user_id, cardData, responseHandler);   
+
+    crowdtilt.card.create(user_id, cardData, responseHandler);
 
 The `user id` should be the hash returned by the user creation API call, e.g. "USR1E0A9BCE5F6111E28F485D097AC0CAB6"
 
@@ -2271,29 +2276,29 @@ If successful, the response object passed to the responseHandler function takes 
 
     {
         "card": {
-            "card_type": "VISA card", 
-            "creation_date": "2013-03-19T03:48:59.685761000Z", 
-            "expiration_month": "03", 
-            "expiration_year": 2023, 
-            "id": "CCPEEBABE72904711E2AB7EDDC43A854B4C", 
-            "last_four": "1111", 
-            "metadata": {}, 
-            "modification_date": "2013-03-19T03:48:59.685761000Z", 
-            "uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/cards/CCPEEBABE72904711E2AB7EDDC43A854B4C", 
+            "card_type": "VISA card",
+            "creation_date": "2013-03-19T03:48:59.685761000Z",
+            "expiration_month": "03",
+            "expiration_year": 2023,
+            "id": "CCPEEBABE72904711E2AB7EDDC43A854B4C",
+            "last_four": "1111",
+            "metadata": {},
+            "modification_date": "2013-03-19T03:48:59.685761000Z",
+            "uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/cards/CCPEEBABE72904711E2AB7EDDC43A854B4C",
             "user": {
-                "banks_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/banks", 
-                "campaigns_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/campaigns", 
-                "cards_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/cards", 
-                "creation_date": "2013-02-18T00:09:39Z", 
-                "email": "mark@ting.com", 
-                "firstname": "John", 
-                "id": "USR7C7CE3AC795F11E2901DABD956AC4F1A", 
-                "is_verified": 0, 
-                "lastname": "Smith", 
-                "metadata": {}, 
-                "modification_date": "2013-03-19T00:03:56Z", 
-                "paid_campaigns_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/paid_campaigns", 
-                "payments_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/payments", 
+                "banks_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/banks",
+                "campaigns_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/campaigns",
+                "cards_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/cards",
+                "creation_date": "2013-02-18T00:09:39Z",
+                "email": "mark@ting.com",
+                "firstname": "John",
+                "id": "USR7C7CE3AC795F11E2901DABD956AC4F1A",
+                "is_verified": 0,
+                "lastname": "Smith",
+                "metadata": {},
+                "modification_date": "2013-03-19T00:03:56Z",
+                "paid_campaigns_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/paid_campaigns",
+                "payments_uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A/payments",
                 "uri": "/v1/users/USR7C7CE3AC795F11E2901DABD956AC4F1A"
             }
         },
@@ -2336,9 +2341,9 @@ Here is a basic outline of what your response handler could look like:
 
 ### Create a Bank Account
 Creating bank accounts is just like creating credit cards. First gather up the bank account information, then pass it to
-`crowdtilt.bank.create` along with a `user id` and a response handler...but keep in mind one **important** extra step: 
-When you go to save the tokenized bank account to your server (most likely through a request made in your callback function), 
-you need to make an additional API call to set this new bank account as the 'default' bank account. See 
+`crowdtilt.bank.create` along with a `user id` and a response handler...but keep in mind one **important** extra step:
+When you go to save the tokenized bank account to your server (most likely through a request made in your callback function),
+you need to make an additional API call to set this new bank account as the 'default' bank account. See
 [setting the default bank account](#make-user-bank-default) for more information.
 
 Example:
@@ -2348,7 +2353,7 @@ Example:
         "account_number" : "1234567890",
         "bank_code" : "321174851"
     }
-    
+
     crowdtilt.bank.create(user_id, bankData, responseHandler);
 
 The `user id` should be the hash returned by the user creation API call, e.g. "USR1E0A9BCE5F6111E28F485D097AC0CAB6"
@@ -2363,29 +2368,29 @@ If successful, the response object passed to the responseHandler function takes 
 
     {
         "bank": {
-            "account_number_last_four": "7890", 
-            "bank_code_last_four": "1234", 
-            "creation_date": "2013-03-19T03:46:45.557777000Z", 
-            "id": "BAP9EC85D70904711E2AB7EDDC43A854B4C", 
-            "is_default": 0, 
-            "metadata": {}, 
-            "modification_date": "2013-03-19T03:46:45.557777000Z", 
-            "name": "John Smith", 
-            "uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/banks/BAP9EC85D70904711E2AB7EDDC43A854B4C", 
+            "account_number_last_four": "7890",
+            "bank_code_last_four": "1234",
+            "creation_date": "2013-03-19T03:46:45.557777000Z",
+            "id": "BAP9EC85D70904711E2AB7EDDC43A854B4C",
+            "is_default": 0,
+            "metadata": {},
+            "modification_date": "2013-03-19T03:46:45.557777000Z",
+            "name": "John Smith",
+            "uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/banks/BAP9EC85D70904711E2AB7EDDC43A854B4C",
             "user": {
-                "banks_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/banks", 
-                "campaigns_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/campaigns", 
-                "cards_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/cards", 
-                "creation_date": "2013-02-19T18:11:37Z", 
-                "email": "happyness@sauce.com", 
-                "firstname": "marc", 
-                "id": "USRCD2689FA7ABF11E2863ADF5C03071083", 
-                "is_verified": 1, 
-                "lastname": null, 
-                "metadata": {}, 
-                "modification_date": "2013-03-04T06:14:25.991725000Z", 
-                "paid_campaigns_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/paid_campaigns", 
-                "payments_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/payments", 
+                "banks_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/banks",
+                "campaigns_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/campaigns",
+                "cards_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/cards",
+                "creation_date": "2013-02-19T18:11:37Z",
+                "email": "happyness@sauce.com",
+                "firstname": "marc",
+                "id": "USRCD2689FA7ABF11E2863ADF5C03071083",
+                "is_verified": 1,
+                "lastname": null,
+                "metadata": {},
+                "modification_date": "2013-03-04T06:14:25.991725000Z",
+                "paid_campaigns_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/paid_campaigns",
+                "payments_uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083/payments",
                 "uri": "/v1/users/USRCD2689FA7ABF11E2863ADF5C03071083"
             }
         },
@@ -2455,7 +2460,7 @@ Returns:
         card_number:'"4111111111111112" is not a valid credit card number',
         expiration:'"01-2010" is not a valid credit card expiration date'
     }
-    
+
 **Validating a USA Bank Code (Routing Number)**
 
 Use ONLY for USA-based bank accounts. Checks against the <a href="http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format" target="_blank">MICR Routing Number Format</a>
@@ -2471,15 +2476,15 @@ Here we include two sample forms, one to collect credit card information and one
 Included also is sample javascript to handle the data captured in the forms using `crowdtilt.js`. We use <a href="http://jquery.com/">jQuery</a> for convenience, but keep in mind that jQuery is not required when using `crowdtilt.js`.
 
 **Sample Credit Card Form**
-        
+
     <form action="#" method="POST" "id="cardForm">
-        <input type="hidden" name="user_id">           
+        <input type="hidden" name="user_id">
         <fieldset>
             <label>Card Number</label>
             <input type="text" name="card_number" autocomplete="off">
         </fieldset>
         <fieldset>
-            <label>Expiration</label>             
+            <label>Expiration</label>
             <select name="expiration_month" style="width:50px">
                 <option value="01" selected>01</option>
                 <option value="02">02</option>
@@ -2494,7 +2499,7 @@ Included also is sample javascript to handle the data captured in the forms usin
                 <option value="11">11</option>
                 <option value="12">12</option>
                 </select>
-                / 
+                /
             <select name="expiration_year" style="width:75px">
                 <option value="2013" selected>2013</option>
                 <option value="2014">2014</option>
@@ -2516,7 +2521,7 @@ Included also is sample javascript to handle the data captured in the forms usin
 **Sample Bank Account Form**
 
     <form action="#" method="POST" id="bankForm">
-        <input type="hidden" name="user_id">      
+        <input type="hidden" name="user_id">
         <fieldset>
             <label>Bank Name</label>
             <input type="text" name="name">
@@ -2529,18 +2534,18 @@ Included also is sample javascript to handle the data captured in the forms usin
             <label>Bank Code (Routing Number in USA)</label>
             <input type="text" name="bank_code">
         </fieldset>
-        
+
         <button type="submit">submit</button>
     </form>
 
 **Sample Javascript**
 
     <script type="text/javascript">
-        (function() {    
-            
+        (function() {
+
             //Initialize the crowdtilt object
             crowdtilt.init();
-         
+
             var responseHandler = function(response) {
                 switch (response.status) {
                    case 201:
@@ -2558,10 +2563,10 @@ Included also is sample javascript to handle the data captured in the forms usin
                        // Some other error ocurred, check response.error for details
                 }
             }
-        
+
             var tokenizeCard = function(e) {
                 e.preventDefault();
-         
+
                 var $form = $('form#cardForm');
                 var cardData = {
                     number: $form.find('[name="card_number"]').val(),
@@ -2570,14 +2575,14 @@ Included also is sample javascript to handle the data captured in the forms usin
                     security_code: $form.find('[name="security_code"]').val()
                 };
                 var user_id = $form.find('[name="user_id"]').val();
-                
+
                 crowdtilt.card.create(user_id, cardData, callback);
             };
-            $('#cardForm').submit(tokenizeCard);        
-         
+            $('#cardForm').submit(tokenizeCard);
+
             var tokenizeBankAccount = function(e) {
                 e.preventDefault();
-        
+
                 var $form = $('form#bankForm');
                 var bankAccountData = {
                     name: $form.find('[name="name"]').val(),
@@ -2585,7 +2590,7 @@ Included also is sample javascript to handle the data captured in the forms usin
                     bank_code: $form.find('[name="bank_code"]').val()
                 };
                 var user_id = $form.find('[name="user_id"]').val();
-                
+
                 crowdtilt.bank.create(user_id, bankAccountData, callback);
             };
             $('#bankForm').submit(tokenizeBankAccount);
@@ -2687,7 +2692,7 @@ This section outlines the full definition of our resources.
             <td>No</td>
             <td>Key-Value pair for any extra data the API consumer wants to store. For example, a reference to the URL of a user's profile image.</td>
         </tr>
-        
+
     </tbody>
 </table>
 
@@ -2932,7 +2937,7 @@ This section outlines the full definition of our resources.
                     </tr>
                 </table>
             </td>
-        </tr>        
+        </tr>
         <tr>
             <td>uri</td>
             <td>string</td>
@@ -2944,6 +2949,15 @@ This section outlines the full definition of our resources.
             <td>string</td>
             <td>Auto generated and read-only</td>
             <td>The uri for the payments on this campaign</td>
+        </tr>
+        <tr>
+            <td>needs_bank</td>
+            <td>integer</td>
+            <td>Auto generated and read-only</td>
+            <td>
+                Whether the campaign admin needs a bank
+                for the final payout/settlement to occur
+            </td>
         </tr>
         <tr>
             <td>settlements_uri</td>
@@ -3085,7 +3099,7 @@ This section outlines the full definition of our resources.
             <td>JSON Card object</td>
             <td>Auto generated and read-only</td>
             <td>The card used for this payment</td>
-        </tr>        
+        </tr>
         <tr>
             <td>user</td>
             <td>JSON User object</td>
@@ -3143,10 +3157,6 @@ This section outlines the full definition of our resources.
                         <td>Description</td>
                     </tr>
                     <tr>
-                        <td>needs bank account</td>
-                        <td>Cannot submit until bank account is added</td>
-                    </tr>
-                    <tr>
                         <td>pending</td>
                         <td>Settlement has been sent and is pending</td>
                     </tr>
@@ -3197,7 +3207,7 @@ This section outlines the full definition of our resources.
             <td>JSON Bank object</td>
             <td>Auto generated and read-only</td>
             <td>The bank account that received this settlement</td>
-        </tr>        
+        </tr>
         <tr>
             <td>campaign</td>
             <td>JSON Campaign object</td>
