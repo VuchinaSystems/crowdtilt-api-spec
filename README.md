@@ -13,11 +13,6 @@ The Crowdtilt API opens up the opportunity for developers to:
 
 What we think is cool about the Crowdtilt API:
 
-* Our API is built around our universal
-    payments interface, which allows developers to integrate any payment
-    processor from around the world right into our system.  For more information
-    about how to get access to this interface to build support for your favorite
-    processor, drop us a note at [support.api@crowdtilt.com](mailto:support.api@crowdtilt.com).
 * Out of the box the Crowdtilt API works with [Balanced Payments](https://www.balancedpayments.com/).
 *  Support for [Stripe](https://stripe.com/) and
 [BrainTree](https://www.braintreepayments.com) coming soon.
