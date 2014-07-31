@@ -1,8 +1,8 @@
-![Crowdtilt](https://s3.amazonaws.com/ct-assets-alt/crowdtilt-logo.png)
+![Tilt](https://s3.amazonaws.com/crowdtiltopen/CrowdtiltOpen/assets/tilt_logotype%402x.png)
 
-# Crowdtilt API Specs
+# Tilt API Specs
 
-The Crowdtilt API opens up the opportunity for developers to:
+The Tilt API opens up the opportunity for developers to:
 
 * Offer a group payments option in their applications.
 * Offer a pre-sales commerce option in their applications.
@@ -11,9 +11,9 @@ The Crowdtilt API opens up the opportunity for developers to:
 * Develop a social fundraising application.
 * Enable the collaboration around these styles of commerce.
 
-What we think is cool about the Crowdtilt API:
+What we think is cool about the Tilt API:
 
-* Out of the box the Crowdtilt API works with [Balanced Payments](https://www.balancedpayments.com/).
+* Out of the box the Tilt API works with [Balanced Payments](https://www.balancedpayments.com/).
 *  Support for [Stripe](https://stripe.com/) and
 [BrainTree](https://www.braintreepayments.com) coming soon.
 * Support for multiple currencies and international languages coming soon.
@@ -58,7 +58,7 @@ What we think is cool about the Crowdtilt API:
 
 ## Introduction
 
-It is important to understand that the Crowdtilt API is a layer of abstraction
+It is important to understand that the Tilt API is a layer of abstraction
 on top of payment processors. Currently, we support [Balanced Payments](https://www.balancedpayments.com/), which is well-suited
 for single-project sites like Lockitron, or multi-project services such as Kickstarter. Support fo [Stripe](https://stripe.com/) and [BrainTree](https://www.braintreepayments.com) is coming soon.
 
@@ -89,12 +89,12 @@ Here is a full definition for each one of those objects:
 
 ## Security
 
-Crowdtilt is fully PCI compliant and security is of paramount importance to our
-team. Crowdtilt forces HTTPS for all services, including our public website. All
+Tilt is fully PCI compliant and security is of paramount importance to our
+team. Tilt forces HTTPS for all services, including our public website. All
 data is stored in a Payment Industry Data Security Standard (PCI DSS)
 Compliant environment.
 
-Crowdtilt provides a PCI-compliant javascript library, `crowdtilt.js`,
+Tilt provides a PCI-compliant javascript library, `crowdtilt.js`,
 which is easy to implement on your website. Sensitive payment information can
 then be securely collected without ever touching your servers, keeping you
 completely outside of PCI and regulatory scope. See
@@ -103,14 +103,14 @@ for more information.
 
 We investigate all reported security issues with extreme immediacy. If you
 believe you've found any security issues, please email us at
-[security@crowdtilt.com](mailto:security@crowdtilt.com). Though usually faster,
+[security@tilt.com](mailto:security@tilt.com). Though usually faster,
 we guarantee a direct response within 24 hours. We ask that you do not
 disclose a security bug publicly until it has been addressed by our team.
 
 
 ## Use Cases
 
-The Crowdtilt API can be used in a single-project environment (i.e.
+The Tilt API can be used in a single-project environment (i.e.
 [app.net](http://www.app.net)/[lockitron.com](http://www.lockitron.com)),
 a multi-project environment (a la [Kickstarter](http://www.kickstarter.com)),
 or for simple Group Payments.  This includes things like group vacation
@@ -123,14 +123,14 @@ We have friends looking to use our API to build a Mission-Trip focused,
 non-profit crowdfunding platform, and other developers interested in building
 a bill-splitting mobile application.  If you have any questions about how
 your use-case or idea could utilize our API, don't hesitate to
-[ask](mailto:support.api@crowdtilt.com)!
+[ask](mailto:support.api@tilt.com)!
 
 
 ## Getting Started
 
 The first step is to get an ``API_KEY`` and ``API_SECRET``.  Please contact
-[support.api@crowdtilt.com](mailto:support.api@crowdtilt.com?Subject=API%20Creds)
-to request these.  Once you receive your Crowdtilt API credentials, you are
+[support.api@tilt.com](mailto:support.api@tilt.com?Subject=API%20Creds)
+to request these.  Once you receive your Tilt API credentials, you are
 ready to use the API.  Remember that all API requests have to go over SSL.
 
 
@@ -139,11 +139,11 @@ ready to use the API.  Remember that all API requests have to go over SSL.
 To help you build your application, we provide a sandbox environment that you
 can use for testing. Use the base URI below:
 
-    https://api-sandbox.crowdtilt.com/v1
+    https://api-sandbox.tilt.com/v1
 
 The sandbox environment will be configured with a free Balanced account. If
 you need support for a different payment processor, please
-[let us know](mailto:support.api@crowdtilt.com?Subject=API%20Payment%20Processor%20Sandbox).
+[let us know](mailto:support.api@tilt.com?Subject=API%20Payment%20Processor%20Sandbox).
 
 
 ### Authentication
@@ -151,7 +151,7 @@ you need support for a different payment processor, please
 We are big fans of simplicity. Therefore, we support ``Basic Authentication``
 over SSL. You can simply use ``curl`` to test our API in 2 seconds.
 
-    $ curl -u API_KEY:API_SECRET https://api-sandbox.crowdtilt.com/v1
+    $ curl -u API_KEY:API_SECRET https://api-sandbox.tilt.com/v1
 
 If the credentials provided were invalid, the API will respond with
 
@@ -162,7 +162,7 @@ If the credentials provided were invalid, the API will respond with
 
 Currently, we only support JSON data formats. If you think we should support
 other data formats, please let us know what and why
-[support.api@crowdtilt.com](mailto:support.api@crowdtilt.com?Subject=Data%20Formats).
+[support.api@tilt.com](mailto:support.api@tilt.com?Subject=Data%20Formats).
 
 
 ### Client Libraries
@@ -173,9 +173,9 @@ know and we'll link to it.
 
 ### Hacker Support
 
-We like hanging out on IRC, a lot. Feel free to come hang out with us #crowdtilt
+We like hanging out on IRC, a lot. Feel free to come hang out with us #tilt
 at freenode. You can also send an email to
-[support.api@crowdtilt.com](mailto:support.api@crowdtilt.com).
+[support.api@tilt.com](mailto:support.api@tilt.com).
 
 
 ### Getting involved
@@ -190,8 +190,8 @@ be a higher priority.
 
 Any proposed spec change will be in a separate "feature" branch. Once we have a
 consensus from the community on the spec change, it'll be merged into `dev`
-branch, which means that the <a href="https://www.crowdtilt.com"
-target="_blank">Crowdtilt</a> team will start working on it. Once it is fully
+branch, which means that the <a href="https://www.tilt.com"
+target="_blank">Tilt</a> team will start working on it. Once it is fully
 implemented and ready to go to production, it'll get merged to the `master`
 branch.
 
@@ -314,7 +314,7 @@ a profile image.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users \
+    https://api-sandbox.tilt.com/v1/users \
     -d'
     {
        "user" : {
@@ -378,7 +378,7 @@ will be set to 1 to reflect this change.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USREC5/verification \
+    https://api-sandbox.tilt.com/v1/users/USREC5/verification \
     -d'
     {
        "verification" : {
@@ -408,7 +408,7 @@ will be set to 1 to reflect this change.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USREC5
+    https://api-sandbox.tilt.com/v1/users/USREC5
 
 #### Response Body
 
@@ -442,7 +442,7 @@ will be set to 1 to reflect this change.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users
+    https://api-sandbox.tilt.com/v1/users
 
 #### Response Body
 
@@ -492,7 +492,7 @@ to update a single attribute without having to send the full
 #### Example Request
 
     $ curl -X PUT -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USREC5 \
+    https://api-sandbox.tilt.com/v1/users/USREC5 \
     -d'
     {
         "user": {
@@ -537,7 +537,7 @@ campaigns that he paid for.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USREC5/campaigns
+    https://api-sandbox.tilt.com/v1/users/USREC5/campaigns
 
 #### Response Body
 
@@ -597,7 +597,7 @@ campaigns that he paid for.
 #### Example Request
 
     $ curl -X POST -u key:secret -H Content-Type:application/json \
-    https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards \
+    https://api-sandbox.tilt.com/v1/users/USR50A/cards \
     -d'
     {
         "card": {
@@ -637,7 +637,7 @@ campaigns that he paid for.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0
+    https://api-sandbox.tilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0
 
 #### Response Body
 
@@ -668,7 +668,7 @@ campaigns that he paid for.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards
+    https://api-sandbox.tilt.com/v1/users/USR50A/cards
 
 #### Response Body
 
@@ -715,7 +715,7 @@ request.  Other fields submitted will be ignored.
 #### Example Request
 
     $ curl -X PUT -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0 \
+    https://api-sandbox.tilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0 \
     -d'
     {
         "card": {
@@ -756,7 +756,7 @@ request.  Other fields submitted will be ignored.
 #### Example Request
 
     $ curl -X DELETE -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0
+    https://api-sandbox.tilt.com/v1/users/USR50A/cards/CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0
 
 #### Response Codes
 
@@ -773,7 +773,7 @@ Note that the `bank_code` field is also referred to as a "routing number" in the
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks \
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks \
     -d'
     {
         "bank": {
@@ -816,7 +816,7 @@ following request:
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks/default \
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks/default \
     -d'
     {
         "bank": { "id" : "BAP688" }
@@ -852,7 +852,7 @@ To get the current default bank for a user, you can simply request:
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks/default
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks/default
 
 #### Response Body
 
@@ -882,7 +882,7 @@ To get the current default bank for a user, you can simply request:
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks/BAP688
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks/BAP688
 
 #### Response Body
 
@@ -914,7 +914,7 @@ This resource lists the bank accounts associated with this user.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks
 
 #### Response Body
 
@@ -961,7 +961,7 @@ request.  Other fields submitted will be ignored.
 #### Example Request
 
     $ curl -X PUT -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks/BAP688 \
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks/BAP688 \
     -d'
     {
         "bank" : {
@@ -1002,7 +1002,7 @@ request.  Other fields submitted will be ignored.
 #### Example Request
 
     $ curl -X DELETE -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/banks/BAP688
+    https://api-sandbox.tilt.com/v1/users/USR54B/banks/BAP688
 
 #### Response Codes
 
@@ -1018,7 +1018,7 @@ request.  Other fields submitted will be ignored.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/users/USR54B/payments
+    https://api-sandbox.tilt.com/v1/users/USR54B/payments
 
 #### Response Body
 
@@ -1180,7 +1180,7 @@ a campaign image or description.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns \
+    https://api-sandbox.tilt.com/v1/campaigns \
     -d'
     {
         "campaign": {
@@ -1236,7 +1236,7 @@ a campaign image or description.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA
+    https://api-sandbox.tilt.com/v1/campaigns/CMPBDA
 
 #### Response Body
 
@@ -1282,7 +1282,7 @@ a campaign image or description.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns
+    https://api-sandbox.tilt.com/v1/campaigns
 
 #### Response Body
 
@@ -1336,14 +1336,14 @@ a campaign image or description.
 ### Update Campaign
 
 Currently, this request supports partial PUTs. For example, you can do a request
-to update a single attribute without having to send the full [campaign object](/Crowdtilt/crowdtilt-api-spec/blob/master/objects/README.md#campaign).
+to update a single attribute without having to send the full [campaign object](/Tilt/crowdtilt-api-spec/blob/master/objects/README.md#campaign).
 
     PUT /campaigns/:id
 
 #### Example Request
 
     $ curl -X PUT -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA \
+    https://api-sandbox.tilt.com/v1/campaigns/CMPBDA \
     -d'
     {
         "campaign": {
@@ -1413,7 +1413,7 @@ the admin will only receive `$19.60` from the `$20.00` payment.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPBDA/payments \
+    https://api-sandbox.tilt.com/v1/campaigns/CMPBDA/payments \
     -d'
     {
         "payment": {
@@ -1457,7 +1457,7 @@ the admin will only receive `$19.60` from the `$20.00` payment.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMP96B/payments/CON233
+    https://api-sandbox.tilt.com/v1/campaigns/CMP96B/payments/CON233
 
 #### Response Body
 
@@ -1493,7 +1493,7 @@ Note that you may only do this for payments with a status of "rejected".
 #### Example Request
 
     $ curl -X PUT -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMP96B/payments/CON233 \
+    https://api-sandbox.tilt.com/v1/campaigns/CMP96B/payments/CON233 \
     -d'
     {
         "payment": {
@@ -1533,7 +1533,7 @@ Note that you may only do this for payments with a status of "rejected".
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMP96B/payments
+    https://api-sandbox.tilt.com/v1/campaigns/CMP96B/payments
 
 #### Response Body
 
@@ -1578,7 +1578,7 @@ Note that you may only do this for payments with a status of "rejected".
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMP96B/rejected_payments
+    https://api-sandbox.tilt.com/v1/campaigns/CMP96B/rejected_payments
 
 #### Response Body
 
@@ -1628,7 +1628,7 @@ refund subresource.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMP96B/payments/CON233/refund
+    https://api-sandbox.tilt.com/v1/campaigns/CMP96B/payments/CON233/refund
 
 #### Response Codes
 
@@ -1664,7 +1664,7 @@ campaign settlement are:
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/settlements/SMTD88
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/settlements/SMTD88
 
 #### Response Body
 
@@ -1690,7 +1690,7 @@ campaign settlement are:
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/settlements
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/settlements
 
 #### Response Body
 
@@ -1732,7 +1732,7 @@ account to re-attempt the settlement with.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/settlements/SMTD88/bank \
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/settlements/SMTD88/bank \
     -d'
     {
         "bank" : { "id" : "BAPCA4" }
@@ -1757,7 +1757,7 @@ The purpose of the `score` field is to provide support for voting on comments.
 #### Example Request
 
     $ curl -X POST -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/comments
     -d'
     {
         "comment" : {
@@ -1797,7 +1797,7 @@ The purpose of the `score` field is to provide support for voting on comments.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/comments
 
 #### Response Body
 
@@ -1832,7 +1832,7 @@ The purpose of the `score` field is to provide support for voting on comments.
 #### Example Request
 
     $ curl -X GET -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments/CMT123
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/comments/CMT123
 
 #### Response Body
 
@@ -1864,7 +1864,7 @@ Currently you can only alter the score and the metadata of a comment.
 #### Example Request
 
     $ curl -X PUT -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments/CMT123 \
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/comments/CMT123 \
     -d'
     {
         "comment" : {
@@ -1905,7 +1905,7 @@ Currently you can only alter the score and the metadata of a comment.
 #### Example Request
 
     $ curl -X DELETE -H Content-Type:application/json -u key:secret \
-    https://api-sandbox.crowdtilt.com/v1/campaigns/CMPCCC/comments/CMT123
+    https://api-sandbox.tilt.com/v1/campaigns/CMPCCC/comments/CMT123
 
 #### Response Codes
 
@@ -1921,7 +1921,7 @@ create two users, an admin, and a contributor.
 
     # Create the admin user
     $ curl -X POST -u key:secret  -H Content-Type:application/json \
-        https://api-sandbox.crowdtilt.com/v1/users \
+        https://api-sandbox.tilt.com/v1/users \
         -d'{
             "user":{
                 "email"    : "user@gmail.com"
@@ -1949,7 +1949,7 @@ create two users, an admin, and a contributor.
 
      # Create the paying user
      $ curl -X POST -u key:secret  -H Content-Type:application/json \
-         https://api-sandbox.crowdtilt.com/v1/users \
+         https://api-sandbox.tilt.com/v1/users \
          -d'{
              "user":{
                  "email" : "payer@gmail.com"
@@ -1982,7 +1982,7 @@ example, we'll make the first user created above the `admin` user, and use the
 second user to make a payment on the campaign.
 
     $ curl -X POST -u key:secret  -H Content-Type:application/json \
-        https://api-sandbox.crowdtilt.com/v1/campaigns \
+        https://api-sandbox.tilt.com/v1/campaigns \
         -d'{
             "campaign" : {
                 "user_id" : "USR38",
@@ -2042,7 +2042,7 @@ second user to make a payment on the campaign.
 Now, we'll create a credit card for the paying user.
 
     $ curl -X POST -u key:secret  -H Content-Type:application/json \
-        https://api-sandbox.crowdtilt.com/v1/users/USR55/cards \
+        https://api-sandbox.tilt.com/v1/users/USR55/cards \
         -d'{
             "card" : {
                 "number" : "4111111111111111",
@@ -2087,7 +2087,7 @@ Now, we'll create a credit card for the paying user.
 Now we'll create a payment by the paying user to the campaign we created.
 
     $ curl -X POST -u key:secret  -H Content-Type:application/json \
-        https://api-sandbox.crowdtilt.com/v1/campaigns/CMP542/payments \
+        https://api-sandbox.tilt.com/v1/campaigns/CMP542/payments \
         -d'{
             "payment" : {
                 "user_id" : "USR55",
@@ -2208,7 +2208,7 @@ If you want to store sensitive financial information from your users (like
 credit card and bank account numbers), you are required to be compliant
 with the <a href="https://www.pcisecuritystandards.org/" target="_blank">Payment
 Card Industry Data Security Standard (PCI DSS)</a>.
-Crowdtilt handles this for you by providing a PCI-compliant javascript library, `crowdtilt.js`,
+Tilt handles this for you by providing a PCI-compliant javascript library, `crowdtilt.js`,
 which is easy to implement on your website. Sensitive payment information can
 then be securely collected without ever touching your servers, keeping you
 completely outside of PCI and regulatory scope.
@@ -2220,7 +2220,7 @@ To implement `crowdtilt.js`, follow the steps below. You can also check out this
 To use `crowdtilt.js`, simply include the following script tag on any page
 where you will be collecting credit card or bank account information:
 
-    <script type="text/javascript" src="https://api.crowdtilt.com/v1/js/crowdtilt.js"></script>
+    <script type="text/javascript" src="https://api.tilt.com/v1/js/crowdtilt.js"></script>
 
 ### Initialize the crowdtilt object
 In a separate script tag, initialize the crowdtilt object. NOTE: this defaults to using the sandbox api when
@@ -3287,4 +3287,4 @@ parameters. For example:
 
 # Terms of Use
 
-By accessing or using the Crowdtilt API you agree to be bound by the [Crowdtilt API Terms of Use](https://www.crowdtilt.com/api-terms).
+By accessing or using the Tilt API you agree to be bound by the [Tilt API Terms of Use](https://www.tilt.com/api-terms).
