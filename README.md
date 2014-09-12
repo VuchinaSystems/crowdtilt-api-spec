@@ -60,7 +60,7 @@ What we think is cool about the Tilt API:
 
 It is important to understand that the Tilt API is a layer of abstraction
 on top of payment processors. Currently, we support [Balanced Payments](https://www.balancedpayments.com/), which is well-suited
-for single-project sites like Lockitron, or multi-project services such as Kickstarter. Support fo [Stripe](https://stripe.com/) and [BrainTree](https://www.braintreepayments.com) is coming soon.
+for single-project sites like Lockitron, or multi-project services such as Kickstarter. Support for [Stripe](https://stripe.com/) and [BrainTree](https://www.braintreepayments.com) is coming soon.
 
 When interacting with a payment gateway, the focus is highly transactional and
 payment-based.  We consider a payment to be simply a part of a whole.  Our API
