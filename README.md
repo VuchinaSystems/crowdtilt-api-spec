@@ -2724,7 +2724,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>expiration_year</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Yes</td>
             <td>Expiration year (4 digit number)</td>
         </tr>
@@ -2871,7 +2871,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>tilt_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Yes</td>
             <td>The amount required to tilt the campaign. This amount is in
             cents. After the campaign raises enough funds equal or more than
@@ -2881,14 +2881,14 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>min_payment_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>No</td>
             <td>The minimum amount for a single payment. This amount is in
             cents.</td>
         </tr>
         <tr>
             <td>fixed_payment_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>No</td>
             <td>If this amount is set, each payment will have to be exactly
             this amount or multiples of it. This amount is in cents.</td>
@@ -2901,20 +2901,20 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>is_tilted</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Read-only</td>
             <td>Indicates whether or not the campaign has tilted</td>
         </tr>
         <tr>
             <td>is_paid</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Read-only</td>
             <td>Indicates whether or not the campaign funds has been paid to the
             admin</td>
         </tr>
         <tr>
             <td>is_expired</td>
-            <td>number</td>
+            <td>integer</td>
             <td>No</td>
             <td>Whether or not the campaign is expired
                 <table>
@@ -3047,7 +3047,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Yes</td>
             <td>
                 The amount of this payment that will go towards the campaign
@@ -3055,7 +3055,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>user_fee_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Yes</td>
             <td>
                 The amount to charge the user (payer) for this contribution.
@@ -3066,7 +3066,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>admin_fee_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Yes</td>
             <td>
                 The amount to charge the admin of the campaign for this
@@ -3181,7 +3181,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>admin_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Auto generated and read-only</td>
             <td>
                 The amount of this settlement that is going to the admin bank
@@ -3190,7 +3190,7 @@ This section outlines the full definition of our resources.
         </tr>
         <tr>
             <td>escrow_amount</td>
-            <td>number</td>
+            <td>integer</td>
             <td>Auto generated and read-only</td>
             <td>
                 The amount of this settlement that is going into the API User's
