@@ -53,7 +53,7 @@ What we think is cool about the Tilt API:
     * [Payment Definition](#payment-definition)
     * [Settlement Definition](#settlement-definition)
 * [Pagination](#pagination)
-* [FAQs](#faqs)
+* [FAQs](#frequently-asked-questions)
 * [Terms of Use](#terms-of-use)
 
 
@@ -3288,25 +3288,25 @@ parameters. For example:
 
 #Frequently Asked Questions
 
-** Q: Can I create Tilt.com or Tilt/Open camapigns through the Tilt API?**
+**Q: Can I create Tilt.com or Tilt/Open camapigns through the Tilt API?**
 
 A: Campaigns created through the Tilt API exist independently of Tilt.com and Tilt/Open campaigns.
 
 If you're interested in allowing users to create Tilt.com campaigns from your website or application, you may find that the beta version of our [Tilt Button](https://github.com/Crowdtilt/button) fits your needs.
 
-** Q: Can I use the Tilt API outside of the United States? **
+**Q: Can I use the Tilt API outside of the United States?**
 
 A: While contributions to campaigns created through the API can be made with any major credit card (VISA, MasterCard, American Express, and Discover), our payments processor [Balanced Payments](balancedpayments.com) requires that all payouts of funds collected occur to US-based bank accounts.
 
-** Q: What are the costs associated with using the Tilt API? **
+**Q: What are the costs associated with using the Tilt API?**
 
 A: The fee to use the Tilt API is 1% of funds collected. You'll only be charged for campaigns that hit their Tilt amount. In addition to the Tilt API fee, [Balanced Payments fees](https://www.balancedpayments.com/pricing) also apply.
 
-** Q: Does the Tilt API allow me to do white label crowdfunding? **
+**Q: Does the Tilt API allow me to do white label crowdfunding?**
 
 A: The Tilt API provides crowdfunding logic on top of payments processing handled by Balanced Payments. The Tilt API does not provide auth, login, UI/UX, etc. - you're in full control of the look, feel, and interactions within the application.
 
-** Q: Can I interact with the Tilt/Open campaigns via the Tilt API? **
+**Q: Can I interact with the Tilt/Open campaigns via the Tilt API?**
 
 A: The Tilt API and Tilt/Open exist independently of each other. Accordingly, campaigns created via Tilt/Open cannot be modified or accessed via the Tilt API.
 
