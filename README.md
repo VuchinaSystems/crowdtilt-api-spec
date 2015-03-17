@@ -13,9 +13,7 @@ The Tilt API opens up the opportunity for developers to:
 
 What we think is cool about the Tilt API:
 
-* Out of the box the Tilt API works with [Balanced Payments](https://www.balancedpayments.com/).
-*  Support for [Stripe](https://stripe.com/) and
-[BrainTree](https://www.braintreepayments.com) coming soon.
+* Out of the box the Tilt API works with [Stripe](https://www.stripe.com/). (Check out our [note](#please-note) on the transition from Balanced Payments)
 * Support for multiple currencies and international languages coming soon.
 * The API works with credit cards.
 * Support for ACH debit payments coming soon.
@@ -24,6 +22,11 @@ What we think is cool about the Tilt API:
     those that haven't.
 * We also provide a tool to tokenize the sensitive information you collect (credit card
   and bank account numbers), so you don't have to worry about PCI compliance.
+
+# Please Note
+The Tilt API is currently being updated as we transition from Balanced Payments to Stripe as our primary payments processor. During this time, we aren't issuing new API credentials. We expect the transition to be completed within 90 days of 3/13/2015.
+
+In the meantime, we'd love to answer any questions you have at support.api@tilt.com.
 
 # Menu
 * [Introduction](#introduction)
@@ -60,8 +63,8 @@ What we think is cool about the Tilt API:
 ## Introduction
 
 It is important to understand that the Tilt API is a layer of abstraction
-on top of payment processors. Currently, we support [Balanced Payments](https://www.balancedpayments.com/), which is well-suited
-for single-project sites like Lockitron, or multi-project services such as Kickstarter. Support for [Stripe](https://stripe.com/) and [BrainTree](https://www.braintreepayments.com) is coming soon.
+on top of payment processors. Currently, we support [Stripe](https://www.stripe.com/), which is well-suited
+for single-project sites like Lockitron, or multi-project services such as Kickstarter.
 
 When interacting with a payment gateway, the focus is highly transactional and
 payment-based.  We consider a payment to be simply a part of a whole.  Our API
@@ -129,11 +132,6 @@ your use-case or idea could utilize our API, don't hesitate to
 
 ## Getting Started
 
-The first step is to get an ``API_KEY`` and ``API_SECRET``.  Please contact
-[support.api@tilt.com](mailto:support.api@tilt.com?Subject=API%20Creds%20Application)
-to apply for these.  Once you receive your Tilt API credentials, you are
-ready to use the API.  Remember that all API requests have to go over SSL.
-
 
 ### Sandbox Environment
 
@@ -142,7 +140,7 @@ can use for testing. Use the base URI below:
 
     https://api-sandbox.tilt.com/v1
 
-The sandbox environment will be configured with a free Balanced account. If
+The sandbox environment will be configured with a free Stripe account. If
 you need support for a different payment processor, please
 [let us know](mailto:support.api@tilt.com?Subject=API%20Payment%20Processor%20Sandbox).
 
@@ -164,19 +162,6 @@ If the credentials provided were invalid, the API will respond with
 Currently, we only support JSON data formats. If you think we should support
 other data formats, please let us know what and why
 [support.api@tilt.com](mailto:support.api@tilt.com?Subject=Data%20Formats).
-
-
-### Client Libraries
-
-Unfortunately, we don't have client libraries, yet. If you write one, let us
-know and we'll link to it.
-
-
-### Hacker Support
-
-We like hanging out on IRC, a lot. Feel free to come hang out with us #tilt
-at freenode. You can also send an email to
-[support.api@tilt.com](mailto:support.api@tilt.com).
 
 
 ### Getting involved
@@ -3296,15 +3281,15 @@ If you're interested in allowing users to create Tilt.com campaigns from your we
 
 **Q: Can I use the Tilt API outside of the United States?**
 
-A: While contributions to campaigns created through the API can be made with any major credit card (VISA, MasterCard, American Express, and Discover), our payments processor [Balanced Payments](balancedpayments.com) requires that all payouts of funds collected occur to US-based bank accounts.
+A: While contributions to campaigns created through the API can be made with any major credit card (VISA, MasterCard, American Express, and Discover), all payouts of funds collected occur to US-based bank accounts.
 
 **Q: What are the costs associated with using the Tilt API?**
 
-A: The fee to use the Tilt API is 1% of funds collected. You'll only be charged for campaigns that hit their Tilt amount. In addition to the Tilt API fee, [Balanced Payments fees](https://www.balancedpayments.com/pricing) also apply.
+A: The fee to use the Tilt API is 1% of funds collected. You'll only be charged for campaigns that hit their Tilt amount. In addition to the Tilt API fee, [Stripe fees](https://stripe.com/us/pricing) also apply.
 
 **Q: Does the Tilt API allow me to do white label crowdfunding?**
 
-A: The Tilt API provides crowdfunding logic on top of payments processing handled by Balanced Payments. The Tilt API does not provide auth, login, UI/UX, etc. - you're in full control of the look, feel, and interactions within the application.
+A: The Tilt API provides crowdfunding logic on top of payments processing handled by Stripe. The Tilt API does not provide auth, login, UI/UX, etc. - you're in full control of the look, feel, and interactions within the application.
 
 **Q: Can I interact with the Tilt/Open campaigns via the Tilt API?**
 
